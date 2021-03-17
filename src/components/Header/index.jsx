@@ -110,7 +110,7 @@ export default function PrimarySearchAppBar() {
         zIndex: 10,
       }}
     >
-      <AppBar position="fixed" style={{ background: "rgba(0,0,0,0.8)" }}>
+      <AppBar position="fixed" style={{ background: "rgba(0,0,0,1)" }}>
         <Toolbar style={{ width: "90%", margin: "0 auto" }}>
           {/* <div className={classes.search}>
             <div className={classes.searchIcon}>

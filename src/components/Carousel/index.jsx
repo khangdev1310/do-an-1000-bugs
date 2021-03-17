@@ -14,6 +14,7 @@ import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import MovieFilterSharpIcon from "@material-ui/icons/MovieFilterSharp";
+import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const Carousel = () => {
   const classes = useStyles();
@@ -54,6 +55,7 @@ const Carousel = () => {
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
     dots: true,
+    dotsClass: `slick-dots ${classes.dots}`,
     responsive: [
       {
         breakpoint: 1024,

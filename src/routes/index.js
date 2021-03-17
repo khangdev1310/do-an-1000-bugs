@@ -8,14 +8,4 @@ export const routesHome = [
     path: "/",
     component: Home,
   },
-  {
-    exact: true,
-    path: "/signin",
-    component: SignIn,
-  },
-  {
-    exact: true,
-    path: "/signup",
-    component: SignUp,
-  },
 ];

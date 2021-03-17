@@ -3,11 +3,12 @@ import { fade } from "@material-ui/core/styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import background from "./../../assets/background.jpg";
+import background1 from "./../../assets/background1.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   header: {
     paddingTop: "6%",
-    fontFamily: "'Lato', cursive",
+    fontFamily: "Montserrat, sans-serif",
   },
 
   logo: {
@@ -60,28 +61,26 @@ export const useStyles = makeStyles((theme) => ({
   },
   container: {
     position: "relative",
-    height: "100vh",
+    height: "100%",
     width: "100%",
-    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.5), rgba(231,71,243, 0.5)), url(${background})`,
-    backgroundPosition: "bottom",
+    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.9), rgba(231,71,243, 0.2)), url(${background1})`,
+    // background: `url(${background1})`,
+    backgroundPosition: "50% 10%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
+    paddingBottom: "0.05rem",
   },
   bgColor: {
     maxWidth: "1280px",
     margin: "0 auto",
     top: "0%",
-    height: "100%",
     width: "100%",
   },
   carousel: {
-    position: "absolute",
     width: "75%",
+    maxWidth: "1280px",
     margin: "3rem auto",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
 
     "& img": {
       width: "275px",
@@ -123,7 +122,7 @@ export const useStyles = makeStyles((theme) => ({
       "& img": {
         transform: "scale(1.12)",
         transition: "all 0.3s ease-in-out",
-        boxShadow: "0px 0px 8px 1px rgba(236,70,248,0.61)",
+        boxShadow: "0px 0px 10px 1px rgba(236,70,248,0.61)",
       },
       "&:hover $stackContainer": {
         opacity: "1",
@@ -203,6 +202,29 @@ export const useStyles = makeStyles((theme) => ({
   hoverSVG: {
     "&:hover": {
       color: "#CCB3DB !important",
+    },
+  },
+
+  dots: {
+    bottom: "-2%",
+    transition: "all 0.3s",
+    "& li.slick-active button::before": {
+      color: "#FFFFFF",
+      transform: "scale(1.2)",
+      transition: "all 0.3s",
+    },
+    "& li": {
+      "&:hover": {
+        "&:hover": {
+          transform: "scale(1.2)",
+          transition: "all 0.3s",
+        },
+      },
+      "& button::before": {
+        fontSize: theme.typography.pxToRem(11),
+        color: "#9A61B8",
+        opacity: 0.5,
+      },
     },
   },
 }));
