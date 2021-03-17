@@ -62,10 +62,11 @@ export const useStyles = makeStyles((theme) => ({
     position: "relative",
     height: "100vh",
     width: "100%",
-    backgroundImage: `url(${background})`,
-    backgroundPosition: "center",
+    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.5), rgba(231,71,243, 0.5)), url(${background})`,
+    backgroundPosition: "bottom",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
   },
   bgColor: {
     maxWidth: "1280px",
