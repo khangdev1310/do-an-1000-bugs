@@ -54,27 +54,20 @@ const Carousel = () => {
     slidesToScroll: 1,
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
-    dots: true,
+    dots: false,
     dotsClass: `slick-dots ${classes.dots}`,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
           slidesToShow: 2,
-          slidesToScroll: 2,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: false,
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 650,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -93,7 +86,7 @@ const Carousel = () => {
               style={{ margin: "0px 1rem 0 4.5rem", color: "#FAFAFA" }}
             />
             <h1 className={`${classes.logo}`} style={{ fontWeight: "700" }}>
-              Now showing
+              Có làm mới có ăn
             </h1>
           </Grid>
           <Grid item xs={6} className={classes.headerItem}>
@@ -117,15 +110,7 @@ const Carousel = () => {
             <div>
               <div className={classes.containerAll}>
                 <div className={classes.containerImage}>
-                  <img
-                    alt="alo alo"
-                    src={poster1}
-                    style={{
-                      width: "275px",
-                      height: "375px",
-                      margin: "0 auto",
-                    }}
-                  />
+                  <img alt="alo alo" src={poster1} />
                   <Grid
                     container
                     spacing={3}
@@ -177,14 +162,7 @@ const Carousel = () => {
             <div>
               <div className={classes.containerAll}>
                 <div className={classes.containerImage}>
-                  <img
-                    src={poster2}
-                    style={{
-                      width: "275px",
-                      height: "375px",
-                      margin: "0 auto",
-                    }}
-                  />
+                  <img src={poster2} />
                   <Grid
                     container
                     spacing={3}
@@ -236,14 +214,7 @@ const Carousel = () => {
             <div>
               <div className={classes.containerAll}>
                 <div className={classes.containerImage}>
-                  <img
-                    src={poster3}
-                    style={{
-                      width: "275px",
-                      height: "375px",
-                      margin: "0 auto",
-                    }}
-                  />
+                  <img src={poster3} />
                   <Grid
                     container
                     spacing={3}
@@ -295,14 +266,7 @@ const Carousel = () => {
             <div>
               <div className={classes.containerAll}>
                 <div className={classes.containerImage}>
-                  <img
-                    src={poster4}
-                    style={{
-                      width: "275px",
-                      height: "375px",
-                      margin: "0 auto",
-                    }}
-                  />
+                  <img src={poster4} />
                   <Grid
                     container
                     spacing={3}

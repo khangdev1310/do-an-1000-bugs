@@ -86,6 +86,42 @@ export const useStyles = makeStyles((theme) => ({
       width: "275px",
       height: "375px",
       transition: "all 0.2s ease-in-out",
+      borderRadius: "10px",
+
+      ["@media (max-width:1279px)"]: {
+        width: "240px",
+        height: "340px",
+      },
+
+      ["@media (max-width:1110px)"]: {
+        width: "220px",
+        height: "320px",
+      },
+
+      ["@media (max-width:1024px)"]: {
+        width: "295px",
+        height: "395px",
+      },
+
+      ["@media (max-width:900px)"]: {
+        width: "240px",
+        height: "340px",
+      },
+
+      ["@media (max-width:750px)"]: {
+        width: "210px",
+        height: "310px",
+      },
+
+      ["@media (max-width:650px)"]: {
+        width: "295px",
+        height: "395px",
+      },
+
+      ["@media (max-width:470px)"]: {
+        width: "200px",
+        height: "300px",
+      },
     },
   },
 
@@ -111,13 +147,6 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    width: "275px",
-    height: "375px",
-    borderRadius: "10px",
-    "& img": {
-      borderRadius: "10px",
-    },
-
     "&:hover": {
       "& img": {
         transform: "scale(1.12)",
