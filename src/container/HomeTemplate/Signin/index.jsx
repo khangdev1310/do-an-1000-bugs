@@ -99,7 +99,7 @@ function SignIn() {
         <LinkRouter to="/" style={{ textDecoration: "none" }}>
           <Box className={classes.goBackContainer}>
             <ArrowBackIosIcon className={classes.closeIcon} />
-            <Typography>Back</Typography>
+            <Typography>Trang chủ</Typography>
           </Box>
         </LinkRouter>
         <CssBaseline />
@@ -108,7 +108,7 @@ function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Đăng nhập
           </Typography>
           <form
             className={classes.form}
@@ -121,7 +121,7 @@ function SignIn() {
               required
               fullWidth
               id="email"
-              label="Account Name"
+              label="Tên tài khoản"
               name="taiKhoan"
               autoComplete="account"
               onChange={formik.handleChange}
@@ -137,7 +137,7 @@ function SignIn() {
               required
               fullWidth
               name="matKhau"
-              label="Password"
+              label="Mật khẩu"
               type="password"
               id="password"
               autoComplete="current-password"
@@ -164,7 +164,7 @@ function SignIn() {
                 marginBottom: "1rem",
               }}
             >
-              Sign In
+              Đăng nhập
             </Button>
             <Grid container spacing={0}>
               <Grid item xs={5} className={classes.containerLine}>
@@ -217,9 +217,9 @@ function SignIn() {
                   href="#"
                   variant="body2"
                   className={classes.link}
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: "underline" }}
                 >
-                  {"Don't have an account? Sign Up"}
+                  {"Chưa có tài khoản? Đăng kí tại đây"}
                 </LinkRouter>
               </Grid>
             </Grid>

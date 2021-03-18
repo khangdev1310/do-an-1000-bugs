@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    height: "100vh",
+    height: "130vh",
   },
   paper: {
     marginTop: theme.spacing(0),
@@ -45,7 +45,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   goBackContainer: {
     display: "flex",
-    paddingTop: "1rem",
+    padding: "1rem 0rem",
   },
 
   closeIcon: {

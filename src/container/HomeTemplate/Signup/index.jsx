@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -10,133 +10,285 @@ import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useFormik } from "formik";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
+import * as Yup from "yup";
+import { useStyles } from "./style";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import { Link as LinkRouter } from "react-router-dom";
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
+      <LinkRouter color="inherit" to="/" style={{ textDecoration: "none" }}>
+        ALITA
+      </LinkRouter>{" "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+const CssTextField = withStyles({
+  root: {
+    "& label.Mui-focused": {
+      color: "#000",
+    },
+    "& .MuiOutlinedInput-root": {
+      "& fieldset": {
+        borderColor: "#000",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "#000",
+      },
+    },
   },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "100%", // Fix IE 11 issue.
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+})(TextField);
 
 function SignUp() {
+  const [loginFacebookInfo, setLoginFacebookInfo] = useState({
+    isLoggedIn: false,
+    userID: "",
+    name: "",
+    email: "",
+    picture: "",
+    matKhau: "123456",
+  });
+  console.log(loginFacebookInfo);
   const classes = useStyles();
+  const formik = useFormik({
+    initialValues: {
+      taiKhoan: "",
+      matKhau: "",
+      hoTen: "",
+      email: "",
+      soDt: "",
+    },
+    validationSchema: Yup.object({
+      taiKhoan: Yup.string("Invalid account format").required(
+        "Vui lòng điền vào!"
+      ),
+      matKhau: Yup.string()
+        .min(8, "Minimum 8 characters")
+        .required("Vui lòng điền vào!"),
+      hoTen: Yup.string("Invalid account format").required(
+        "Vui lòng điền vào!"
+      ),
+      email: Yup.string()
+        .email("Email không tồn tại")
+        .required("Vui lòng điền vào!"),
+      soDt: Yup.number()
+        .typeError("Số điện thoại không hợp lệ")
+        .positive("Số điện thoại không hợp lệ")
+        .max(10, "Số điện thoại không hợp lệ")
+        .required("Vui lòng điền vào!"),
+    }),
+    onSubmit: (values) => {
+      console.log(values);
+    },
+  });
+
+  const responseFacebook = (response) => {
+    setLoginFacebookInfo({
+      isLoggedIn: true,
+      userID: response.id,
+      name: response.name,
+      email: response.email,
+      picture: response.picture.data.url,
+    });
+  };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Avatar className={classes.avatar}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <form className={classes.form} noValidate>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="fname"
-                name="firstName"
-                variant="outlined"
-                required
+    <Box className={classes.bgColor}>
+      <Container
+        component="main"
+        maxWidth="xs"
+        style={{
+          backgroundColor: "#eeeeee",
+          borderRadius: "10px",
+          position: "relative",
+        }}
+      >
+        <LinkRouter to="/" style={{ textDecoration: "none" }}>
+          <Box className={classes.goBackContainer}>
+            <ArrowBackIosIcon className={classes.closeIcon} />
+            <Typography>Trang chủ</Typography>
+          </Box>
+        </LinkRouter>
+        <CssBaseline />
+        <div className={classes.paper}>
+          {/* <Avatar className={classes.avatar}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign up
+          </Typography> */}
+          <FacebookLogin
+            appId="254385272976931"
+            autoLoad={false}
+            callback={responseFacebook}
+            fields="name,email,picture"
+            cssClass="my-facebook-button-class"
+            scope="email, public_profile"
+            render={(renderProps) => (
+              <Button
+                type="submit"
                 fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                style={{
+                  backgroundColor: "#1A538A",
+                  padding: "0.8rem 0",
+                  margin: "initial",
+                  margin: "0.5rem 0",
+                }}
+                onClick={renderProps.onClick}
+              >
+                Login with Facebook
+              </Button>
+            )}
+          />
+          <Grid container spacing={0}>
+            <Grid item xs={5} className={classes.containerLine}>
+              <hr />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
+            <Grid item xs={2}>
+              <Typography
+                variant="p"
+                component="p"
+                style={{ textAlign: "center" }}
+              >
+                Hoặc
+              </Typography>
             </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                variant="outlined"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions and updates via email."
-              />
+            <Grid item xs={5}>
+              <hr />
             </Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
+          <form
+            className={classes.form}
+            noValidate
+            onSubmit={formik.handleSubmit}
           >
-            Sign Up
-          </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
+            <CssTextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="email"
+              label="Tên tài khoản"
+              name="taiKhoan"
+              autoComplete="account"
+              onChange={formik.handleChange}
+              value={formik.values.taiKhoan}
+            />
+            {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
+              <div>{formik.errors.taiKhoan}</div>
+            ) : null}
+
+            <CssTextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="matKhau"
+              label="Mật Khẩu"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={formik.handleChange}
+              value={formik.values.matkhau}
+            />
+            {formik.touched.matKhau && formik.errors.matKhau ? (
+              <div>{formik.errors.matKhau}</div>
+            ) : null}
+
+            <CssTextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="hoTen"
+              label="Họ Tên"
+              onChange={formik.handleChange}
+              value={formik.values.hoTen}
+            />
+            {formik.touched.hoTen && formik.errors.hoTen ? (
+              <div>{formik.errors.hoTen}</div>
+            ) : null}
+
+            <CssTextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="email"
+              label="Email"
+              onChange={formik.handleChange}
+              value={formik.values.email}
+            />
+            {formik.touched.email && formik.errors.email ? (
+              <div>{formik.errors.email}</div>
+            ) : null}
+
+            <CssTextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="soDt"
+              label="Số điện thoại"
+              onChange={formik.handleChange}
+              value={formik.values.soDt}
+            />
+            {formik.touched.soDt && formik.errors.soDt ? (
+              <div>{formik.errors.soDt}</div>
+            ) : null}
+
+            <FormControlLabel
+              control={<Checkbox value="remember" color="primary" />}
+              label="Remember me"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+              style={{
+                backgroundColor: "#000",
+                padding: "0.8rem 0",
+                margin: "initial",
+                marginBottom: "1rem",
+              }}
+            >
+              Đăng kí
+            </Button>
+            <Grid container>
+              <Grid item xs></Grid>
+              <Grid item>
+                <LinkRouter
+                  to="/signin"
+                  href="#"
+                  variant="body2"
+                  className={classes.link}
+                  style={{ textDecoration: "underline" }}
+                >
+                  {"Đã có tài khoản? Đăng nhập tại đây"}
+                </LinkRouter>
+              </Grid>
             </Grid>
-          </Grid>
-        </form>
-      </div>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
-    </Container>
+          </form>
+        </div>
+        <Box mt={8} style={{ marginTop: "2.5rem", paddingBottom: "1rem" }}>
+          <Copyright />
+        </Box>
+      </Container>
+    </Box>
   );
 }
-
 export default SignUp;

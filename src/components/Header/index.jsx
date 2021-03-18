@@ -16,6 +16,7 @@ import MoreIcon from "@material-ui/icons/MoreVert";
 import { useStyles } from "./style";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
+import logoCinema from "./../../assets/logoCinema.png";
 // import { Button } from "bootstrap";
 
 export default function PrimarySearchAppBar() {
@@ -127,7 +128,13 @@ export default function PrimarySearchAppBar() {
           </div> */}
           <div className={`col-4`}>
             <Typography className={classes.title} variant="h5" noWrap>
-              <Link to="/">ALITA</Link>
+              <Link to="/">
+                <img
+                  src={logoCinema}
+                  width="200px"
+                  style={{ transform: "rotate(-5deg)" }}
+                />
+              </Link>
             </Typography>
           </div>
           <div

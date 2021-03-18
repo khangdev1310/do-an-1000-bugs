@@ -13,12 +13,13 @@ const MovieSection = () => {
             component="h3"
             style={{
               display: "inline-block",
-              backgroundColor: "#FAFAFA",
+              backgroundColor: "#FFF",
               padding: "0 0.5rem",
             }}
           >
             MOVIE SECTION
           </Typography>
+          <Box></Box>
         </Box>
       </Box>
     </Box>
