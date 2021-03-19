@@ -4,8 +4,8 @@ import Slider from "react-slick";
 import poster1 from "./../../assets/money-heist.jpg";
 import poster2 from "./../../assets/the100.jpg";
 import poster3 from "./../../assets/tenet.jpg";
-import poster4 from "./../../assets/movie.jpg";
-import { Grid, Typography } from "@material-ui/core";
+import poster4 from "./../../assets/inception.jpg";
+import { Box, Grid, Typography } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
@@ -51,7 +51,7 @@ const Carousel = () => {
     speed: 300,
     autoplay: true,
     slidesToShow: 3,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
     dots: false,
@@ -61,7 +61,7 @@ const Carousel = () => {
         breakpoint: 1024,
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
           infinite: true,
           dots: false,
         },
@@ -81,13 +81,13 @@ const Carousel = () => {
       <div className={`${classes.bgColor}`}>
         <Grid container className={classes.header}>
           <Grid item xs={6} className={`${classes.headerItem}`}>
-            <MovieFilterSharpIcon
+            {/* <MovieFilterSharpIcon
               className={`${classes.logo}`}
               style={{ margin: "0px 1rem 0 4.5rem", color: "#FAFAFA" }}
             />
             <h1 className={`${classes.logo}`} style={{ fontWeight: "700" }}>
               Có làm mới có ăn
-            </h1>
+            </h1> */}
           </Grid>
           <Grid item xs={6} className={classes.headerItem}>
             <div className={classes.search}>
@@ -95,7 +95,7 @@ const Carousel = () => {
                 <SearchIcon />
               </div>
               <InputBase
-                placeholder="Search…"
+                placeholder="Tìm kiếm phim…"
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput,
@@ -105,7 +105,7 @@ const Carousel = () => {
             </div>
           </Grid>
         </Grid>
-        <div className={classes.carousel}>
+        <Box className={classes.carousel}>
           <Slider ref={ref} {...settings}>
             <div>
               <div className={classes.containerAll}>
@@ -316,7 +316,7 @@ const Carousel = () => {
               </div>
             </div>
           </Slider>
-        </div>
+        </Box>
       </div>
     </div>
   );

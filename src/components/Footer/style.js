@@ -54,40 +54,40 @@ export const useStyles = makeStyles((theme) => ({
     overflowX: "hidden",
   },
 
-  footer_bg_one: {
-    background: `url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center`,
-    width: "330px",
-    height: "105px",
-    backgroundSize: "100%",
-    position: "absolute",
-    bottom: "0",
-    left: "30%",
-    animationName: "$myfirst",
-    animationDuration: "22s",
-    animationTimingFunction: "linear",
-    animationIterationCount: "infinite",
-  },
+  // footer_bg_one: {
+  //   background: `url("https://1.bp.blogspot.com/-mvKUJFGEc-k/XclCOUSvCnI/AAAAAAAAUAE/jnBSf6Fe5_8tjjlKrunLBXwceSNvPcp3wCLcBGAsYHQ/s1600/volks.gif") no-repeat center center`,
+  //   width: "330px",
+  //   height: "105px",
+  //   backgroundSize: "100%",
+  //   position: "absolute",
+  //   bottom: "0",
+  //   left: "30%",
+  //   animationName: "$myfirst",
+  //   animationDuration: "22s",
+  //   animationTimingFunction: "linear",
+  //   animationIterationCount: "infinite",
+  // },
 
-  footer_bg_two: {
-    background: `url("https://1.bp.blogspot.com/-hjgfxUW1o1g/Xck--XOdlxI/AAAAAAAAT_4/JWYFJl83usgRFMvRfoKkSDGd--_Sv04UQCLcBGAsYHQ/s1600/cyclist.gif") no-repeat center center`,
-    width: "88px",
-    height: "100px",
-    backgroundSize: "100%",
-    position: "absolute",
-    bottom: "0",
-    left: "30%",
-    animationName: "$myfirst",
-    animationDuration: "30s",
-    animationTimingFunction: "linear",
-    animationIterationCount: "infinite",
-  },
+  // footer_bg_two: {
+  //   background: `url("https://1.bp.blogspot.com/-hjgfxUW1o1g/Xck--XOdlxI/AAAAAAAAT_4/JWYFJl83usgRFMvRfoKkSDGd--_Sv04UQCLcBGAsYHQ/s1600/cyclist.gif") no-repeat center center`,
+  //   width: "88px",
+  //   height: "100px",
+  //   backgroundSize: "100%",
+  //   position: "absolute",
+  //   bottom: "0",
+  //   left: "30%",
+  //   animationName: "$myfirst",
+  //   animationDuration: "30s",
+  //   animationTimingFunction: "linear",
+  //   animationIterationCount: "infinite",
+  // },
 
-  "@keyframes myfirst": {
-    "0%": {
-      left: "-25%",
-    },
-    "100%": {
-      left: "100%",
-    },
-  },
+  // "@keyframes myfirst": {
+  //   "0%": {
+  //     left: "-25%",
+  //   },
+  //   "100%": {
+  //     left: "100%",
+  //   },
+  // },
 }));

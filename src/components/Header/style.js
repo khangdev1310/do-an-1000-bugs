@@ -1,15 +1,19 @@
 import { makeStyles } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles";
+import header from "../../assets/header.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   bgColor: {
-    backgroundColor: "rgba(#000, #000, #000, 0.5)",
+    backgroundImage: `linear-gradient(to left bottom, rgba(231,71,243, 0.6), rgba(9,1,65, 0.9))`,
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
   },
 
   colorText: {
     color: "#F692FE",
     letterSpacing: "1px",
-    fontWeight: "normal",
+    fontWeight: "400",
+    fontFamily: "Montserrat, sans-serif",
   },
 
   marginTextNavbar: {
@@ -76,6 +80,19 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "none",
+    },
+  },
+
+  btn: {
+    textDecoration: "none",
+    padding: "10px 15px",
+    color: "#FAFAFA",
+    margin: "0 0.2rem",
+    borderRadius: "10px",
+    fontFamily: "Montserrat, sans-serif",
+
+    "& icon": {
+      marginRight: "0.5rem",
     },
   },
 }));

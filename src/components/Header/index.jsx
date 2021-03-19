@@ -17,6 +17,8 @@ import { useStyles } from "./style";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import logoCinema from "./../../assets/logoCinema.png";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import PersonIcon from "@material-ui/icons/Person";
 // import { Button } from "bootstrap";
 
 export default function PrimarySearchAppBar() {
@@ -111,7 +113,7 @@ export default function PrimarySearchAppBar() {
         zIndex: 10,
       }}
     >
-      <AppBar position="fixed" style={{ background: "rgba(0,0,0,1)" }}>
+      <AppBar position="fixed" className={classes.bgColor}>
         <Toolbar style={{ width: "90%", margin: "0 auto" }}>
           {/* <div className={classes.search}>
             <div className={classes.searchIcon}>
@@ -126,30 +128,37 @@ export default function PrimarySearchAppBar() {
               inputProps={{ "aria-label": "search" }}
             />
           </div> */}
-          <div className={`col-4`}>
+          <div className={`col-2`}>
             <Typography className={classes.title} variant="h5" noWrap>
               <Link to="/">
-                <img
+                {/* <img
                   src={logoCinema}
                   width="200px"
                   style={{ transform: "rotate(-5deg)" }}
-                />
+                /> */}
+                <Typography
+                  variant="h4"
+                  style={{
+                    color: "white",
+                    fontFamily: "Lobster, cursive",
+                    letterSpacing: "3px",
+                  }}
+                >
+                  Alita
+                </Typography>
               </Link>
             </Typography>
           </div>
-          <div
-            className={`col-4`}
-            style={{ display: "flex", justifyContent: "space-around" }}
-          >
+          <div className={`col-6`} style={{ display: "flex" }}>
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              Events
+              Phim
             </Typography>
             <Typography
               className={`${classes.colorText} ${classes.marginTextNavbar}`}
               variant="h6"
               noWrap
             >
-              Promotion
+              Khuyến mãi
             </Typography>
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
               Liên hệ
@@ -166,11 +175,23 @@ export default function PrimarySearchAppBar() {
             >
               <AccountCircle />
             </IconButton> */}
-            <Link to="/signin">
-              <Button color="inherit">Đăng nhập</Button>
+            <Link to="/signup" style={{ textDecoration: "none" }}>
+              <Button
+                color="inherit"
+                className={`${classes.btn} ${classes.btnFull}`}
+              >
+                <PersonIcon style={{ marginRight: "0.2rem" }} />
+                Đăng kí
+              </Button>
             </Link>
-            <Link to="/signup">
-              <Button color="inherit">Đăng kí</Button>
+            <Link to="/signin" style={{ textDecoration: "none" }}>
+              <Button
+                color="inherit"
+                className={`${classes.btn} ${classes.btnGhost}`}
+              >
+                <ExitToAppIcon style={{ marginRight: "0.2rem" }} />
+                Đăng nhập
+              </Button>
             </Link>
           </div>
           <div className={classes.sectionMobile}>

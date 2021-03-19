@@ -7,6 +7,8 @@ import background1 from "./../../assets/background1.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   header: {
+    maxWidth: "980px",
+    margin: "0 auto",
     paddingTop: "6%",
     fontFamily: "Montserrat, sans-serif",
   },
@@ -52,12 +54,14 @@ export const useStyles = makeStyles((theme) => ({
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
-    // [theme.breakpoints.up("sm")]: {
-    //   width: "12ch",
-    //   "&:focus": {
-    //     width: "20ch",
-    //   },
-    // },
+    [theme.breakpoints.up("sm")]: {
+      width: "0ch",
+      cursor: "pointer",
+      "&:focus": {
+        width: "30ch",
+        cursor: "auto",
+      },
+    },
   },
   container: {
     position: "relative",
@@ -128,10 +132,11 @@ export const useStyles = makeStyles((theme) => ({
   headerItem: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-end",
     flexDirection: "row",
     color: "#A12ABD",
     fontSize: "10px !important",
+    fontFamily: "Montserrat, sans-serif",
   },
 
   containerAll: {
