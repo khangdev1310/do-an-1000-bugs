@@ -4,6 +4,9 @@ import { Route, Switch, BrowserRouter } from "react-router-dom";
 import PageNotFound from "./container/PageNotFound";
 import SignIn from "./container/HomeTemplate/Signin";
 import SignUp from "./container/HomeTemplate/Signup";
+import { Provider } from "react-redux";
+import Test from "./container/Test";
+import store from "./redux/reducers/configStore";
 
 function App() {
   const showLayoutHome = (routes) => {
@@ -23,14 +26,17 @@ function App() {
 
   return (
     <div className="App">
+      {/* <Provider store={store}> */}
       <BrowserRouter>
         <Switch>
           {showLayoutHome(routesHome)}
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/test" component={Test} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
+      {/* </Provider> */}
     </div>
   );
 }

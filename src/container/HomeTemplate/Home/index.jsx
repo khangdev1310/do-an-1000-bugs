@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Carousel from "../../../components/Carousel";
 import Footer from "../../../components/Footer";
-import Header from "../../../components/Header";
-import MovieSection from "../../../components/MovieSection";
+// import { useSelector, useDispatch } from "react-redux";
+// import { FETCH_MOVIES_REQUESTS_SAGA } from "./modules/redux/constants";
 
 const Home = () => {
+  // const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch({
+  //     type: FETCH_MOVIES_REQUESTS_SAGA,
+  //   });
+  // }, []);
+
   return (
     <div>
       <Carousel />
-      {/* <MovieSection /> */}
       <Footer />
     </div>
   );

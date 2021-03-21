@@ -2,6 +2,10 @@ import { makeStyles } from "@material-ui/core";
 
 export const useStyle = makeStyles((theme) => ({
   container: {
-    marginTop: "5rem",
+    margin: "0 auto",
+    marginTop: "2rem",
+    width: "50%",
+    display: "flex",
+    justifyContent: "space-around",
   },
 }));

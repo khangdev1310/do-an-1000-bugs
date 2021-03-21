@@ -130,7 +130,7 @@ export default function PrimarySearchAppBar() {
           </div> */}
           <div className={`col-2`}>
             <Typography className={classes.title} variant="h5" noWrap>
-              <Link to="/">
+              <Link to="/" style={{ textDecoration: "none" }}>
                 {/* <img
                   src={logoCinema}
                   width="200px"
@@ -151,7 +151,7 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={`col-6`} style={{ display: "flex" }}>
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              Phim
+              <Link to="/movie">Phim</Link>
             </Typography>
             <Typography
               className={`${classes.colorText} ${classes.marginTextNavbar}`}

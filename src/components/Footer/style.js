@@ -82,12 +82,12 @@ export const useStyles = makeStyles((theme) => ({
   //   animationIterationCount: "infinite",
   // },
 
-  // "@keyframes myfirst": {
-  //   "0%": {
-  //     left: "-25%",
-  //   },
-  //   "100%": {
-  //     left: "100%",
-  //   },
-  // },
+  "@keyframes myfirst": {
+    "0%": {
+      left: "-25%",
+    },
+    "100%": {
+      left: "100%",
+    },
+  },
 }));
