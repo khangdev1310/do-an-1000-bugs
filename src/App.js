@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import Test from "./container/Test";
 import store from "./redux/reducers/configStore";
 import Detail from "./container/HomeTemplate/Detail";
+import Dashboard from "./container/AdminTemplate/Dashboard/Dashboard";
+import SignInAdmin from "./container/AdminTemplate/Signin";
 
 function App() {
   const showLayoutHome = (routes) => {
@@ -25,6 +27,12 @@ function App() {
     }
   };
 
+  // const showLayoutAdmin = (routes) => {
+  //   if (routes && routes.length > 0) {
+  //     return routes.map((route, index) => {});
+  //   }
+  // };
+
   return (
     <div className="App">
       {/* <Provider store={store}> */}
@@ -35,6 +43,8 @@ function App() {
           <Route path="/signup" component={SignUp} />
           <Route path="/movie/:id" component={Detail} />
           <Route path="/test" component={Test} />
+          <Route path="/admin" component={SignInAdmin} />
+          <Route path="/admin/dashboard" component={Dashboard} />
           <Route path="*" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
