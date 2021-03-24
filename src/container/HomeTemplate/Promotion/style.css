@@ -1,0 +1,37 @@
+.slider-single-content {
+  box-shadow: none !important;
+}
+
+.slider-left {
+  right: 115% !important;
+}
+
+.slider-right {
+  left: 115% !important;
+}
+
+.slider-right div,
+.slider-left div {
+  border: none !important;
+}
+
+.slider-left div i,
+.slider-right div i {
+  font-size: 2.5rem;
+  color: rgb(84, 72, 116);
+}
+
+.slider-left div i:hover,
+.slider-right div i:hover {
+  color: rgb(204, 179, 219);
+}
+
+.slider-left div i::before {
+  font-family: "Material Icons";
+  content: "arrow_back_ios";
+}
+
+.slider-right div i::before {
+  font-family: "Material Icons";
+  content: "arrow_forward_ios";
+}

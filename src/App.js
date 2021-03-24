@@ -7,6 +7,7 @@ import SignUp from "./container/HomeTemplate/Signup";
 import { Provider } from "react-redux";
 import Test from "./container/Test";
 import store from "./redux/reducers/configStore";
+import Detail from "./container/HomeTemplate/Detail";
 
 function App() {
   const showLayoutHome = (routes) => {
@@ -32,6 +33,7 @@ function App() {
           {showLayoutHome(routesHome)}
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
+          <Route path="/detail/:id" component={Detail} />
           <Route path="/test" component={Test} />
           <Route path="*" component={PageNotFound} />
         </Switch>

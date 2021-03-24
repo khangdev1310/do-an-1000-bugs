@@ -3,6 +3,7 @@ import Home from "../container/HomeTemplate/Home";
 import Movie from "../container/HomeTemplate/Movie";
 import SignIn from "../container/HomeTemplate/Signin";
 import SignUp from "../container/HomeTemplate/Signup";
+import Promotion from "../container/HomeTemplate/Promotion";
 
 export const routesHome = [
   {
@@ -16,10 +17,9 @@ export const routesHome = [
     path: "/movie",
     component: Movie,
   },
-
   {
     exact: false,
-    path: "/detail/:id",
-    component: Detail,
+    path: "/promotion",
+    component: Promotion,
   },
 ];

@@ -6,6 +6,6 @@ export const useStyle = makeStyles((theme) => ({
     marginTop: "2rem",
     width: "50%",
     display: "flex",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
 }));

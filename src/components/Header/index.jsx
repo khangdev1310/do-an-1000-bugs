@@ -158,7 +158,7 @@ export default function PrimarySearchAppBar() {
               variant="h6"
               noWrap
             >
-              Khuyến mãi
+              <Link to="/promotion">Promotion</Link>
             </Typography>
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
               Liên hệ

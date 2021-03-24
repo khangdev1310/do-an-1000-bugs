@@ -26,7 +26,7 @@ export const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
       transition: "all 0.25s",
     },
-    marginLeft: 0,
+    marginTop: "1rem",
     width: "100%",
     [theme.breakpoints.up("sm")]: {
       marginLeft: theme.spacing(1),
@@ -84,7 +84,7 @@ export const useStyles = makeStyles((theme) => ({
   carousel: {
     width: "75%",
     maxWidth: "1280px",
-    margin: "3rem auto",
+    margin: "0rem auto",
 
     "& img": {
       width: "275px",
