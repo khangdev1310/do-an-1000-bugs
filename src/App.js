@@ -33,7 +33,7 @@ function App() {
           {showLayoutHome(routesHome)}
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/detail/:id" component={Detail} />
+          <Route path="/movie/:id" component={Detail} />
           <Route path="/test" component={Test} />
           <Route path="*" component={PageNotFound} />
         </Switch>

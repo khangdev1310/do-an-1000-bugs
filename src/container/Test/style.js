@@ -1,11 +1,13 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyle = makeStyles((theme) => ({
-  container: {
-    margin: "0 auto",
-    marginTop: "2rem",
-    width: "50%",
+  root: {
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.paper,
     display: "flex",
-    justifyContent: "center",
+    height: "100%",
+  },
+  tabs: {
+    borderRight: `1px solid ${theme.palette.divider}`,
   },
 }));

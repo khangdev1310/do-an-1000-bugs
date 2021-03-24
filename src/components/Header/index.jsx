@@ -161,7 +161,7 @@ export default function PrimarySearchAppBar() {
               <Link to="/promotion">Promotion</Link>
             </Typography>
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              Liên hệ
+              <Link to="/gioi-thieu">Giới thiệu</Link>
             </Typography>
           </div>
           <div className={`${classes.sectionDesktop} col-4 `}>
