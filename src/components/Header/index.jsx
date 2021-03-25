@@ -163,6 +163,9 @@ export default function PrimarySearchAppBar() {
             <Typography className={`${classes.colorText}`} variant="h6" noWrap>
               <Link to="/gioi-thieu">Giới thiệu</Link>
             </Typography>
+            <Typography className={`${classes.colorText}`} variant="h6" noWrap>
+              <Link to="/test">Test Features</Link>
+            </Typography>
           </div>
           <div className={`${classes.sectionDesktop} col-4 `}>
             {/* <IconButton

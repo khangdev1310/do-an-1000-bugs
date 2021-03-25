@@ -7,3 +7,10 @@ export function fetchMovieApiAction() {
     method: "GET",
   });
 }
+
+export function fetchLayThongTinHeThongRapApiAction() {
+  return axios({
+    url: `${DOMAIN}/QuanLyRap/LayThongTinHeThongRap`,
+    method: "GET",
+  });
+}

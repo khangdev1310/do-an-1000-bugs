@@ -1,6 +1,14 @@
 import { all } from "@redux-saga/core/effects";
-import { watchFetchMovieApiAction } from "./sagas";
+import {
+  watchFetchMovieApiActionSaga,
+  watchFetchRapApiActionSaga,
+  watchFetchCumRapApiActionSaga,
+} from "./sagas";
 
 export function* rootSaga() {
-  yield all([watchFetchMovieApiAction()]);
+  yield all([
+    watchFetchMovieApiActionSaga(),
+    watchFetchRapApiActionSaga(),
+    watchFetchCumRapApiActionSaga(),
+  ]);
 }
