@@ -10,6 +10,7 @@ import Detail from "./container/HomeTemplate/Detail";
 import Dashboard from "./container/AdminTemplate/Dashboard/Dashboard";
 import SignInAdmin from "./container/AdminTemplate/Signin";
 import TabParents from "./container/Test/TabParents";
+import PhongVe from "./container/HomeTemplate/PhongVe";
 
 function App() {
   const showLayoutHome = (routes) => {
@@ -37,6 +38,7 @@ function App() {
             <Route path="/signup" component={SignUp} />
             <Route path="/movie/:id" component={Detail} />
             <Route path="/test" component={TabParents} />
+            <Route exact path="/checkout" component={PhongVe} />
             <Route exact path="/admin" component={SignInAdmin} />
             <Route exact path="/admin/dashboard" component={Dashboard} />
             <Route path="*" component={PageNotFound} />

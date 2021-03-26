@@ -6,6 +6,10 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     display: "flex",
     height: "100%",
+
+    "& .MuiTabs-indicator": {
+      backgroundColor: "#fff !important",
+    },
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,

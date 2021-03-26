@@ -33,23 +33,23 @@ const BookingTicketBar = () => {
       <Box className={classes.container}>
         <div className={classes.root}>
           <Grid container spacing={1}>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={12} spacing={0}>
               <Autocomplete
                 id="combo-box-demo"
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                className={classes.inputField}
                 renderInput={(params) => (
                   <CssTextField {...params} label="Phim" variant="outlined" />
                 )}
               />
             </Grid>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={6} spacing={0}>
               <Autocomplete
                 id="combo-box-demo"
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                className={classes.inputField}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -62,34 +62,34 @@ const BookingTicketBar = () => {
                 )}
               />
             </Grid>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={6} spacing={0}>
               <Autocomplete
                 id="combo-box-demo"
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                className={classes.inputField}
                 renderInput={(params) => (
                   <TextField {...params} label="Rạp" variant="outlined" />
                 )}
               />
             </Grid>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={6} spacing={0}>
               <Autocomplete
                 id="combo-box-demo"
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                className={classes.inputField}
                 renderInput={(params) => (
                   <TextField {...params} label="Ngày xem" variant="outlined" />
                 )}
               />
             </Grid>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={6} spacing={0}>
               <Autocomplete
                 id="combo-box-demo"
                 options={top100Films}
                 getOptionLabel={(option) => option.title}
-                style={{ width: 300 }}
+                className={classes.inputField}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -99,7 +99,7 @@ const BookingTicketBar = () => {
                 )}
               />
             </Grid>
-            <Grid container item xs={2} spacing={0}>
+            <Grid container item md={2} sm={12} spacing={0}>
               <Button
                 variant="contained"
                 color="secondary"

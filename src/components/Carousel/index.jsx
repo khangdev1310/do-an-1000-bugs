@@ -110,13 +110,13 @@ const Carousel = () => {
             <div>
               <div className={classes.containerAll}>
                 <div className={classes.containerImage}>
-                  <img alt="alo alo" src={poster1} />
+                  <img src={poster1} />
                   <Grid
                     container
                     spacing={3}
                     className={classes.stackContainer}
                   >
-                    <Grid item xs={4} className={classes.stackItem}>
+                    <Grid item xs={6} className={classes.stackItem}>
                       <PlayCircleFilledIcon />
                       <Typography
                         component="p"
@@ -129,20 +129,8 @@ const Carousel = () => {
                         Trailer
                       </Typography>
                     </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
-                      <AddShoppingCartIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Đặt vé
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
+
+                    <Grid item xs={6} className={classes.stackItem}>
                       <ErrorOutlineIcon />
                       <Typography
                         component="p"
@@ -168,7 +156,7 @@ const Carousel = () => {
                     spacing={3}
                     className={classes.stackContainer}
                   >
-                    <Grid item xs={4} className={classes.stackItem}>
+                    <Grid item xs={6} className={classes.stackItem}>
                       <PlayCircleFilledIcon />
                       <Typography
                         component="p"
@@ -181,20 +169,8 @@ const Carousel = () => {
                         Trailer
                       </Typography>
                     </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
-                      <AddShoppingCartIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Đặt vé
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
+
+                    <Grid item xs={6} className={classes.stackItem}>
                       <ErrorOutlineIcon />
                       <Typography
                         component="p"
@@ -220,7 +196,7 @@ const Carousel = () => {
                     spacing={3}
                     className={classes.stackContainer}
                   >
-                    <Grid item xs={4} className={classes.stackItem}>
+                    <Grid item xs={6} className={classes.stackItem}>
                       <PlayCircleFilledIcon />
                       <Typography
                         component="p"
@@ -233,20 +209,8 @@ const Carousel = () => {
                         Trailer
                       </Typography>
                     </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
-                      <AddShoppingCartIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Đặt vé
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
+
+                    <Grid item xs={6} className={classes.stackItem}>
                       <ErrorOutlineIcon />
                       <Typography
                         component="p"
@@ -272,7 +236,7 @@ const Carousel = () => {
                     spacing={3}
                     className={classes.stackContainer}
                   >
-                    <Grid item xs={4} className={classes.stackItem}>
+                    <Grid item xs={6} className={classes.stackItem}>
                       <PlayCircleFilledIcon />
                       <Typography
                         component="p"
@@ -285,20 +249,7 @@ const Carousel = () => {
                         Trailer
                       </Typography>
                     </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
-                      <AddShoppingCartIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Đặt vé
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={4} className={classes.stackItem}>
+                    <Grid item xs={6} className={classes.stackItem}>
                       <ErrorOutlineIcon />
                       <Typography
                         component="p"

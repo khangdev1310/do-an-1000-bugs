@@ -20,6 +20,10 @@ export const useStyles = makeStyles((theme) => ({
     maxWidth: "980px",
     margin: "0 auto",
     color: "#FAFAFA",
+
+    [theme.breakpoints.down("md")]: {
+      width: "90%",
+    },
   },
 
   root: {
@@ -52,6 +56,14 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "266px",
     overflowX: "hidden",
+  },
+
+  responsive: {
+    [theme.breakpoints.down("md")]: {
+      marginTop: "1rem",
+      width: "100%",
+      textAlign: "center",
+    },
   },
 
   // footer_bg_one: {

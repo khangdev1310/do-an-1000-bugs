@@ -1,9 +1,11 @@
 import {
+  CHANGE_MA_HE_THONG,
   FETCH_HE_THONG_RAP_REQUESTS,
   FETCH_HE_THONG_RAP_SUCCESS,
   FETCH_MOVIES_FAILED,
   FETCH_MOVIES_REQUESTS,
   FETCH_MOVIES_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
 } from "./constants";
 
 const initialState = {
@@ -11,7 +13,8 @@ const initialState = {
   loading: false,
   err: null,
   theater: [],
-  maHeThong: "BHDStar",
+  cumRap: [],
+  maHeThongRap: "BHDStar",
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -31,10 +34,20 @@ export default (state = initialState, { type, payload }) => {
       return { ...state };
 
     case FETCH_HE_THONG_RAP_REQUESTS:
+      state.loading = true;
       return { ...state };
 
     case FETCH_HE_THONG_RAP_SUCCESS:
+      state.loading = false;
       state.theater = payload;
+      return { ...state };
+
+    case CHANGE_MA_HE_THONG:
+      state.maHeThongRap = payload;
+      return { ...state };
+
+    case FETCH_THONG_TIN_LICH_CHIEU_SUCCESS:
+      state.cumRap = payload;
       return { ...state };
 
     default:

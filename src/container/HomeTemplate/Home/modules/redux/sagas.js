@@ -2,16 +2,21 @@ import { call, delay, put, takeLatest } from "redux-saga/effects";
 import {
   FETCH_HE_THONG_RAP_FAILED,
   FETCH_HE_THONG_RAP_SUCCESS,
-  FETCH_LAY_THONG_TIN_CUM_THONG_RAP_REQUESTS_SAGA,
+  // FETCH_LAY_THONG_TIN_CUM_THONG_RAP_REQUESTS_SAGA,
+  FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
   FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
   FETCH_MOVIES_FAILED,
   FETCH_MOVIES_REQUESTS,
   FETCH_MOVIES_REQUESTS_SAGA,
   FETCH_MOVIES_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_REQUESTS,
+  FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_FAILED,
 } from "./constants";
 import { STATUS_CODE } from "./../../../../../utils/common/constants";
 import {
   fetchLayThongTinHeThongRapApiAction,
+  fetchLayThongTinLichChieuHeThongRapApiAction,
   fetchMovieApiAction,
 } from "../services/MovieListServices";
 
@@ -66,13 +71,42 @@ export function* watchFetchRapApiActionSaga() {
   );
 }
 
-function* fetchCumRapApiActionSaga() {
-  console.log(1);
+// function* fetchCumRapApiActionSaga() {
+//   console.log(1);
+// }
+
+// export function* watchFetchCumRapApiActionSaga() {
+//   yield takeLatest(
+//     FETCH_LAY_THONG_TIN_CUM_THONG_RAP_REQUESTS_SAGA,
+//     fetchCumRapApiActionSaga
+//   );
+// }
+
+function* fetchLayThongTinLichChieuHeThongRapApiActionSaga({ payload }) {
+  yield put({
+    type: FETCH_THONG_TIN_LICH_CHIEU_REQUESTS,
+  });
+  try {
+    const { data, status } = yield call(
+      fetchLayThongTinLichChieuHeThongRapApiAction,
+      payload
+    );
+    if (status === STATUS_CODE.SUCCESS) {
+      yield put({
+        type: FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
+        payload: data,
+      });
+    }
+  } catch (err) {
+    yield put({
+      type: FETCH_THONG_TIN_LICH_CHIEU_FAILED,
+    });
+  }
 }
 
-export function* watchFetchCumRapApiActionSaga() {
+export function* watchFetchLayThongTinLichChieuHeThongRapApiActionSaga() {
   yield takeLatest(
-    FETCH_LAY_THONG_TIN_CUM_THONG_RAP_REQUESTS_SAGA,
-    fetchCumRapApiActionSaga
+    FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
+    fetchLayThongTinLichChieuHeThongRapApiActionSaga
   );
 }
