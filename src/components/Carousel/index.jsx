@@ -9,12 +9,9 @@ import { Box, Grid, Typography } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
-import MovieFilterSharpIcon from "@material-ui/icons/MovieFilterSharp";
-import FiberManualRecordIcon from "@material-ui/icons/FiberManualRecord";
 
 const Carousel = () => {
   const classes = useStyles();
@@ -80,14 +77,15 @@ const Carousel = () => {
     <div className={classes.container}>
       <div className={`${classes.bgColor}`}>
         <Grid container className={classes.header}>
-          <Grid item xs={6} className={`${classes.headerItem}`}>
-            {/* <MovieFilterSharpIcon
-              className={`${classes.logo}`}
-              style={{ margin: "0px 1rem 0 4.5rem", color: "#FAFAFA" }}
-            />
-            <h1 className={`${classes.logo}`} style={{ fontWeight: "700" }}>
-              Có làm mới có ăn
-            </h1> */}
+          <Grid
+            item
+            xs={6}
+            className={`${classes.headerItem}`}
+            style={{ justifyContent: "flex-start" }}
+          >
+            <Box>
+              <Typography variant="h3">Trailer</Typography>
+            </Box>
           </Grid>
           <Grid item xs={6} className={classes.headerItem}>
             <div className={classes.search}>

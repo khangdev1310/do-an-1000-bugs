@@ -1,36 +1,30 @@
 import { makeStyles } from "@material-ui/core";
 import { fade } from "@material-ui/core/styles";
-import header from "../../assets/header.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
-  bgColor: {
-    backgroundImage: `linear-gradient(to left bottom, rgba(231,71,243, 0.6), rgba(9,1,65, 0.9))`,
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-  },
-
-  colorText: {
-    color: "#F692FE",
-    letterSpacing: "1px",
-    fontWeight: "400",
-    fontFamily: "Montserrat, sans-serif",
-  },
-
-  marginTextNavbar: {
-    margin: "0 2rem",
-  },
   grow: {
     flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  bgColor: {
+    backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 0.7), rgba(9,1,65, 0.3))`,
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    padding: "0.2rem 0",
+  },
   title: {
     display: "none",
     [theme.breakpoints.up("sm")]: {
       display: "block",
     },
-    fontWeight: "bold",
+  },
+  navContainer: {
+    alignItems: "center",
+    justifyContent: "space-around",
+    flexDirection: "row",
+    minWidth: "500px",
   },
   search: {
     position: "relative",
@@ -56,6 +50,18 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
   },
+  searchContainer: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "50px",
+    height: "50px",
+    borderRadius: "100%",
+    backgroundImage: `linear-gradient(to left bottom, rgba(231,71,243, 0.9), rgba(231,71,243, 0.9))`,
+    webkitBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+    mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+    boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+  },
   inputRoot: {
     color: "inherit",
   },
@@ -73,26 +79,12 @@ export const useStyles = makeStyles((theme) => ({
     display: "none",
     [theme.breakpoints.up("md")]: {
       display: "flex",
-      justifyContent: "flex-end",
     },
   },
   sectionMobile: {
     display: "flex",
     [theme.breakpoints.up("md")]: {
       display: "none",
-    },
-  },
-
-  btn: {
-    textDecoration: "none",
-    padding: "10px 15px",
-    color: "#FAFAFA",
-    margin: "0 0.2rem",
-    borderRadius: "10px",
-    fontFamily: "Montserrat, sans-serif",
-
-    "& icon": {
-      marginRight: "0.5rem",
     },
   },
 }));

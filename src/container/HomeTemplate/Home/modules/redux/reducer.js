@@ -15,6 +15,7 @@ const initialState = {
   theater: [],
   cumRap: [],
   maHeThongRap: "BHDStar",
+  isModal: false,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -48,6 +49,10 @@ export default (state = initialState, { type, payload }) => {
 
     case FETCH_THONG_TIN_LICH_CHIEU_SUCCESS:
       state.cumRap = payload;
+      return { ...state };
+
+    case "CHANGE_MODAL_OPEN":
+      state.isModal = !state.isModal;
       return { ...state };
 
     default:

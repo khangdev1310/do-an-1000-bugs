@@ -3,6 +3,7 @@ import BookingTicketBar from "../../../components/BookingTicketBar";
 import Carousel from "../../../components/Carousel";
 import Footer from "../../../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
+import TransitionsModal from "./../../../components/ModalSearchBar";
 import {
   FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
   FETCH_MOVIES_REQUESTS_SAGA,
@@ -22,8 +23,8 @@ const Home = () => {
 
   return (
     <div>
+      <TransitionsModal />
       <Carousel />
-      <BookingTicketBar />
     </div>
   );
 };

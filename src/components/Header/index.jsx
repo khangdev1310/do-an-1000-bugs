@@ -1,4 +1,5 @@
 import React from "react";
+import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
@@ -13,18 +14,24 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import MailIcon from "@material-ui/icons/Mail";
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import MoreIcon from "@material-ui/icons/MoreVert";
+import shout from "./../../assets/shout.svg";
+import Logo1 from "./../../assets/entertainment.png";
+import Logo2 from "./../../assets/cinema.png";
+import schedule from "./../../assets/schedule.svg";
+import multimedia from "./../../assets/multimedia.svg";
+import login from "./../../assets/login.svg";
+import loupe from "./../../assets/loupe.svg";
 import { useStyles } from "./style";
+import { Box } from "@material-ui/core";
+import { useDispatch } from "react-redux";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import logoCinema from "./../../assets/logoCinema.png";
-import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import PersonIcon from "@material-ui/icons/Person";
-// import { Button } from "bootstrap";
 
 export default function PrimarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+  const dispatch = useDispatch();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -44,6 +51,12 @@ export default function PrimarySearchAppBar() {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
+  };
+
+  const handleChangeModal = () => {
+    dispatch({
+      type: "CHANGE_MODAL_OPEN",
+    });
   };
 
   const menuId = "primary-search-account-menu";
@@ -104,74 +117,87 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <div
-      className={classes.grow}
-      style={{
-        position: "fixed",
-        top: "0",
-        width: "100%",
-        zIndex: 10,
-      }}
-    >
-      <AppBar position="fixed" className={classes.bgColor}>
+    <div className={classes.grow}>
+      <AppBar
+        position="fixed"
+        style={{ top: "auto", bottom: 0, zIndex: "9999" }}
+        className={classes.bgColor}
+      >
         <Toolbar style={{ width: "90%", margin: "0 auto" }}>
-          {/* <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
-              placeholder="Search…"
-              classes={{
-                root: classes.inputRoot,
-                input: classes.inputInput,
-              }}
-              inputProps={{ "aria-label": "search" }}
-            />
-          </div> */}
-          <div className={`col-2`}>
-            <Typography className={classes.title} variant="h5" noWrap>
-              <Link to="/" style={{ textDecoration: "none" }}>
-                {/* <img
-                  src={logoCinema}
-                  width="200px"
-                  style={{ transform: "rotate(-5deg)" }}
-                /> */}
-                <Typography
-                  variant="h4"
+          <Link to="/" style={{ textDecoration: "none", color: "#FAFAFA" }}>
+            <Typography className={classes.title} variant="h6" noWrap>
+              <img
+                src={Logo2}
+                width="115px"
+                style={{ position: "absolute", bottom: "10%" }}
+              />
+            </Typography>
+          </Link>
+          <div className={classes.grow} />
+          <Box display="flex" className={classes.navContainer}>
+            <Box>
+              <Link
+                to="/promotion"
+                style={{ textDecoration: "none", color: "#FAFAFA" }}
+              >
+                <Box display="flex" justifyContent="center">
+                  <img src={shout} width="30px" />
+                </Box>
+                <Typography>Khuyến mãi</Typography>
+              </Link>
+            </Box>
+            <Box>
+              <Link
+                to="/test"
+                style={{ textDecoration: "none", color: "#FAFAFA" }}
+              >
+                <Box display="flex" justifyContent="center">
+                  <img src={schedule} width="30px" style={{ color: "blue" }} />
+                </Box>
+                <Typography>Lịch chiếu</Typography>
+              </Link>
+            </Box>
+            <Box>
+              <Box className={classes.searchContainer}>
+                <button
+                  onClick={handleChangeModal}
                   style={{
-                    color: "white",
-                    fontFamily: "Lobster, cursive",
-                    letterSpacing: "3px",
+                    backgroundColor: "transparent",
+                    border: "none",
+                    color: "#FAFAFA",
                   }}
                 >
-                  Alita
-                </Typography>
+                  {" "}
+                  <SearchIcon style={{ fontSize: "1.5rem" }} />
+                </button>
+              </Box>
+            </Box>
+            <Box>
+              <Link
+                to="/movie"
+                style={{ textDecoration: "none", color: "#FAFAFA" }}
+              >
+                <Box display="flex" justifyContent="center">
+                  <img src={multimedia} width="30px" />
+                </Box>
+                <Typography>Phim</Typography>
               </Link>
-            </Typography>
-          </div>
-          <div className={`col-6`} style={{ display: "flex" }}>
-            <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              <Link to="/movie">Phim</Link>
-            </Typography>
-            <Typography
-              className={`${classes.colorText} ${classes.marginTextNavbar}`}
-              variant="h6"
-              noWrap
-            >
-              <Link to="/promotion">Promotion</Link>
-            </Typography>
-            <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              <Link to="/gioi-thieu">Giới thiệu</Link>
-            </Typography>
-            <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              <Link to="/test">Test Features</Link>
-            </Typography>
-            <Typography className={`${classes.colorText}`} variant="h6" noWrap>
-              <Link to="/admin/dashboard">ADMIN</Link>
-            </Typography>
-          </div>
-          <div className={`${classes.sectionDesktop} col-4 `}>
-            {/* <IconButton
+            </Box>
+            <Box>
+              <Link
+                to="/signin"
+                style={{ textDecoration: "none", color: "#FAFAFA" }}
+              >
+                <Box display="flex" justifyContent="center">
+                  <img src={login} width="30px" />
+                </Box>
+                <Typography>Đăng nhập</Typography>
+              </Link>
+            </Box>
+          </Box>
+          <div className={classes.grow} />
+          <div className={classes.sectionDesktop}>
+            <IconButton
               edge="end"
               aria-label="account of current user"
               aria-controls={menuId}
@@ -180,25 +206,7 @@ export default function PrimarySearchAppBar() {
               color="inherit"
             >
               <AccountCircle />
-            </IconButton> */}
-            <Link to="/signup" style={{ textDecoration: "none" }}>
-              <Button
-                color="inherit"
-                className={`${classes.btn} ${classes.btnFull}`}
-              >
-                <PersonIcon style={{ marginRight: "0.2rem" }} />
-                Đăng kí
-              </Button>
-            </Link>
-            <Link to="/signin" style={{ textDecoration: "none" }}>
-              <Button
-                color="inherit"
-                className={`${classes.btn} ${classes.btnGhost}`}
-              >
-                <ExitToAppIcon style={{ marginRight: "0.2rem" }} />
-                Đăng nhập
-              </Button>
-            </Link>
+            </IconButton>
           </div>
           <div className={classes.sectionMobile}>
             <IconButton

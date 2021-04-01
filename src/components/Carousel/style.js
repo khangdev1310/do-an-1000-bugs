@@ -9,7 +9,7 @@ export const useStyles = makeStyles((theme) => ({
   header: {
     maxWidth: "980px",
     margin: "0 auto",
-    paddingTop: "6%",
+    paddingTop: "2%",
     fontFamily: "Montserrat, sans-serif",
   },
 
