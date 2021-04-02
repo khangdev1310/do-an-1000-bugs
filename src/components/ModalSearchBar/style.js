@@ -1,16 +1,45 @@
 import { makeStyles } from "@material-ui/core";
 
 export const useStyle = makeStyles((theme) => ({
+  root: {
+    "& .MuiInputLabel-outlined": {
+      color: "violet",
+    },
+    "& .MuiFormControl-root": {
+      backgroundColor: "rgb(49,49,49)",
+      borderRadius: "50px",
+    },
+  },
+
+  inputRoot: {
+    color: "#FAFAFA",
+
+    "& .MuiOutlinedInput-notchedOutline": {
+      borderRadius: "50px",
+      border: "1px solid rgba(37,36,39,1)",
+    },
+    "&:hover .MuiOutlinedInput-notchedOutline": {
+      borderColor: "purple",
+    },
+    "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+      borderColor: "purple",
+    },
+  },
+
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     zIndex: "1",
   },
+
+  gridItems: {
+    marginBottom: "0.5rem",
+  },
   paper: {
     padding: theme.spacing(1),
     textAlign: "center",
-    backgroundColor: "rgba(255,255,255, 0.9)",
+    backgroundColor: "rgba(37,36,39,1)",
     color: "#FAFAFA",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
@@ -32,50 +61,20 @@ export const useStyle = makeStyles((theme) => ({
     mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
   },
+
   container: {
-    borderRadius: "10px",
-    padding: "1rem 1rem",
-    maxWidth: "1080px",
-    margin: "0 auto",
-    color: "#FAFAFA",
-
-    [theme.breakpoints.down("md")]: {
-      maxWidth: "80%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-
-    [theme.breakpoints.down("sm")]: {
-      maxWidth: "50%",
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    [theme.breakpoints.down("xs")]: {
-      display: "none",
-    },
+    marginTop: "-5rem",
+    maxWidth: "45%",
   },
-
-  inputField: {
-    width: "100%",
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
-      // alignItems: "center",
-      // justifyContent: "center",
-    },
-  },
-
-  btn: {
-    width: "100%",
-    backgroundColor: "rgba(156,72,211,0.8)",
-    transition: "all 0.2s",
+  buttonBuyTicket: {
+    marginTop: "1.5rem",
+    backgroundColor: "rgba(138,52,144, 1)",
+    padding: "5px 28px",
+    borderRadius: "100px",
+    border: "2.5px solid rgb(236,70,248)",
     "&:hover": {
-      backgroundColor: "rgba(156,72,211,1)",
-    },
-
-    [theme.breakpoints.down("md")]: {
-      width: "100%",
+      backgroundColor: "rgba(138,52,144, 0.7)",
+      border: "2.5px solid rgba(236,70,248, 0.7)",
     },
   },
 }));

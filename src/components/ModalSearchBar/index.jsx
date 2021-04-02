@@ -1,6 +1,5 @@
 import { useStyle } from "./style";
 import React, { useEffect } from "react";
-// import { makeStyles } from '@material-ui/core/styles';
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -9,6 +8,7 @@ import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
 import { Box, Button, Grid, Typography, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
+import cinemaIcon from "./../../assets/cinema.svg";
 
 const top100Films = [
   { title: "The Shawshank Redemption", year: 1994 },
@@ -30,22 +30,6 @@ const TransitionsModal = () => {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const CssTextField = withStyles({
-    root: {
-      "& label.Mui-focused": {
-        color: "#FFF",
-      },
-      "& .MuiOutlinedInput-root": {
-        // "& fieldset": {
-        //   borderColor: "#000",
-        // },
-        "&.Mui-focused fieldset": {
-          borderColor: "#000",
-        },
-      },
-    },
-  })(TextField);
 
   return (
     <div>
@@ -74,21 +58,27 @@ const TransitionsModal = () => {
                 <SearchIcon style={{ fontSize: "1.5rem" }} />
               </Box>
               <Typography
-                style={{ color: "violet", margin: "1rem 0" }}
+                style={{
+                  color: "violet",
+                  margin: "1rem 0",
+                  fontWeight: "bold",
+                }}
                 variant="h4"
               >
                 Tìm ngay phim bạn thích!
               </Typography>
               <div className={classes.root}>
                 <Grid container spacing={1}>
-                  <Grid container item md={12} sm={12} spacing={0}>
+                  <Grid item md={12} className={classes.gridItems}>
                     <Autocomplete
+                      classes={classes}
+                      size="small"
+                      fullWidth="true"
                       id="combo-box-demo"
                       options={top100Films}
                       getOptionLabel={(option) => option.title}
-                      className={classes.inputField}
                       renderInput={(params) => (
-                        <CssTextField
+                        <TextField
                           {...params}
                           label="Phim"
                           variant="outlined"
@@ -96,75 +86,80 @@ const TransitionsModal = () => {
                       )}
                     />
                   </Grid>
-                  <Grid container item md={12} sm={6} spacing={0}>
+                  <Grid item md={12} className={classes.gridItems}>
                     <Autocomplete
+                      classes={classes}
+                      size="small"
+                      fullWidth="true"
                       id="combo-box-demo"
                       options={top100Films}
                       getOptionLabel={(option) => option.title}
-                      className={classes.inputField}
                       renderInput={(params) => (
                         <TextField
                           {...params}
-                          label="Rạp"
+                          label="Cụm rạp"
                           variant="outlined"
-                          InputLabelProps={{
-                            style: { color: "pink" },
-                          }}
                         />
                       )}
                     />
                   </Grid>
-                  <Grid container item md={12} sm={6} spacing={0}>
+                  <Grid item md={12} className={classes.gridItems}>
                     <Autocomplete
+                      classes={classes}
+                      size="small"
+                      fullWidth="true"
                       id="combo-box-demo"
                       options={top100Films}
                       getOptionLabel={(option) => option.title}
-                      className={classes.inputField}
                       renderInput={(params) => (
                         <TextField {...params} label="Rạp" variant="outlined" />
                       )}
                     />
                   </Grid>
-                  <Grid container item md={8} sm={6} spacing={0}>
+                  <Grid item md={8} className={classes.gridItems}>
                     <Autocomplete
+                      classes={classes}
+                      size="small"
+                      fullWidth="true"
                       id="combo-box-demo"
                       options={top100Films}
                       getOptionLabel={(option) => option.title}
-                      className={classes.inputField}
                       renderInput={(params) => (
                         <TextField
                           {...params}
-                          label="Ngày xem"
+                          label="Ngày chiếu"
                           variant="outlined"
                         />
                       )}
                     />
                   </Grid>
-                  <Grid container item md={4} sm={6} spacing={0}>
+                  <Grid item md={4} className={classes.gridItems}>
                     <Autocomplete
+                      classes={classes}
+                      size="small"
+                      fullWidth="true"
                       id="combo-box-demo"
                       options={top100Films}
                       getOptionLabel={(option) => option.title}
-                      className={classes.inputField}
                       renderInput={(params) => (
                         <TextField
                           {...params}
-                          label="Xuất chiếu"
+                          label="Suất chiếu"
                           variant="outlined"
                         />
                       )}
                     />
-                  </Grid>
-                  <Grid container item md={12} sm={12} spacing={0}>
-                    <Button
-                      variant="contained"
-                      color="secondary"
-                      className={classes.btn}
-                    >
-                      Đặt vé
-                    </Button>
                   </Grid>
                 </Grid>
+                <Button variant="contained" className={classes.buttonBuyTicket}>
+                  <img src={cinemaIcon} width="30px" />
+                  <Typography
+                    variant="span"
+                    style={{ marginLeft: "5px", color: "#FAFAFA" }}
+                  >
+                    Mua vé
+                  </Typography>
+                </Button>
               </div>
             </Box>
           </div>
