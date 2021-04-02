@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-import BookingTicketBar from "../../../components/BookingTicketBar";
 import Carousel from "../../../components/Carousel";
-import Footer from "../../../components/Footer";
 import { useSelector, useDispatch } from "react-redux";
 import TransitionsModal from "./../../../components/ModalSearchBar";
 import {
