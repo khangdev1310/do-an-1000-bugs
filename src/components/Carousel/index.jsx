@@ -12,6 +12,7 @@ import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
+import podcast from "./../../assets/podcast.svg";
 
 const Carousel = () => {
   const classes = useStyles();
@@ -55,7 +56,7 @@ const Carousel = () => {
     dotsClass: `slick-dots ${classes.dots}`,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1025,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -79,16 +80,22 @@ const Carousel = () => {
         <Grid container className={classes.header}>
           <Grid
             item
-            xs={6}
+            md={6}
             className={`${classes.headerItem}`}
             style={{ justifyContent: "flex-start" }}
           >
-            <Box>
-              <Typography variant="h3">Trailer</Typography>
+            <Box display="flex">
+              <img src={podcast} width="30px" />
+              <Typography
+                variant="h4"
+                style={{ fontWeight: "500", marginLeft: "1rem" }}
+              >
+                Phim đang chiếu
+              </Typography>
             </Box>
           </Grid>
-          <Grid item xs={6} className={classes.headerItem}>
-            <div className={classes.search}>
+          <Grid item md={6} className={classes.headerItem}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -100,7 +107,7 @@ const Carousel = () => {
                 }}
                 inputProps={{ "aria-label": "search" }}
               />
-            </div>
+              </div> */}
           </Grid>
         </Grid>
         <Box className={classes.carousel}>

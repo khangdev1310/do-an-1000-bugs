@@ -33,7 +33,7 @@ export const useStyle = makeStyles((theme) => ({
   },
   container: {
     margin: "0 auto",
-    padding: "7rem 0 2rem 0",
+    padding: "2rem 0 2rem 0",
     maxWidth: "970px",
     minHeight: "100%",
   },

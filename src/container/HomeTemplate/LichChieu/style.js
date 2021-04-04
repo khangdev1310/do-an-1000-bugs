@@ -3,12 +3,18 @@ import { makeStyles } from "@material-ui/core/styles";
 export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: "transparent !important",
     display: "flex",
     height: "100%",
 
     "& .MuiTabs-indicator": {
-      backgroundColor: "#fff !important",
+      backgroundColor: "transparent !important",
+    },
+
+    "& .MuiBox-root": {
+      padding: "0rem",
+      maxHeight: "500px",
+      overflow: "scroll",
     },
   },
   tabs: {

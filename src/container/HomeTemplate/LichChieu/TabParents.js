@@ -79,10 +79,6 @@ export default function TabParents() {
     });
   };
 
-  const renderCumRaps = () => {
-    return;
-  };
-
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -99,27 +95,9 @@ export default function TabParents() {
       >
         {renderHeThongRaps()}
       </Tabs>
-      {/* <TabPanel value={value} index={0}>
-        Item One
-      </TabPanel> */}
       <TabPanel value={1} index={1}>
         <TabChild />
       </TabPanel>
-      {/* <TabPanel value={value} index={2}>
-        Item Three
-      </TabPanel>
-      <TabPanel value={value} index={3}>
-        Item Four
-      </TabPanel>
-      <TabPanel value={value} index={4}>
-        Item Five
-      </TabPanel>
-      <TabPanel value={value} index={5}>
-        Item Six
-      </TabPanel>
-      <TabPanel value={value} index={6}>
-        Item Seven
-      </TabPanel> */}
     </div>
   );
 }

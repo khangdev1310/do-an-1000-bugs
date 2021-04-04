@@ -7,6 +7,7 @@ import Promotion from "../container/HomeTemplate/Promotion";
 import { FlareSharp } from "@material-ui/icons";
 import About from "../container/HomeTemplate/About";
 import Dashboard from "../container/AdminTemplate/Dashboard/Dashboard";
+import LichChieu from "../container/LichChieu/LichChieuLayout";
 
 export const routesHome = [
   {
@@ -14,11 +15,15 @@ export const routesHome = [
     path: "/",
     component: Home,
   },
-
   {
     exact: false,
     path: "/movie",
     component: Movie,
+  },
+  {
+    exact: false,
+    path: "/lich-chieu",
+    component: LichChieu,
   },
   {
     exact: false,

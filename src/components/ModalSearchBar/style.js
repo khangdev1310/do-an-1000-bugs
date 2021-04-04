@@ -39,7 +39,7 @@ export const useStyle = makeStyles((theme) => ({
   paper: {
     padding: theme.spacing(1),
     textAlign: "center",
-    backgroundColor: "rgba(37,36,39,1)",
+    backgroundColor: "rgba(37,36,39,0.95)",
     color: "#FAFAFA",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),

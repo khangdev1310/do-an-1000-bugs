@@ -102,7 +102,7 @@ export const useStyles = makeStyles((theme) => ({
         height: "320px",
       },
 
-      ["@media (max-width:1024px)"]: {
+      ["@media (max-width:1025px)"]: {
         width: "295px",
         height: "395px",
       },

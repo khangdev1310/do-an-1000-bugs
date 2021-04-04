@@ -148,7 +148,7 @@ export default function PrimarySearchAppBar() {
             </Box>
             <Box>
               <Link
-                to="/test"
+                to="/lich-chieu"
                 style={{ textDecoration: "none", color: "#FAFAFA" }}
               >
                 <Box display="flex" justifyContent="center">
