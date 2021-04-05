@@ -1,11 +1,12 @@
 import {
   Box,
+  Button,
   CardActionArea,
   CardContent,
   CardMedia,
   Grid,
 } from "@material-ui/core";
-import React from "react";
+import React, { useRef } from "react";
 import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
@@ -18,6 +19,11 @@ import poster2 from "./../../../assets/the100.jpg";
 import poster3 from "./../../../assets/tenet.jpg";
 import poster4 from "./../../../assets/inception.jpg";
 import Slider from "react-slick";
+import { useSelector } from "react-redux";
+import "./style.css";
+import MovieItem from "../../../components/MovieItem";
+import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
+import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -54,18 +60,56 @@ function a11yProps(index) {
 
 const Movie = () => {
   const classes = useStyle();
+  const ref = useRef({});
   const [value, setValue] = React.useState(0);
+  const movieList = useSelector((state) => state.MovieReducer.movieList);
+
+  const next = () => {
+    ref.current.slickNext();
+  };
+
+  const previous = () => {
+    ref.current.slickPrev();
+  };
+
+  const ArrowLeft = (props) => (
+    <div className={`${classes.prevArrow}`} onClick={previous}>
+      <ArrowBackIosIcon
+        style={{ color: "#544874", transform: "scale(1.5)" }}
+        className={classes.hoverSVG}
+      />
+    </div>
+  );
+  const ArrowRight = (props) => (
+    <div className={`${classes.nextArrow}`} onClick={next}>
+      <ArrowForwardIosIcon
+        style={{ color: "#544874", transform: "scale(1.5)" }}
+        className={classes.hoverSVG}
+      />
+    </div>
+  );
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
+  const renderMovieList = () => {
+    return movieList.map((movie) => {
+      return <MovieItem movie={movie} />;
+    });
+  };
+
   const settings = {
-    dots: true,
+    className: "center",
+    // centerMode: true,
     infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 4,
     speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+    rows: 1,
+    slidesPerRow: 2,
+    prevArrow: <ArrowLeft />,
+    nextArrow: <ArrowRight />,
   };
 
   return (
@@ -84,224 +128,12 @@ const Movie = () => {
             </Tabs>
           </AppBar>
           <TabPanel value={value} index={0}>
-            <Slider {...settings}>
-              <Grid container>
-                <Grid container spacing={1}>
-                  <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster1}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster2}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster3}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster4}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={1} style={{ marginTop: "2rem" }}>
-                  <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster4}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster3}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster2}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster1}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid>
-                <Grid container spacing={1}>
-                  <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster1}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster2}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster3}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster4}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid container spacing={1} style={{ marginTop: "2rem" }}>
-                  <Grid container item xs={12} spacing={3}>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster4}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster3}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster2}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box>
-                        <CardMedia
-                          component="img"
-                          alt="Contemplative Reptile"
-                          height="318"
-                          width="100%"
-                          image={poster1}
-                          title="Contemplative Reptile"
-                        />
-                      </Box>
-                    </Grid>
-                  </Grid>
-                </Grid>
-              </Grid>
+            <Slider {...settings} ref={ref}>
+              {renderMovieList()}
             </Slider>
           </TabPanel>
-          <TabPanel value={value} index={1}>
+
+          {/* <TabPanel value={value} index={1}>
             <Grid container spacing={1}>
               <Grid container item xs={12} spacing={3}>
                 <Grid item xs={3} className={classes.wrapper}>
@@ -488,8 +320,8 @@ const Movie = () => {
               {/* <Grid container item xs={12} spacing={3}>
                 <FormRow />
               </Grid> */}
-            </Grid>
-          </TabPanel>
+          {/* </Grid>
+          </TabPanel> */}
         </Box>
       </Box>
     </div>

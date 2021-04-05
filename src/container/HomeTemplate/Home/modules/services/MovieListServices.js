@@ -4,7 +4,7 @@ import { MA_NHOM } from "./../../../../../SystemServices";
 
 export function fetchMovieApiAction() {
   return axios({
-    url: `${DOMAIN}/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`,
+    url: `${DOMAIN}/QuanLyPhim/LayDanhSachPhim?maNhom=${MA_NHOM}`,
     method: "GET",
   });
 }

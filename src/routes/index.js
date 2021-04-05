@@ -7,7 +7,7 @@ import Promotion from "../container/HomeTemplate/Promotion";
 import { FlareSharp } from "@material-ui/icons";
 import About from "../container/HomeTemplate/About";
 import Dashboard from "../container/AdminTemplate/Dashboard/Dashboard";
-import LichChieu from "../container/LichChieu/LichChieuLayout";
+import LichChieu from "../container/HomeTemplate/LichChieu/LichChieuLayout";
 
 export const routesHome = [
   {

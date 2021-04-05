@@ -24,16 +24,60 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   container: {
-    maxWidth: "980px",
-    paddingTop: "5rem",
+    maxWidth: "1080px",
+    paddingTop: "2rem",
     margin: "0 auto",
-  },
-
-  wrapper: {
-    width: "100%",
-  },
-
-  content: {
     color: "white",
+  },
+
+  prevArrow: {
+    fontSize: 0,
+    lineHeight: 0,
+    position: "absolute",
+    top: "50%",
+    display: "block",
+    width: "20px",
+    height: "20px",
+    padding: "0",
+    transform: "translate(-150%, -50%)",
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+    background: "transparent",
+    "&:before": {
+      fontFamily: "slick",
+      fontSize: "20px",
+      lineHeight: "1",
+      opacity: "0.75",
+    },
+  },
+
+  nextArrow: {
+    fontSize: 0,
+    lineHeight: 0,
+    position: "absolute",
+    top: "50%",
+    right: "0",
+    display: "block",
+    width: "20px",
+    height: "20px",
+    padding: "0",
+    transform: "translate(150%, -50%)",
+    cursor: "pointer",
+    border: "none",
+    outline: "none",
+    background: "transparent",
+    "&:before": {
+      fontFamily: "slick",
+      fontSize: "20px",
+      lineHeight: "1",
+      opacity: "0.75",
+    },
+  },
+
+  hoverSVG: {
+    "&:hover": {
+      color: "#CCB3DB !important",
+    },
   },
 }));

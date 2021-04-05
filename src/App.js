@@ -9,9 +9,7 @@ import store from "./redux/reducers/configStore";
 import Detail from "./container/HomeTemplate/Detail";
 import Dashboard from "./container/AdminTemplate/Dashboard/Dashboard";
 import SignInAdmin from "./container/AdminTemplate/Signin";
-import TabParents from "./container/LichChieu/TabParents";
 import PhongVe from "./container/HomeTemplate/PhongVe";
-import LichChieu from "./container/LichChieu/LichChieuLayout";
 
 function App() {
   const showLayoutHome = (routes) => {

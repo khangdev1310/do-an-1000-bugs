@@ -9,9 +9,8 @@ import { useStyles } from "./style";
 import { useSelector, useDispatch } from "react-redux";
 import {
   CHANGE_MA_HE_THONG,
-  FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
   FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
-} from "../HomeTemplate/Home/modules/redux/constants";
+} from "../../HomeTemplate/Home/modules/redux/constants";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
