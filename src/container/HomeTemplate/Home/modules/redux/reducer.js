@@ -57,9 +57,6 @@ export default (state = initialState, { type, payload }) => {
       state.isModal = !state.isModal;
       return { ...state };
 
-    case SEND_MOVIE_DETAIL:
-      state.movieDetail = payload;
-      return { ...state };
     default:
       return { ...state };
   }

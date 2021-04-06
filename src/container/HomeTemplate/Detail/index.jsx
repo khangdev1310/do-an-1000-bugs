@@ -21,6 +21,7 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import StarIcon from "@material-ui/icons/Star";
 import SubjectIcon from "@material-ui/icons/Subject";
 import { useSelector, useDispatch } from "react-redux";
+import { FETCH_THONG_TIN_PHIM_REQUESTS_SAGA } from "./modules/redux/constants";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,10 +58,10 @@ function a11yProps(index) {
 
 const Detail = (props) => {
   const classes = useStyle();
-  const movieDetail = useSelector((state) => state.MovieReducer.movieDetail);
-  const [state, setState] = useState({
-    id: null,
-  });
+  const movieDetail = useSelector(
+    (state) => state.MovieDetailReducer.movieDetail
+  );
+  const dispatch = useDispatch();
 
   const [value, setValue] = React.useState(0);
 
@@ -69,27 +70,19 @@ const Detail = (props) => {
   };
 
   useEffect(() => {
-    getParams();
-  }, []);
-
-  const getParams = () => {
-    console.log(props.match.params.id);
-    setState({
-      id: props.match.params.id,
+    dispatch({
+      type: FETCH_THONG_TIN_PHIM_REQUESTS_SAGA,
+      maPhim: props.match.params.id,
     });
-  };
-
-  //   maPhim(pin):1427
-  // biDanh(pin):"fantastic-four-4"
-  // trailer(pin):"https://www.youtube.com/embed/AAgnQdiZFsQ"
-  // hinhAnh(pin):"http://movie0706.cybersoft.edu.vn/hinhanh/fantastic-four-4_gp09.jpg"
-  // maNhom(pin):"GP09"
-  // ngayKhoiChieu(pin):"2019-07-29T00:00:00"
+  }, []);
 
   return (
     <div>
       <Box className={classes.bgColor}>
-        <div className="background background-filter">
+        <div
+          className="background background-filter"
+          style={{ backgroundImage: `url(${movieDetail?.hinhAnh})` }}
+        >
           <Box className="u-non-blurred">
             <Link to="/movie">
               <ArrowBackIosIcon className={classes.backIcon} />
@@ -101,7 +94,7 @@ const Detail = (props) => {
                     <Grid item xs={4}>
                       <Box>
                         <img
-                          src={movieDetail.hinhAnh}
+                          src={movieDetail?.hinhAnh}
                           width="90%"
                           style={{ borderRadius: "10px" }}
                         />
@@ -113,7 +106,7 @@ const Detail = (props) => {
                           <Grid item xs={9}>
                             <Box>
                               <Typography className={classes.mainTitle}>
-                                {movieDetail.tenPhim}
+                                {movieDetail?.tenPhim}
                               </Typography>
                               <Typography>Thời lượng: 113 phút</Typography>
                               <Box
@@ -152,12 +145,12 @@ const Detail = (props) => {
                             >
                               <div
                                 className={`c100 p${
-                                  movieDetail.danhGia.length > 0
-                                    ? movieDetail.danhGia
-                                    : movieDetail.danhGia + "0"
+                                  movieDetail?.danhGia.length > 0
+                                    ? movieDetail?.danhGia
+                                    : movieDetail?.danhGia + "0"
                                 }`}
                               >
-                                <span>{movieDetail.danhGia}</span>
+                                <span>{movieDetail?.danhGia}</span>
                                 <div className="slice">
                                   <div className="bar"></div>
                                   <div className="fill"></div>
@@ -175,7 +168,7 @@ const Detail = (props) => {
                               </div>
                               <div style={{ marginTop: "0.5rem" }}>
                                 <Typography>
-                                  {movieDetail.danhGia} người đánh giá
+                                  {movieDetail?.danhGia} người đánh giá
                                 </Typography>
                               </div>
                             </Box>
@@ -184,7 +177,7 @@ const Detail = (props) => {
                         <Box>
                           <Typography>&nbsp;</Typography>
                           <Typography>Nội dung</Typography>
-                          <Typography>{movieDetail.moTa}</Typography>
+                          <Typography>{movieDetail?.moTa}</Typography>
                         </Box>
                       </Box>
                     </Grid>

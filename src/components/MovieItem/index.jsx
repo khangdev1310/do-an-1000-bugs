@@ -2,27 +2,14 @@ import { Box, Button, Typography } from "@material-ui/core";
 import React, { useEffect } from "react";
 import { useStyles } from "./styles";
 import { useDispatch } from "react-redux";
-import { SEND_MOVIE_DETAIL } from "./modules/constants";
 import { Link } from "react-router-dom";
 
 const MovieItem = ({ movie }) => {
   const { hinhAnh, biDanh, tenPhim, maPhim } = movie;
-  const dispatch = useDispatch();
   const classes = useStyles();
 
-  const handleChooseMovie = () => {
-    dispatch({
-      type: SEND_MOVIE_DETAIL,
-      payload: movie,
-    });
-  };
   return (
-    <div
-      className={classes.item}
-      onClick={() => {
-        handleChooseMovie();
-      }}
-    >
+    <div className={classes.item}>
       <Box className={classes.poster}>
         <img
           src={hinhAnh}

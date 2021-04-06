@@ -50,7 +50,6 @@ function* fetchRapApiActionSaga() {
   });
   try {
     const { data, status } = yield call(fetchLayThongTinHeThongRapApiAction);
-    console.log(data);
     if (status === STATUS_CODE.SUCCESS) {
       yield put({
         type: FETCH_HE_THONG_RAP_SUCCESS,
@@ -110,3 +109,15 @@ export function* watchFetchLayThongTinLichChieuHeThongRapApiActionSaga() {
     fetchLayThongTinLichChieuHeThongRapApiActionSaga
   );
 }
+
+export const MovieBigSagas = [
+  takeLatest(FETCH_MOVIES_REQUESTS_SAGA, fetchMovieApiActionSaga),
+  takeLatest(
+    FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
+    fetchRapApiActionSaga
+  ),
+  takeLatest(
+    FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
+    fetchLayThongTinLichChieuHeThongRapApiActionSaga
+  ),
+];
