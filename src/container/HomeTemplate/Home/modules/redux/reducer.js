@@ -1,3 +1,4 @@
+import { SEND_MOVIE_DETAIL } from "../../../../../components/MovieItem/modules/constants";
 import {
   CHANGE_MA_HE_THONG,
   FETCH_HE_THONG_RAP_REQUESTS,
@@ -16,6 +17,7 @@ const initialState = {
   cumRap: [],
   maHeThongRap: "BHDStar",
   isModal: false,
+  movieDetail: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -55,6 +57,9 @@ export default (state = initialState, { type, payload }) => {
       state.isModal = !state.isModal;
       return { ...state };
 
+    case SEND_MOVIE_DETAIL:
+      state.movieDetail = payload;
+      return { ...state };
     default:
       return { ...state };
   }

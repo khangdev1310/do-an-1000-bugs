@@ -4,6 +4,7 @@ import React from "react";
 import logoFacebook from "./../../assets/logoFacebook.png";
 import logoZalo from "./../../assets/logoZalo.png";
 import bocongthuong from "./../../assets/bocongthuong.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const classes = useStyles();
@@ -15,7 +16,11 @@ const Footer = () => {
             <Typography className={classes.title}>Cinema Việt Nam</Typography>
             <Box className={classes.subTitle}>
               <Typography variant="subtitle1" component="p">
-                Giới thiệu
+                <Link to="/gioi-thieu">
+                  <Typography variant="subtitle1" component="p">
+                    Giới thiệu
+                  </Typography>
+                </Link>
               </Typography>
               <Typography variant="subtitle1" component="p">
                 Tuyển dụng

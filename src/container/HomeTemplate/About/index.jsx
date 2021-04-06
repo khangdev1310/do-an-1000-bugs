@@ -125,7 +125,81 @@ const About = () => {
             </Box>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            Liên hệ Alita
+            <Box className={classes.wrappedPanel}>
+              <Box>
+                <Typography
+                  variant="h5"
+                  align="center"
+                  style={{ fontWeight: "700", color: "red" }}
+                >
+                  CHÍNH SÁCH BẢO MẬT THÔNG TIN CÁ NHÂN KHÁCH HÀNG
+                </Typography>
+              </Box>
+              <Box style={{ marginTop: "2rem" }}>
+                <Typography style={{ fontWeight: "500" }}>
+                  1. Mục đích và phạm vi thu thập thông tin
+                </Typography>
+                <Typography>&nbsp;</Typography>
+                <Typography>
+                  1.1 Việc thu thập thông tin cá nhân được thực hiện trên cơ sở
+                  khách hàng tự khai báo để đăng ký thành viên CGV tại website
+                  www.cgv.vn, tùy từng thời điểm, thông tin thu thập sẽ bao gồm
+                  nhưng không giới hạn ở:
+                </Typography>
+                <Typography>
+                  - Thông tin cá nhân như: họ tên, giới tính, độ tuổi, số CMND.
+                </Typography>
+                <Typography>
+                  - Thông tin liên lạc như: địa chỉ, số điện thoại di động,
+                  email/fax.
+                </Typography>
+                <Typography>
+                  - Các thông tin khác phục vụ cho chương trình khách hàng thân
+                  thiết (nếu có).
+                </Typography>
+                <Typography>&nbsp;</Typography>
+
+                <Typography style={{ fontWeight: "500" }}>
+                  1.2 Mục đích thu thập thông tin khách hàng bao gồm:
+                </Typography>
+                <Typography>&nbsp;</Typography>
+
+                <Typography>
+                  (i) Cung cấp các dịch vụ, sản phẩm theo nhu cầu của khách
+                  hàng;
+                </Typography>
+                <Typography>
+                  (ii) Liên hệ xác nhận khi khách hàng đăng ký sử dụng dịch vụ,
+                  xác lập giao dịch trên website www.cgv.vn;
+                </Typography>
+                <Typography>
+                  (iii) Thực hiện việc quản lý website www.cgv.vn, gửi thông tin
+                  cập nhật về website, các chương trình khuyến mại, ưu đãi/tri
+                  ân tới khách hàng;
+                </Typography>
+                <Typography>
+                  (iv) Bảo đảm quyền lợi của khách hàng khi phát hiện các hành
+                  động giả mạo, phá hoại tài khoản, lừa đảo khách hàng;
+                </Typography>
+                <Typography>
+                  (v) Liên lạc, hỗ trợ, giải quyết với khách hàng trong các
+                  trường hợp đặc biệt.
+                </Typography>
+                <Typography>&nbsp;</Typography>
+                <Typography style={{ fontWeight: "500" }}>
+                  5. Cách thức chỉnh sửa dữ liệu cá nhân
+                </Typography>
+                <Typography>&nbsp;</Typography>
+
+                <Typography>
+                  Để chỉnh sửa dữ liệu cá nhân của mình trên hệ thống thương mại
+                  điện tử của CGV, khách hàng có thể tự đăng nhập và chỉnh sửa
+                  thông tin, dữ liệu cá nhân, ngoại trừ các thông tin về Họ tên,
+                  Giới tính, Ngày sinh và Chứng minh nhân dân.
+                </Typography>
+                <Typography>&nbsp;</Typography>
+              </Box>
+            </Box>
           </TabPanel>
           <TabPanel value={value} index={2}>
             Điều khoản chung

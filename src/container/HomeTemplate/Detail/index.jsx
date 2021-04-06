@@ -17,6 +17,10 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import "./../../../components/CirclePercents/css/circle.css";
 import GradeIcon from "@material-ui/icons/Grade";
+import VisibilityIcon from "@material-ui/icons/Visibility";
+import StarIcon from "@material-ui/icons/Star";
+import SubjectIcon from "@material-ui/icons/Subject";
+import { useSelector, useDispatch } from "react-redux";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,6 +57,7 @@ function a11yProps(index) {
 
 const Detail = (props) => {
   const classes = useStyle();
+  const movieDetail = useSelector((state) => state.MovieReducer.movieDetail);
   const [state, setState] = useState({
     id: null,
   });
@@ -74,6 +79,13 @@ const Detail = (props) => {
     });
   };
 
+  //   maPhim(pin):1427
+  // biDanh(pin):"fantastic-four-4"
+  // trailer(pin):"https://www.youtube.com/embed/AAgnQdiZFsQ"
+  // hinhAnh(pin):"http://movie0706.cybersoft.edu.vn/hinhanh/fantastic-four-4_gp09.jpg"
+  // maNhom(pin):"GP09"
+  // ngayKhoiChieu(pin):"2019-07-29T00:00:00"
+
   return (
     <div>
       <Box className={classes.bgColor}>
@@ -89,60 +101,91 @@ const Detail = (props) => {
                     <Grid item xs={4}>
                       <Box>
                         <img
-                          src={poster1}
-                          width="100%"
+                          src={movieDetail.hinhAnh}
+                          width="90%"
                           style={{ borderRadius: "10px" }}
                         />
                       </Box>
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={8}>
                       <Box display="flex" className={classes.describeTitle}>
+                        <Grid container spacing={1}>
+                          <Grid item xs={9}>
+                            <Box>
+                              <Typography className={classes.mainTitle}>
+                                {movieDetail.tenPhim}
+                              </Typography>
+                              <Typography>Thời lượng: 113 phút</Typography>
+                              <Box
+                                display="flex"
+                                alignItems="flex-start"
+                                justifyItems="flex-start"
+                                className={classes.reviewContainer}
+                              >
+                                <Box>
+                                  <VisibilityIcon />
+                                  <Typography>3325</Typography>
+                                </Box>
+                                <Box>
+                                  <StarIcon />
+                                  <Typography>325</Typography>
+                                </Box>
+                                <Box>
+                                  <SubjectIcon />
+                                  <Typography>325</Typography>
+                                </Box>
+                              </Box>
+                              <Typography>Nhà sản xuất: Gia An</Typography>
+                              <Typography>Quốc gia: Mỹ</Typography>
+                              <Typography>Thể loại</Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item xs={3}>
+                            <Box
+                              display="flex"
+                              style={{
+                                flexDirection: "column",
+                                justifyContent: "flex-start",
+                                // alignItems: "center",
+                                height: "100%",
+                              }}
+                            >
+                              <div
+                                className={`c100 p${
+                                  movieDetail.danhGia.length > 0
+                                    ? movieDetail.danhGia
+                                    : movieDetail.danhGia + "0"
+                                }`}
+                              >
+                                <span>{movieDetail.danhGia}</span>
+                                <div className="slice">
+                                  <div className="bar"></div>
+                                  <div className="fill"></div>
+                                </div>
+                              </div>
+                              <div
+                                style={{
+                                  display: "flex",
+                                  justifyContent: "center",
+                                }}
+                              >
+                                <GradeIcon />
+                                <GradeIcon />
+                                <GradeIcon />
+                              </div>
+                              <div style={{ marginTop: "0.5rem" }}>
+                                <Typography>
+                                  {movieDetail.danhGia} người đánh giá
+                                </Typography>
+                              </div>
+                            </Box>
+                          </Grid>
+                        </Grid>
                         <Box>
-                          <Typography>26.03.2021</Typography>
-                          <Typography className={classes.mainTitle}>
-                            The 100
-                          </Typography>
-                          <Typography>
-                            100 phút - 0 IMDb - 2D/Digital
-                          </Typography>
+                          <Typography>&nbsp;</Typography>
+                          <Typography>Nội dung</Typography>
+                          <Typography>{movieDetail.moTa}</Typography>
                         </Box>
-                        <Box>
-                          <Button
-                            variant="contained"
-                            className={classes.orderTicketBtn}
-                          >
-                            Mua vé
-                          </Button>
-                        </Box>
-                      </Box>
-                    </Grid>
-                    <Grid item xs={3}>
-                      <Box
-                        display="flex"
-                        style={{
-                          flexDirection: "column",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          height: "100%",
-                        }}
-                      >
-                        <div className="c100 p50">
-                          <span>5</span>
-                          <div className="slice">
-                            <div className="bar"></div>
-                            <div className="fill"></div>
-                          </div>
-                        </div>
-                        <div
-                          style={{ display: "flex", justifyContent: "center" }}
-                        >
-                          <GradeIcon />
-                          <GradeIcon />
-                          <GradeIcon />
-                        </div>
-                        <div style={{ marginTop: "0.5rem" }}>
-                          <Typography>10 người đánh giá</Typography>
-                        </div>
                       </Box>
                     </Grid>
                   </Grid>
@@ -158,8 +201,7 @@ const Detail = (props) => {
                   centered
                 >
                   <Tab label="Lịch chiếu" {...a11yProps(0)} />
-                  <Tab label="Thông tin" {...a11yProps(1)} />
-                  <Tab label="Đánh giá" {...a11yProps(2)} />
+                  <Tab label="Đánh giá" {...a11yProps(1)} />
                 </Tabs>
               </AppBar>
               <TabPanel value={value} index={0}>
@@ -168,53 +210,9 @@ const Detail = (props) => {
                 </Box>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <Grid container item xs={12} spacing={3}>
-                  <Grid item xs={6}>
-                    <Grid container item xs={12} spacing={3}>
-                      <Grid item xs={6}>
-                        <Box>
-                          <Typography>Ngày công chiếu</Typography>
-                          <Typography>Đạo diễn</Typography>
-                          <Typography>Diễn viên</Typography>
-                          <Typography>Thể Loại</Typography>
-                          <Typography>Định dạng</Typography>
-                          <Typography>Quốc Gia SX</Typography>
-                        </Box>
-                      </Grid>
-                      <Grid item xs={6}>
-                        <Box>
-                          <Typography>26.03.2021</Typography>
-                          <Typography>&nbsp;</Typography>
-                          <Typography>&nbsp;</Typography>
-                          <Typography>Hoạt hình</Typography>
-                          <Typography>2D/Digital</Typography>
-                          <Typography>&nbsp;</Typography>
-                        </Box>
-                      </Grid>
-                    </Grid>
-                  </Grid>
-                  <Grid item xs={6}>
-                    <Box>
-                      <Typography>Nội dung</Typography>
-                      <Typography>
-                        Bộ phim hoạt hình siêu thú vị về cuộc phiêu lưu của các
-                        bạn trẻ: Noah, Finny, Leah và đồng bọn. Chuyến tàu của
-                        Noah, cùng hai người bạn thân là Finny và Leah bị trôi
-                        dạt trên biển khơi. Sau nhiều tuần trôi qua, lượng thức
-                        ăn dần cạn kiệt. Hoà bình giữa động vật ăn cỏ và động
-                        vật ăn thịt trở nên mong manh và có thể tan vỡ bất cứ
-                        lúc nào. Sau hàng loạt những sự kiện không may xảy ra,
-                        Leah cùng đồng bọn, và cả người bạn mới của mình là
-                        Jelly vô tình bị cuốn đến một hòn đảo xa xôi. Trong khi
-                        đó, Finny tỉnh dậy và thấy mình bị lạc trong một thuộc
-                        địa kì lạ. Trong cuộc đua chạy trốn với thời gian, thuỷ
-                        triều, núi lửa và những chấn động kinh hoàng, Finny phải
-                        cứu bạn của mình, trở về đoạn tụ với gia đình, và cứu cả
-                        một thuộc địa khỏi sự huỷ diệt hoàn toàn.
-                      </Typography>
-                    </Box>
-                  </Grid>
-                </Grid>
+                <Box className={classes.container}>
+                  <Grid container spacing={1}></Grid>
+                </Box>
               </TabPanel>
             </Box>
           </Box>

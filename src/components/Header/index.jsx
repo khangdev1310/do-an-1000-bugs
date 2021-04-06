@@ -120,7 +120,7 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar
         position="fixed"
-        style={{ top: "auto", bottom: 0, zIndex: "9999" }}
+        style={{ top: "auto", bottom: 0, zIndex: "9000" }}
         className={classes.bgColor}
       >
         <Toolbar style={{ width: "90%", margin: "0 auto" }}>

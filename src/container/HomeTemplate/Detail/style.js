@@ -33,7 +33,7 @@ export const useStyle = makeStyles((theme) => ({
 
   describeTitle: {
     flexDirection: "column",
-    justifyContent: "center",
+    // justifyContent: "center",
     height: "100%",
   },
 
@@ -53,16 +53,23 @@ export const useStyle = makeStyles((theme) => ({
     fontSize: "24px",
   },
 
-  orderTicketBtn: {
-    backgroundColor: "rgba(236,70,248,0.8)",
-    marginTop: "2rem",
-    color: "#FAFAFA",
-    padding: "7px 25px",
-    borderRadius: "4px",
-    transition: "all 0.2s",
-    "&:hover": {
-      backgroundColor: "rgba(165, 47, 173)",
-      transform: "scale(0.97)",
+  // orderTicketBtn: {
+  //   backgroundColor: "rgba(236,70,248,0.8)",
+  //   marginTop: "2rem",
+  //   color: "#FAFAFA",
+  //   padding: "7px 25px",
+  //   borderRadius: "4px",
+  //   transition: "all 0.2s",
+  //   "&:hover": {
+  //     backgroundColor: "rgba(165, 47, 173)",
+  //     transform: "scale(0.97)",
+  //   },
+  // },
+  reviewContainer: {
+    backgroundColor: "rgba(256,256,256, 0.35)",
+    borderRadius: "10px",
+    "& *": {
+      margin: "0 0.8rem",
     },
   },
 }));

@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme) => ({
   item: {
     transform: "scaleX(0.90)",
     cursor: "pointer",
-    margin: "2rem 0",
+    margin: "1rem 0 4rem 0",
 
     "&:hover $overlay": {
       display: "block",
@@ -32,6 +32,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "100%",
     height: "100%",
     background: "linear-gradient(to top,#000,transparent 100%)",
+    borderRadius: "4px",
   },
 
   titleContainer: {},

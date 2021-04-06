@@ -13,6 +13,7 @@ import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import podcast from "./../../assets/podcast.svg";
+import ModalTrailer from "./ModalTrailer";
 
 const Carousel = () => {
   const classes = useStyles();
@@ -76,6 +77,7 @@ const Carousel = () => {
 
   return (
     <div className={classes.container}>
+      <ModalTrailer />
       <div className={`${classes.bgColor}`}>
         <Grid container className={classes.header}>
           <Grid
