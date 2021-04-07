@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useStyles } from "./style";
 import Slider from "react-slick";
 import poster1 from "./../../assets/money-heist.jpg";
@@ -14,10 +14,21 @@ import SearchIcon from "@material-ui/icons/Search";
 import InputBase from "@material-ui/core/InputBase";
 import podcast from "./../../assets/podcast.svg";
 import ModalTrailer from "./ModalTrailer";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Carousel = () => {
+const Carousel = ({ movieList }) => {
   const classes = useStyles();
   const ref = useRef({});
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
 
   const next = () => {
     ref.current.slickNext();
@@ -50,7 +61,7 @@ const Carousel = () => {
     speed: 300,
     autoplay: true,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
     dots: false,
@@ -75,9 +86,53 @@ const Carousel = () => {
     ],
   };
 
+  const renderMovieList = () => {
+    return movieList.map((movie) => {
+      return (
+        <div>
+          <div className={classes.containerAll}>
+            <div className={classes.containerImage}>
+              <img src={movie?.hinhAnh} />
+              <Grid container spacing={3} className={classes.stackContainer}>
+                <Grid item xs={6} className={classes.stackItem}>
+                  <ModalTrailer trailer={movie?.trailer} />
+                </Grid>
+
+                <Grid item xs={6} className={classes.stackItem}>
+                  <Link
+                    to={`/movie/${movie?.biDanh}-${movie?.maPhim}`}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <Box
+                      display="flex"
+                      alignItems="center"
+                      flexDirection="column"
+                    >
+                      <ErrorOutlineIcon style={{ color: "#FAFAFA" }} />
+                      <Typography
+                        component="p"
+                        style={{
+                          fontWeight: "300",
+                          fontSize: "14px",
+                          marginTop: "5px",
+                          color: "#FAFAFA",
+                        }}
+                      >
+                        Chi tiết
+                      </Typography>
+                    </Box>
+                  </Link>
+                </Grid>
+              </Grid>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  };
+
   return (
     <div className={classes.container}>
-      <ModalTrailer />
       <div className={`${classes.bgColor}`}>
         <Grid container className={classes.header}>
           <Grid
@@ -96,183 +151,11 @@ const Carousel = () => {
               </Typography>
             </Box>
           </Grid>
-          <Grid item md={6} className={classes.headerItem}>
-            {/* <div className={classes.search}>
-              <div className={classes.searchIcon}>
-                <SearchIcon />
-              </div>
-              <InputBase
-                placeholder="Tìm kiếm phim…"
-                classes={{
-                  root: classes.inputRoot,
-                  input: classes.inputInput,
-                }}
-                inputProps={{ "aria-label": "search" }}
-              />
-              </div> */}
-          </Grid>
+          <Grid item md={6} className={classes.headerItem}></Grid>
         </Grid>
         <Box className={classes.carousel}>
           <Slider ref={ref} {...settings}>
-            <div>
-              <div className={classes.containerAll}>
-                <div className={classes.containerImage}>
-                  <img src={poster1} />
-                  <Grid
-                    container
-                    spacing={3}
-                    className={classes.stackContainer}
-                  >
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <PlayCircleFilledIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Trailer
-                      </Typography>
-                    </Grid>
-
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <ErrorOutlineIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Chi tiết
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className={classes.containerAll}>
-                <div className={classes.containerImage}>
-                  <img src={poster2} />
-                  <Grid
-                    container
-                    spacing={3}
-                    className={classes.stackContainer}
-                  >
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <PlayCircleFilledIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Trailer
-                      </Typography>
-                    </Grid>
-
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <ErrorOutlineIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Chi tiết
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className={classes.containerAll}>
-                <div className={classes.containerImage}>
-                  <img src={poster3} />
-                  <Grid
-                    container
-                    spacing={3}
-                    className={classes.stackContainer}
-                  >
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <PlayCircleFilledIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Trailer
-                      </Typography>
-                    </Grid>
-
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <ErrorOutlineIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Chi tiết
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className={classes.containerAll}>
-                <div className={classes.containerImage}>
-                  <img src={poster4} />
-                  <Grid
-                    container
-                    spacing={3}
-                    className={classes.stackContainer}
-                  >
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <PlayCircleFilledIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Trailer
-                      </Typography>
-                    </Grid>
-                    <Grid item xs={6} className={classes.stackItem}>
-                      <ErrorOutlineIcon />
-                      <Typography
-                        component="p"
-                        style={{
-                          fontWeight: "300",
-                          fontSize: "14px",
-                          marginTop: "5px",
-                        }}
-                      >
-                        Chi tiết
-                      </Typography>
-                    </Grid>
-                  </Grid>
-                </div>
-              </div>
-            </div>
+            {renderMovieList()}
           </Slider>
         </Box>
       </div>

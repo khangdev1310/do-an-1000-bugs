@@ -1,12 +1,19 @@
 import React, { useEffect } from "react";
 import Carousel from "../../../components/Carousel";
+import { useDispatch, useSelector } from "react-redux";
 
 const Home = () => {
+  const movieList = useSelector((state) => state.MovieReducer.movieList);
+  let arrRandom = [];
+  for (let i = 0; i < 6; i++) {
+    arrRandom.push(movieList[i]);
+  }
+
   return (
     <div>
-      <Carousel />
+      <Carousel movieList={arrRandom} />
     </div>
   );
 };
 
-export default Home;
+export default React.memo(Home);

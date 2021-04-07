@@ -1,5 +1,5 @@
 import { useStyle } from "./style";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
@@ -21,6 +21,11 @@ const top100Films = [
 const TransitionsModal = () => {
   const classes = useStyle();
   const dispatch = useDispatch();
+  const [infoSearch, setInfoSearch] = useState({
+    phim: "",
+    cumRap: "",
+    rap: "",
+  });
   const isModal = useSelector((state) => state.MovieReducer.isModal);
   const [open, setOpen] = React.useState(false);
   useEffect(() => {

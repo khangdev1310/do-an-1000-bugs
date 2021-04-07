@@ -22,12 +22,14 @@ const MovieItem = ({ movie }) => {
       </Box>
       <Box>
         <Box className={classes.titleContainer}>
-          <Typography className={classes.title}>{tenPhim}</Typography>
+          <Typography className={classes.title}>
+            {tenPhim.length > 26 ? tenPhim.substring(0, 26) + "..." : tenPhim}
+          </Typography>
           {/* <Typography>100 phút</Typography> */}
         </Box>
       </Box>
       <Box className={classes.buyTicketButton}>
-        <Link to={`/movie/${maPhim}`}>
+        <Link to={`/movie/${movie?.biDanh}-${movie?.maPhim}`}>
           <Button
             variant="contained"
             color="secondary"

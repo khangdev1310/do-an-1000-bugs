@@ -3,9 +3,11 @@ import React from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
-import { withStyles } from "@material-ui/core";
+import { Typography, withStyles } from "@material-ui/core";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 
-const ModalTrailer = () => {
+const ModalTrailer = ({ trailer }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -19,8 +21,26 @@ const ModalTrailer = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleOpen}>
-        react-transition-group
+      <button
+        type="button"
+        onClick={handleOpen}
+        style={{
+          color: "white",
+          backgroundColor: "transparent",
+          border: "none",
+        }}
+      >
+        <PlayCircleFilledIcon />
+        <Typography
+          component="p"
+          style={{
+            fontWeight: "300",
+            fontSize: "14px",
+            marginTop: "5px",
+          }}
+        >
+          Trailer
+        </Typography>
       </button>
       <Modal
         aria-labelledby="transition-modal-title"
@@ -36,10 +56,18 @@ const ModalTrailer = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <div className={classes.exitIcon} onClick={handleClose}>
+              <HighlightOffIcon
+                style={{
+                  color: "#FAFAFA",
+                  fontSize: "3rem",
+                }}
+              />
+            </div>
             <iframe
               width="100%"
               height="100%"
-              src="https://www.youtube.com/embed/w0clxgzU370"
+              src={trailer}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

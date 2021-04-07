@@ -72,7 +72,10 @@ const Detail = (props) => {
   useEffect(() => {
     dispatch({
       type: FETCH_THONG_TIN_PHIM_REQUESTS_SAGA,
-      maPhim: props.match.params.id,
+      maPhim: props.match.params.id.substring(
+        props.match.params.id.length - 4,
+        props.match.params.id.length
+      ),
     });
   }, []);
 
