@@ -21,7 +21,10 @@ import VisibilityIcon from "@material-ui/icons/Visibility";
 import StarIcon from "@material-ui/icons/Star";
 import SubjectIcon from "@material-ui/icons/Subject";
 import { useSelector, useDispatch } from "react-redux";
-import { FETCH_THONG_TIN_PHIM_REQUESTS_SAGA } from "./modules/redux/constants";
+import {
+  FETCH_THONG_TIN_PHIM_CLEAN_UP,
+  FETCH_THONG_TIN_PHIM_REQUESTS_SAGA,
+} from "./modules/redux/constants";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -77,6 +80,11 @@ const Detail = (props) => {
         props.match.params.id.length
       ),
     });
+    return () => {
+      dispatch({
+        type: FETCH_THONG_TIN_PHIM_CLEAN_UP,
+      });
+    };
   }, []);
 
   return (

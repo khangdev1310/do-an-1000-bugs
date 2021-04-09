@@ -2,6 +2,7 @@ import {
   FETCH_THONG_TIN_PHIM_FAILED,
   FETCH_THONG_TIN_PHIM_REQUESTS,
   FETCH_THONG_TIN_PHIM_SUCCESS,
+  FETCH_THONG_TIN_PHIM_CLEAN_UP,
 } from "./constants";
 
 const initialState = {
@@ -26,6 +27,9 @@ export default (state = initialState, { type, payload }) => {
       state.err = payload;
       return { ...state };
 
+    case FETCH_THONG_TIN_PHIM_CLEAN_UP:
+      state.movieDetail = null;
+      return { ...state };
     default:
       return { ...state };
   }

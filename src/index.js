@@ -10,12 +10,16 @@ import "popper.js/dist/umd/popper.min.js";
 import "bootstrap/dist/js/bootstrap.min.js";
 import { Provider } from "react-redux";
 import store from "./redux/reducers/configStore";
+import { ThemeProvider } from "@material-ui/core/styles";
+import { theme } from "./utils/theme";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ThemeProvider theme={theme}>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

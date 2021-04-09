@@ -18,7 +18,6 @@ const Gio = ({ gios }) => {
             console.log(gio.maLichChieu);
           }}
         >
-          {gio.ngayChieuGioChieu.slice(5, 10)}~
           {gio.ngayChieuGioChieu.slice(-8, -3)}
         </Box>
       );

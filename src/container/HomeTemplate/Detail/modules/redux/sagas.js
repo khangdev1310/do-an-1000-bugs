@@ -14,7 +14,6 @@ function* fetchDetailMovieApiActionSaga({ maPhim }) {
   });
   try {
     const test = yield call(fetchMovieDetailApiAction, maPhim);
-    console.log(test.response);
     const { data, status } = yield call(fetchMovieDetailApiAction, maPhim);
     if (status === STATUS_CODE.SUCCESS) {
       yield put({

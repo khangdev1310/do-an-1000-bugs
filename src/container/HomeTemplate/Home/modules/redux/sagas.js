@@ -12,11 +12,15 @@ import {
   FETCH_THONG_TIN_LICH_CHIEU_REQUESTS,
   FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_FAILED,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_FAILED,
 } from "./constants";
 import { STATUS_CODE } from "./../../../../../utils/common/constants";
 import {
   fetchLayThongTinHeThongRapApiAction,
   fetchLayThongTinLichChieuHeThongRapApiAction,
+  fetchLayThongTinLichChieuPhimApiAction,
   fetchMovieApiAction,
 } from "../services/MovieListServices";
 
@@ -40,10 +44,6 @@ function* fetchMovieApiActionSaga() {
   }
 }
 
-export function* watchFetchMovieApiActionSaga() {
-  yield takeLatest(FETCH_MOVIES_REQUESTS_SAGA, fetchMovieApiActionSaga);
-}
-
 function* fetchRapApiActionSaga() {
   yield put({
     type: FETCH_MOVIES_REQUESTS,
@@ -62,24 +62,6 @@ function* fetchRapApiActionSaga() {
     });
   }
 }
-
-export function* watchFetchRapApiActionSaga() {
-  yield takeLatest(
-    FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
-    fetchRapApiActionSaga
-  );
-}
-
-// function* fetchCumRapApiActionSaga() {
-//   console.log(1);
-// }
-
-// export function* watchFetchCumRapApiActionSaga() {
-//   yield takeLatest(
-//     FETCH_LAY_THONG_TIN_CUM_THONG_RAP_REQUESTS_SAGA,
-//     fetchCumRapApiActionSaga
-//   );
-// }
 
 function* fetchLayThongTinLichChieuHeThongRapApiActionSaga({ payload }) {
   yield put({
@@ -103,11 +85,23 @@ function* fetchLayThongTinLichChieuHeThongRapApiActionSaga({ payload }) {
   }
 }
 
-export function* watchFetchLayThongTinLichChieuHeThongRapApiActionSaga() {
-  yield takeLatest(
-    FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
-    fetchLayThongTinLichChieuHeThongRapApiActionSaga
-  );
+function* fetchLayThongTinLichChieuPhimApiActionSaga({ payload }) {
+  try {
+    const { data, status } = yield call(
+      fetchLayThongTinLichChieuPhimApiAction,
+      payload
+    );
+    if (status === STATUS_CODE.SUCCESS) {
+      yield put({
+        type: FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS,
+        payload: data,
+      });
+    }
+  } catch (err) {
+    yield put({
+      type: FETCH_THONG_TIN_LICH_CHIEU_PHIM_FAILED,
+    });
+  }
 }
 
 export const MovieBigSagas = [
@@ -119,5 +113,9 @@ export const MovieBigSagas = [
   takeLatest(
     FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
     fetchLayThongTinLichChieuHeThongRapApiActionSaga
+  ),
+  takeLatest(
+    FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA,
+    fetchLayThongTinLichChieuPhimApiActionSaga
   ),
 ];

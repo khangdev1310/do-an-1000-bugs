@@ -14,3 +14,7 @@ export const FETCH_THONG_TIN_PHIM_SUCCESS =
   "fetch_thong_tin/FETCH_THONG_TIN_PHIM_SUCCESS";
 export const FETCH_THONG_TIN_PHIM_FAILED =
   "fetch_thong_tin/FETCH_THONG_TIN_PHIM_FAILED";
+
+/*Action từ component thẳng lên reducer */
+export const FETCH_THONG_TIN_PHIM_CLEAN_UP =
+  "fetch_thong_tin/THONG_TIN_PHIM_CLEAN_UP";

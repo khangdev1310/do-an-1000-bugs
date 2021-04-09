@@ -21,3 +21,9 @@ export function fetchLayThongTinLichChieuHeThongRapApiAction(maHeThongRap) {
     url: `${DOMAIN}/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${MA_NHOM}`,
   });
 }
+
+export function fetchLayThongTinLichChieuPhimApiAction(maPhim) {
+  return axios({
+    url: `${DOMAIN}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+  });
+}
