@@ -3,7 +3,9 @@ import {
   Box,
   Button,
   Grid,
+  InputLabel,
   Paper,
+  TextField,
   Typography,
 } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
@@ -17,9 +19,11 @@ import { Link } from "react-router-dom";
 import "./style.css";
 import "./../../../components/CirclePercents/css/circle.css";
 import GradeIcon from "@material-ui/icons/Grade";
+import SendIcon from "@material-ui/icons/Send";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import StarIcon from "@material-ui/icons/Star";
 import SubjectIcon from "@material-ui/icons/Subject";
+import FavoriteBorderIcon from "@material-ui/icons/FavoriteBorder";
 import { useSelector, useDispatch } from "react-redux";
 import {
   FETCH_THONG_TIN_PHIM_CLEAN_UP,
@@ -214,8 +218,381 @@ const Detail = (props) => {
                 </Box>
               </TabPanel>
               <TabPanel value={value} index={1}>
-                <Box className={classes.container}>
-                  <Grid container spacing={1}></Grid>
+                <Box className={classes.containerForComment}>
+                  <Grid container spacing={1}>
+                    <Grid item xs={12}>
+                      <Box className={classes.userComment}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={2}>
+                            <img
+                              src={poster1}
+                              width="60px"
+                              height="60px"
+                              style={{
+                                borderRadius: "50%",
+                                margin: "1rem 0rem 0rem 0.5rem",
+                              }}
+                            />
+                          </Grid>
+                          <Grid item xs={10}>
+                            <Box style={{ marginBottom: "0.7rem" }}>
+                              <GradeIcon />
+                              <GradeIcon />
+                              <GradeIcon />
+                              <GradeIcon />
+                              <GradeIcon />
+                            </Box>
+                            <div className={classes.root}>
+                              <TextField
+                                className={classes}
+                                id="outlined-basic"
+                                label="Outlined"
+                                variant="outlined"
+                                label="Cho người khác biết đánh giá của bạn về phim"
+                                InputProps={{
+                                  className: classes.inputRoot,
+                                }}
+                                fullWidth
+                                multiline
+                                rows={4}
+                              />
+                            </div>
+                            <Box
+                              display="grid"
+                              style={{ justifyContent: "flex-end" }}
+                            >
+                              <Button
+                                variant="contained"
+                                className={classes.buttonBuyTicket}
+                              >
+                                <SendIcon style={{ color: "#FAFAFA" }} />
+                                <Typography
+                                  variant="span"
+                                  style={{
+                                    color: "#FAFAFA",
+                                  }}
+                                >
+                                  Đăng
+                                </Typography>
+                              </Button>
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box className={classes.otherUsersComment}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={2} style={{ color: "#5A5A5A" }}>
+                            <Box>
+                              <img
+                                src={poster1}
+                                width="60px"
+                                height="60px"
+                                style={{
+                                  borderRadius: "50%",
+                                  margin: "0rem 0rem 0rem 0.5rem",
+                                }}
+                              />
+                            </Box>
+                            <Box
+                              style={{
+                                marginTop: "0.5rem",
+                                color: "rgb(236,70,248)",
+                              }}
+                            >
+                              <Typography
+                                variant="h5"
+                                align="center"
+                                style={{ fontWeight: "bold" }}
+                              >
+                                9.0
+                              </Typography>
+                              <Box
+                                style={{
+                                  marginBottom: "0.7rem",
+                                }}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                              </Box>
+                            </Box>
+                          </Grid>
+                          <Grid item xs={10} style={{ color: "#5A5A5A" }}>
+                            <Box style={{ marginBottom: "0.7rem" }}>
+                              <Typography
+                                style={{ fontSize: "1.15rem", color: "#000" }}
+                              >
+                                Hong Yi Xu
+                              </Typography>
+                              <Typography style={{ fontSize: "0.8rem" }}>
+                                2 ngày trước
+                              </Typography>
+                            </Box>
+                            <div style={{ marginTop: "1.4rem" }}>
+                              <Typography style={{ fontSize: "0.9rem" }}>
+                                Tưởng không hay ai dè hay không tưởng nhen các
+                                bạn. Tưởng không hay ai dè hay không tưởng nhen
+                                các bạn.
+                              </Typography>
+                            </div>
+                          </Grid>
+                          <Grid
+                            item
+                            xs={12}
+                            style={{ color: "#5A5A5A", margin: "0 0.4rem" }}
+                          >
+                            <hr
+                              style={{
+                                width: "100%",
+                                marginBottom: ".5rem",
+                                marginTop: "0rem",
+                              }}
+                            />
+                            <Box display="flex">
+                              <FavoriteBorderIcon
+                                style={{ color: "#5A5A5A" }}
+                              />
+                              <Box
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <Typography
+                                  style={{
+                                    marginLeft: "0.3rem",
+                                    fontSize: "0.9rem",
+                                  }}
+                                >
+                                  <Typography
+                                    variant="span"
+                                    style={{ fontWeight: "bold" }}
+                                  >
+                                    2
+                                  </Typography>{" "}
+                                  Thích
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box className={classes.otherUsersComment}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={2} style={{ color: "#5A5A5A" }}>
+                            <Box>
+                              <img
+                                src={poster1}
+                                width="60px"
+                                height="60px"
+                                style={{
+                                  borderRadius: "50%",
+                                  margin: "0rem 0rem 0rem 0.5rem",
+                                }}
+                              />
+                            </Box>
+                            <Box
+                              style={{
+                                marginTop: "0.5rem",
+                                color: "rgb(236,70,248)",
+                              }}
+                            >
+                              <Typography
+                                variant="h5"
+                                align="center"
+                                style={{ fontWeight: "bold" }}
+                              >
+                                9.0
+                              </Typography>
+                              <Box
+                                style={{
+                                  marginBottom: "0.7rem",
+                                }}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                              </Box>
+                            </Box>
+                          </Grid>
+                          <Grid item xs={10} style={{ color: "#5A5A5A" }}>
+                            <Box style={{ marginBottom: "0.7rem" }}>
+                              <Typography
+                                style={{ fontSize: "1.15rem", color: "#000" }}
+                              >
+                                Hong Yi Xu
+                              </Typography>
+                              <Typography style={{ fontSize: "0.8rem" }}>
+                                2 ngày trước
+                              </Typography>
+                            </Box>
+                            <div style={{ marginTop: "1.4rem" }}>
+                              <Typography style={{ fontSize: "0.9rem" }}>
+                                Tưởng không hay ai dè hay không tưởng nhen các
+                                bạn. Tưởng không hay ai dè hay không tưởng nhen
+                                các bạn.Tưởng không hay ai dè hay không tưởng
+                                nhen các bạn. Tưởng không hay ai dè hay không
+                                tưởng nhen các bạn.
+                              </Typography>
+                            </div>
+                          </Grid>
+                          <Grid
+                            item
+                            xs={12}
+                            style={{ color: "#5A5A5A", margin: "0 0.4rem" }}
+                          >
+                            <hr
+                              style={{
+                                width: "100%",
+                                marginBottom: ".5rem",
+                                marginTop: "0rem",
+                              }}
+                            />
+                            <Box display="flex">
+                              <FavoriteBorderIcon
+                                style={{ color: "#5A5A5A" }}
+                              />
+                              <Box
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <Typography
+                                  style={{
+                                    marginLeft: "0.3rem",
+                                    fontSize: "0.9rem",
+                                  }}
+                                >
+                                  <Typography
+                                    variant="span"
+                                    style={{ fontWeight: "bold" }}
+                                  >
+                                    2
+                                  </Typography>{" "}
+                                  Thích
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <Box className={classes.otherUsersComment}>
+                        <Grid container spacing={2}>
+                          <Grid item xs={2} style={{ color: "#5A5A5A" }}>
+                            <Box>
+                              <img
+                                src={poster1}
+                                width="60px"
+                                height="60px"
+                                style={{
+                                  borderRadius: "50%",
+                                  margin: "0rem 0rem 0rem 0.5rem",
+                                }}
+                              />
+                            </Box>
+                            <Box
+                              style={{
+                                marginTop: "0.5rem",
+                                color: "rgb(236,70,248)",
+                              }}
+                            >
+                              <Typography
+                                variant="h5"
+                                align="center"
+                                style={{ fontWeight: "bold" }}
+                              >
+                                9.0
+                              </Typography>
+                              <Box
+                                style={{
+                                  marginBottom: "0.7rem",
+                                }}
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                                <GradeIcon style={{ fontSize: "0.8rem" }} />
+                              </Box>
+                            </Box>
+                          </Grid>
+                          <Grid item xs={10} style={{ color: "#5A5A5A" }}>
+                            <Box style={{ marginBottom: "0.7rem" }}>
+                              <Typography
+                                style={{ fontSize: "1.15rem", color: "#000" }}
+                              >
+                                Hong Yi Xu
+                              </Typography>
+                              <Typography style={{ fontSize: "0.8rem" }}>
+                                2 ngày trước
+                              </Typography>
+                            </Box>
+                            <div style={{ marginTop: "1.4rem" }}>
+                              <Typography style={{ fontSize: "0.9rem" }}>
+                                Tưởng không hay ai dè.
+                              </Typography>
+                            </div>
+                          </Grid>
+                          <Grid
+                            item
+                            xs={12}
+                            style={{ color: "#5A5A5A", margin: "0 0.4rem" }}
+                          >
+                            <hr
+                              style={{
+                                width: "100%",
+                                marginBottom: ".5rem",
+                                marginTop: "0rem",
+                              }}
+                            />
+                            <Box display="flex">
+                              <FavoriteBorderIcon
+                                style={{ color: "#5A5A5A" }}
+                              />
+                              <Box
+                                display="flex"
+                                alignItems="center"
+                                justifyContent="center"
+                              >
+                                <Typography
+                                  style={{
+                                    marginLeft: "0.3rem",
+                                    fontSize: "0.9rem",
+                                  }}
+                                >
+                                  <Typography
+                                    variant="span"
+                                    style={{ fontWeight: "bold" }}
+                                  >
+                                    2
+                                  </Typography>{" "}
+                                  Thích
+                                </Typography>
+                              </Box>
+                            </Box>
+                          </Grid>
+                        </Grid>
+                      </Box>
+                    </Grid>
+                  </Grid>
                 </Box>
               </TabPanel>
             </Box>

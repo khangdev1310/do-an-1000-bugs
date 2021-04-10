@@ -6,7 +6,6 @@ import SignIn from "./container/HomeTemplate/Signin";
 import SignUp from "./container/HomeTemplate/Signup";
 import { Provider } from "react-redux";
 import store from "./redux/reducers/configStore";
-import Detail from "./container/HomeTemplate/Detail";
 import Dashboard from "./container/AdminTemplate/Dashboard/Dashboard";
 import SignInAdmin from "./container/AdminTemplate/Signin";
 import PhongVe from "./container/HomeTemplate/PhongVe";
@@ -50,7 +49,6 @@ const App = () => {
           {showLayoutHome(routesHome)}
           <Route path="/signin" component={SignIn} />
           <Route path="/signup" component={SignUp} />
-          <Route path="/movie/:id" component={Detail} />
           <Route exact path="/checkout" component={PhongVe} />
           <Route exact path="/admin" component={SignInAdmin} />
           <Route exact path="/admin/dashboard" component={Dashboard} />

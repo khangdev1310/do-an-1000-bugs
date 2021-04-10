@@ -9,15 +9,10 @@ export const useStyle = makeStyles((theme) => ({
       backgroundColor: "rgb(49,49,49)",
       borderRadius: "50px",
     },
-
-    "& .Mui-disabled": {
-      backgroundColor: "rgb(49,49,49)",
-      border: "2.5px solid rgba(255,255,255,0.5)",
-    },
   },
 
   inputRoot: {
-    color: "#FAFAFA",
+    color: "#FAFAFA !important",
 
     "& .MuiOutlinedInput-notchedOutline": {
       borderRadius: "50px",

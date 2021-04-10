@@ -156,6 +156,7 @@ const TransitionsModal = () => {
           size="small"
           fullWidth="true"
           value={infoSearch.cumRap}
+          getOptionDisabled={(option) => true}
           options={["Vui lòng chọn phim"]}
           renderInput={(params) => (
             <TextField
@@ -218,6 +219,7 @@ const TransitionsModal = () => {
           fullWidth="true"
           value={infoSearch.cumRap}
           options={["Vui lòng chọn phim và cụm rạp"]}
+          getOptionDisabled={(option) => true}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -280,6 +282,7 @@ const TransitionsModal = () => {
           fullWidth="true"
           value={infoSearch.ngayChieu}
           options={["Vui lòng chọn phim, cụm rạp và rạp"]}
+          getOptionDisabled={(option) => true}
           renderInput={(params) => (
             <TextField
               {...params}
@@ -369,6 +372,7 @@ const TransitionsModal = () => {
           fullWidth="true"
           value={infoSearch.suatChieu}
           options={["Vui lòng chọn phim, cụm rạp, rạp, ngày chiếu"]}
+          getOptionDisabled={(option) => true}
           renderInput={(params) => (
             <TextField
               {...params}
