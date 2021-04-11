@@ -29,6 +29,7 @@ import {
   FETCH_THONG_TIN_PHIM_CLEAN_UP,
   FETCH_THONG_TIN_PHIM_REQUESTS_SAGA,
 } from "./modules/redux/constants";
+import TabContainer from "../../../components/LichChieuDetail/TabContainer";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -92,7 +93,7 @@ const Detail = (props) => {
   }, []);
 
   return (
-    <div>
+    <>
       <Box className={classes.bgColor}>
         <div
           className="background background-filter"
@@ -214,10 +215,12 @@ const Detail = (props) => {
               </AppBar>
               <TabPanel value={value} index={0}>
                 <Box className={classes.container}>
-                  <Grid container spacing={1}></Grid>
+                  <Grid container spacing={1}>
+                    <TabContainer />
+                  </Grid>
                 </Box>
               </TabPanel>
-              <TabPanel value={value} index={1}>
+              {/* <TabPanel value={value} index={1}>
                 <Box className={classes.containerForComment}>
                   <Grid container spacing={1}>
                     <Grid item xs={12}>
@@ -594,12 +597,12 @@ const Detail = (props) => {
                     </Grid>
                   </Grid>
                 </Box>
-              </TabPanel>
+              </TabPanel> */}
             </Box>
           </Box>
         </div>
       </Box>
-    </div>
+    </>
   );
 };
 export default Detail;

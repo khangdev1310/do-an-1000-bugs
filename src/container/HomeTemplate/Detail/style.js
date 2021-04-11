@@ -46,7 +46,7 @@ export const useStyle = makeStyles((theme) => ({
   container: {
     maxWidth: "870px",
     margin: "0 auto",
-    paddingTop: "8rem",
+    paddingTop: "1rem",
     color: "#FAFAFA",
   },
 

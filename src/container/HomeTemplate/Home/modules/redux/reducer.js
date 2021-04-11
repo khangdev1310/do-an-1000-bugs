@@ -7,6 +7,7 @@ import {
   FETCH_MOVIES_REQUESTS,
   FETCH_MOVIES_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
 } from "./constants";
 
@@ -20,6 +21,7 @@ const initialState = {
   isModal: false,
   movieDetail: null,
   searchMovieFind: null,
+  movieDetailLichChieu: null,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -61,6 +63,10 @@ export default (state = initialState, { type, payload }) => {
 
     case FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS:
       state.searchMovieFind = payload;
+      return { ...state };
+
+    case FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS:
+      state.movieDetailLichChieu = payload;
       return { ...state };
 
     default:

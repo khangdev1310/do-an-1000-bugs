@@ -15,6 +15,9 @@ import {
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA,
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_FAILED,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_REQUESTS_SAGA,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS,
+  FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_FAILED,
 } from "./constants";
 import { STATUS_CODE } from "./../../../../../utils/common/constants";
 import {
@@ -104,6 +107,25 @@ function* fetchLayThongTinLichChieuPhimApiActionSaga({ payload }) {
   }
 }
 
+function* fetchLayThongTinLichChieuPhimTabsApiActionSaga({ payload }) {
+  try {
+    const { data, status } = yield call(
+      fetchLayThongTinLichChieuPhimApiAction,
+      payload
+    );
+    if (status === STATUS_CODE.SUCCESS) {
+      yield put({
+        type: FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS,
+        payload: data,
+      });
+    }
+  } catch (err) {
+    yield put({
+      type: FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_FAILED,
+    });
+  }
+}
+
 export const MovieBigSagas = [
   takeLatest(FETCH_MOVIES_REQUESTS_SAGA, fetchMovieApiActionSaga),
   takeLatest(
@@ -117,5 +139,9 @@ export const MovieBigSagas = [
   takeLatest(
     FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA,
     fetchLayThongTinLichChieuPhimApiActionSaga
+  ),
+  takeLatest(
+    FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_REQUESTS_SAGA,
+    fetchLayThongTinLichChieuPhimTabsApiActionSaga
   ),
 ];

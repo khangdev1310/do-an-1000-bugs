@@ -1,12 +1,23 @@
 import { Box, Grid, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useEffect } from "react";
 import { useStyles } from "./style";
 import popcorn from "./../../../assets/popcorn.png";
 import screen from "./../../../assets/screen.png";
 import ThanhTien from "./ThanhTien/ThanhTien";
+import { useDispatch, useSelector } from "react-redux";
+import { FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA } from "./modules/redux/constants";
 
-const PhongVe = () => {
+const PhongVe = (props) => {
   const classes = useStyles();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA,
+      payload: props.match.params.id,
+    });
+  }, []);
+
   return (
     <div>
       <div className={classes.container}>

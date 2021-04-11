@@ -35,11 +35,11 @@ export const routesHome = [
     path: "/gioi-thieu",
     component: About,
   },
-  {
-    exact: false,
-    path: "/movie/:id",
-    component: Detail,
-  },
+  // {
+  //   exact: false,
+  //   path: "/movie/:id",
+  //   component: Detail,
+  // },
 ];
 
 export const routesAdmin = [
