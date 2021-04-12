@@ -8,7 +8,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    height: "130vh",
+    height: "100%",
   },
   paper: {
     marginTop: theme.spacing(0),

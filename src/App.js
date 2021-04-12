@@ -16,6 +16,8 @@ import {
 import { useDispatch } from "react-redux";
 import React, { useEffect } from "react";
 import Detail from "./container/HomeTemplate/Detail";
+import history from "./history";
+import { Router } from "react-router-dom";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -45,7 +47,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           {showLayoutHome(routesHome)}
           <Route path="/signin" component={SignIn} />
@@ -56,7 +58,7 @@ const App = () => {
           <Route exact path="/admin/dashboard" component={Dashboard} />
           <Route path="*" component={PageNotFound} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };

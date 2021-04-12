@@ -103,37 +103,152 @@ function SignUp() {
 
   return (
     <Box className={classes.bgColor}>
-      <Container
-        component="main"
-        maxWidth="xs"
-        style={{
-          backgroundColor: "#eeeeee",
-          borderRadius: "10px",
-          position: "relative",
-        }}
-      >
-        <LinkRouter to="/" style={{ textDecoration: "none" }}>
-          <Box className={classes.goBackContainer}>
-            <ArrowBackIosIcon className={classes.closeIcon} />
-            <Typography>Trang chủ</Typography>
-          </Box>
-        </LinkRouter>
-        <CssBaseline />
-        <div className={classes.paper}>
-          {/* <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign up
-          </Typography> */}
-          <FacebookLogin
-            appId="254385272976931"
-            autoLoad={false}
-            callback={responseFacebook}
-            fields="name,email,picture"
-            cssClass="my-facebook-button-class"
-            scope="email, public_profile"
-            render={(renderProps) => (
+      <Box className={classes.container}>
+        <Container
+          component="main"
+          maxWidth="xs"
+          style={{
+            backgroundColor: "#eeeeee",
+            borderRadius: "10px",
+            position: "relative",
+            height: "100%",
+          }}
+        >
+          <LinkRouter to="/" style={{ textDecoration: "none" }}>
+            <Box className={classes.goBackContainer}>
+              <ArrowBackIosIcon className={classes.closeIcon} />
+              <Typography>Trang chủ</Typography>
+            </Box>
+          </LinkRouter>
+          <CssBaseline />
+          <div className={classes.paper}>
+            <FacebookLogin
+              appId="254385272976931"
+              autoLoad={false}
+              callback={responseFacebook}
+              fields="name,email,picture"
+              cssClass="my-facebook-button-class"
+              scope="email, public_profile"
+              render={(renderProps) => (
+                <Button
+                  type="submit"
+                  fullWidth
+                  variant="contained"
+                  color="primary"
+                  className={classes.submit}
+                  style={{
+                    backgroundColor: "#1A538A",
+                    padding: "0.8rem 0",
+                    margin: "initial",
+                    margin: "0.5rem 0",
+                  }}
+                  onClick={renderProps.onClick}
+                >
+                  Login with Facebook
+                </Button>
+              )}
+            />
+            <Grid container spacing={0}>
+              <Grid item xs={5} className={classes.containerLine}>
+                <hr />
+              </Grid>
+              <Grid item xs={2}>
+                <Typography
+                  variant="p"
+                  component="p"
+                  style={{ textAlign: "center" }}
+                >
+                  Hoặc
+                </Typography>
+              </Grid>
+              <Grid item xs={5}>
+                <hr />
+              </Grid>
+            </Grid>
+            <form
+              className={classes.form}
+              noValidate
+              onSubmit={formik.handleSubmit}
+            >
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Tên tài khoản"
+                name="taiKhoan"
+                autoComplete="account"
+                onChange={formik.handleChange}
+                value={formik.values.taiKhoan}
+              />
+              {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
+                <div>{formik.errors.taiKhoan}</div>
+              ) : null}
+
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="matKhau"
+                label="Mật Khẩu"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={formik.handleChange}
+                value={formik.values.matkhau}
+              />
+              {formik.touched.matKhau && formik.errors.matKhau ? (
+                <div>{formik.errors.matKhau}</div>
+              ) : null}
+
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="hoTen"
+                label="Họ Tên"
+                onChange={formik.handleChange}
+                value={formik.values.hoTen}
+              />
+              {formik.touched.hoTen && formik.errors.hoTen ? (
+                <div>{formik.errors.hoTen}</div>
+              ) : null}
+
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="email"
+                label="Email"
+                onChange={formik.handleChange}
+                value={formik.values.email}
+              />
+              {formik.touched.email && formik.errors.email ? (
+                <div>{formik.errors.email}</div>
+              ) : null}
+
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="soDt"
+                label="Số điện thoại"
+                onChange={formik.handleChange}
+                value={formik.values.soDt}
+              />
+              {formik.touched.soDt && formik.errors.soDt ? (
+                <div>{formik.errors.soDt}</div>
+              ) : null}
+
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
               <Button
                 type="submit"
                 fullWidth
@@ -141,153 +256,35 @@ function SignUp() {
                 color="primary"
                 className={classes.submit}
                 style={{
-                  backgroundColor: "#1A538A",
+                  backgroundColor: "#000",
                   padding: "0.8rem 0",
                   margin: "initial",
-                  margin: "0.5rem 0",
+                  marginBottom: "1rem",
                 }}
-                onClick={renderProps.onClick}
               >
-                Login with Facebook
+                Đăng kí
               </Button>
-            )}
-          />
-          <Grid container spacing={0}>
-            <Grid item xs={5} className={classes.containerLine}>
-              <hr />
-            </Grid>
-            <Grid item xs={2}>
-              <Typography
-                variant="p"
-                component="p"
-                style={{ textAlign: "center" }}
-              >
-                Hoặc
-              </Typography>
-            </Grid>
-            <Grid item xs={5}>
-              <hr />
-            </Grid>
-          </Grid>
-          <form
-            className={classes.form}
-            noValidate
-            onSubmit={formik.handleSubmit}
-          >
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Tên tài khoản"
-              name="taiKhoan"
-              autoComplete="account"
-              onChange={formik.handleChange}
-              value={formik.values.taiKhoan}
-            />
-            {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
-              <div>{formik.errors.taiKhoan}</div>
-            ) : null}
-
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="matKhau"
-              label="Mật Khẩu"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={formik.handleChange}
-              value={formik.values.matkhau}
-            />
-            {formik.touched.matKhau && formik.errors.matKhau ? (
-              <div>{formik.errors.matKhau}</div>
-            ) : null}
-
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="hoTen"
-              label="Họ Tên"
-              onChange={formik.handleChange}
-              value={formik.values.hoTen}
-            />
-            {formik.touched.hoTen && formik.errors.hoTen ? (
-              <div>{formik.errors.hoTen}</div>
-            ) : null}
-
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="email"
-              label="Email"
-              onChange={formik.handleChange}
-              value={formik.values.email}
-            />
-            {formik.touched.email && formik.errors.email ? (
-              <div>{formik.errors.email}</div>
-            ) : null}
-
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="soDt"
-              label="Số điện thoại"
-              onChange={formik.handleChange}
-              value={formik.values.soDt}
-            />
-            {formik.touched.soDt && formik.errors.soDt ? (
-              <div>{formik.errors.soDt}</div>
-            ) : null}
-
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              style={{
-                backgroundColor: "#000",
-                padding: "0.8rem 0",
-                margin: "initial",
-                marginBottom: "1rem",
-              }}
-            >
-              Đăng kí
-            </Button>
-            <Grid container>
-              <Grid item xs></Grid>
-              <Grid item>
-                <LinkRouter
-                  to="/signin"
-                  href="#"
-                  variant="body2"
-                  className={classes.link}
-                  style={{ textDecoration: "underline" }}
-                >
-                  {"Đã có tài khoản? Đăng nhập tại đây"}
-                </LinkRouter>
+              <Grid container>
+                <Grid item xs></Grid>
+                <Grid item>
+                  <LinkRouter
+                    to="/signin"
+                    href="#"
+                    variant="body2"
+                    className={classes.link}
+                    style={{ textDecoration: "underline" }}
+                  >
+                    {"Đã có tài khoản? Đăng nhập tại đây"}
+                  </LinkRouter>
+                </Grid>
               </Grid>
-            </Grid>
-          </form>
-        </div>
-        <Box mt={8} style={{ marginTop: "2.5rem", paddingBottom: "1rem" }}>
-          <Copyright />
-        </Box>
-      </Container>
+            </form>
+          </div>
+          <Box mt={8} style={{ marginTop: "2.5rem", paddingBottom: "1rem" }}>
+            <Copyright />
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

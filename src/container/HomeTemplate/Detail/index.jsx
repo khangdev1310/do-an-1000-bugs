@@ -220,7 +220,7 @@ const Detail = (props) => {
                   </Grid>
                 </Box>
               </TabPanel>
-              {/* <TabPanel value={value} index={1}>
+              <TabPanel value={value} index={1}>
                 <Box className={classes.containerForComment}>
                   <Grid container spacing={1}>
                     <Grid item xs={12}>
@@ -597,7 +597,7 @@ const Detail = (props) => {
                     </Grid>
                   </Grid>
                 </Box>
-              </TabPanel> */}
+              </TabPanel>
             </Box>
           </Box>
         </div>

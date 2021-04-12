@@ -33,6 +33,15 @@ export default function PrimarySearchAppBar() {
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const dispatch = useDispatch();
 
+  const renderUserWelcome = () => {
+    if (localStorage.getItem("USER")) {
+      const localUser = JSON.parse(localStorage.getItem("USER"));
+      return <Typography>Xin chào, {localUser.hoTen}</Typography>;
+    } else {
+      return <AccountCircle />;
+    }
+  };
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -205,7 +214,8 @@ export default function PrimarySearchAppBar() {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <AccountCircle />
+              {/* <AccountCircle /> */}
+              {renderUserWelcome()}
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

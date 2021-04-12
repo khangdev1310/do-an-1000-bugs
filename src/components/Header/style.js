@@ -22,7 +22,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   navContainer: {
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "space-between",
     flexDirection: "row",
     minWidth: "500px",
   },
