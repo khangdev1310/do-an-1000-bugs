@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -18,6 +18,7 @@ import * as Yup from "yup";
 import { useStyles } from "./style";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link as LinkRouter } from "react-router-dom";
+import { postThongTinDangNhapAdminApiActionApi } from "./modules/services/AdminLoginServices";
 
 function Copyright() {
   return (
@@ -48,7 +49,11 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-function SignInAdmin() {
+function SignInAdmin(props) {
+  useMemo(() => {
+    // componentWillMount events
+    if (localStorage.getItem("ADMIN")) props.history.push("/admin/dashboard");
+  }, []);
   const classes = useStyles();
   const formik = useFormik({
     initialValues: {
@@ -62,97 +67,99 @@ function SignInAdmin() {
         .required("Required!"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      postThongTinDangNhapAdminApiActionApi(values);
     },
   });
 
   return (
     <Box className={classes.bgColor}>
-      <Container
-        component="main"
-        maxWidth="xs"
-        style={{
-          backgroundColor: "#eeeeee",
-          borderRadius: "10px",
-          position: "relative",
-        }}
-      >
-        <LinkRouter to="/" style={{ textDecoration: "none" }}>
-          <Box className={classes.goBackContainer}>
-            <ArrowBackIosIcon className={classes.closeIcon} />
-            <Typography>Trang chủ</Typography>
-          </Box>
-        </LinkRouter>
-        <CssBaseline />
-        <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Đăng nhập
-          </Typography>
-          <form
-            className={classes.form}
-            noValidate
-            onSubmit={formik.handleSubmit}
-          >
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              id="email"
-              label="Tên tài khoản"
-              name="taiKhoan"
-              autoComplete="account"
-              onChange={formik.handleChange}
-              value={formik.values.taiKhoan}
-            />
-            {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
-              <div>{formik.errors.taiKhoan}</div>
-            ) : null}
-
-            <CssTextField
-              variant="outlined"
-              margin="normal"
-              required
-              fullWidth
-              name="matKhau"
-              label="Mật khẩu"
-              type="password"
-              id="password"
-              autoComplete="current-password"
-              onChange={formik.handleChange}
-              value={formik.values.matkhau}
-            />
-            {formik.touched.matKhau && formik.errors.matKhau ? (
-              <div>{formik.errors.matKhau}</div>
-            ) : null}
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              color="primary"
-              className={classes.submit}
-              style={{
-                backgroundColor: "#000",
-                padding: "0.8rem 0",
-                margin: "initial",
-                marginBottom: "1rem",
-              }}
-            >
+      <Box style={{ padding: "7rem 0" }}>
+        <Container
+          component="main"
+          maxWidth="xs"
+          style={{
+            backgroundColor: "#eeeeee",
+            borderRadius: "10px",
+            position: "relative",
+          }}
+        >
+          <LinkRouter to="/" style={{ textDecoration: "none" }}>
+            <Box className={classes.goBackContainer}>
+              <ArrowBackIosIcon className={classes.closeIcon} />
+              <Typography>Trang chủ</Typography>
+            </Box>
+          </LinkRouter>
+          <CssBaseline />
+          <div className={classes.paper}>
+            <Avatar className={classes.avatar}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
               Đăng nhập
-            </Button>
-          </form>
-        </div>
-        <Box mt={8} style={{ marginTop: "2.5rem", paddingBottom: "1rem" }}>
-          <Copyright />
-        </Box>
-      </Container>
+            </Typography>
+            <form
+              className={classes.form}
+              noValidate
+              onSubmit={formik.handleSubmit}
+            >
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                label="Tên tài khoản"
+                name="taiKhoan"
+                autoComplete="account"
+                onChange={formik.handleChange}
+                value={formik.values.taiKhoan}
+              />
+              {formik.touched.taiKhoan && formik.errors.taiKhoan ? (
+                <div>{formik.errors.taiKhoan}</div>
+              ) : null}
+
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="matKhau"
+                label="Mật khẩu"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+                onChange={formik.handleChange}
+                value={formik.values.matkhau}
+              />
+              {formik.touched.matKhau && formik.errors.matKhau ? (
+                <div>{formik.errors.matKhau}</div>
+              ) : null}
+              <FormControlLabel
+                control={<Checkbox value="remember" color="primary" />}
+                label="Remember me"
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+                style={{
+                  backgroundColor: "#000",
+                  padding: "0.8rem 0",
+                  margin: "initial",
+                  marginBottom: "1rem",
+                }}
+              >
+                Đăng nhập
+              </Button>
+            </form>
+          </div>
+          <Box mt={8} style={{ marginTop: "2.5rem", paddingBottom: "1rem" }}>
+            <Copyright />
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 }

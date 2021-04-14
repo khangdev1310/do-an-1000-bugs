@@ -3,12 +3,12 @@ import backgroundSignInUp from "./../../../assets/backgroundSignInUp.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   bgColor: {
-    padding: "4.5rem 0",
+    padding: " 0",
     background: `url(${backgroundSignInUp})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    height: "100vh",
+    height: "100%",
   },
   paper: {
     marginTop: theme.spacing(0),

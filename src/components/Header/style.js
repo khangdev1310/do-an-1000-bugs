@@ -8,8 +8,26 @@ export const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
+  paper: {
+    border: "1px solid",
+    padding: theme.spacing(1),
+    backgroundColor: "rgba(37,36,39,0.95)",
+    border: "2.5px solid purple",
+    borderRadius: "4px",
+    color: "rgba(231,71,243, 1)",
+    textAlign: "center",
+    zIndex: "9999",
+  },
+  settingsTextPopper: {
+    cursor: "pointer",
+    fontSize: "15px",
+    fontWeight: "500",
+    padding: "0.5rem 0",
+    borderBottom: "1px solid purple",
+  },
+
   bgColor: {
-    backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 0.7), rgba(9,1,65, 0.3))`,
+    backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 1), rgba(9,1,65, 1))`,
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
     padding: "0.2rem 0",
@@ -20,6 +38,17 @@ export const useStyles = makeStyles((theme) => ({
       display: "block",
     },
   },
+
+  hideSignMobile: {
+    // [theme.breakpoints.down("sm")]: {
+    //   display: "none",
+    // },
+
+    ["@media (max-width:992px)"]: {
+      display: "none",
+    },
+  },
+
   navContainer: {
     alignItems: "center",
     justifyContent: "space-between",

@@ -1,6 +1,6 @@
 import HomeTemplate from "./container/HomeTemplate";
 import { routesHome } from "./routes";
-import { Route, Switch, BrowserRouter } from "react-router-dom";
+import { Route, Switch, BrowserRouter, Redirect } from "react-router-dom";
 import PageNotFound from "./container/PageNotFound";
 import SignIn from "./container/HomeTemplate/Signin";
 import SignUp from "./container/HomeTemplate/Signup";
@@ -43,6 +43,11 @@ const App = () => {
         );
       });
     }
+  };
+
+  const checkLoggedIn = () => {
+    if (localStorage.getItem("USER")) return true;
+    else return false;
   };
 
   return (

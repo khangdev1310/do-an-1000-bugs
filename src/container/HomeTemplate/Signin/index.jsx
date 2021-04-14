@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -17,7 +17,7 @@ import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props
 import * as Yup from "yup";
 import { useStyles } from "./style";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { Link as LinkRouter } from "react-router-dom";
+import { Link as LinkRouter, Redirect } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   POST_THONG_TIN_DANG_NHAP_FACEBOOK_REQUESTS_SAGA,
@@ -53,7 +53,7 @@ const CssTextField = withStyles({
   },
 })(TextField);
 
-function SignIn() {
+function SignIn(props) {
   const [loginFacebookInfo, setLoginFacebookInfo] = useState({
     isLoggedIn: false,
     userID: "",
@@ -63,6 +63,11 @@ function SignIn() {
     matKhau: "An29122001!",
   });
   const dispatch = useDispatch();
+
+  useMemo(() => {
+    // componentWillMount events
+    if (localStorage.getItem("USER")) props.history.push("/");
+  }, []);
 
   const dispatchUserSignIn = (userInfo) => {
     dispatch({
