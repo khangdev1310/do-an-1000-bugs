@@ -275,20 +275,28 @@ export default function Navbar() {
             style={{
               color: "white",
               cursor: "pointer",
-              fontSize: "20px",
+              fontSize: "18px",
               fontWeight: "500",
             }}
           >
-            Xin chào, {localUser.hoTen}
+            Xin chào,{" "}
+            {localUser.hoTen.length > 8
+              ? localUser.hoTen.substring(0, 6) + "..."
+              : localUser.hoTen}
           </Typography>
           <Popper id={id} open={open} anchorEl={anchorEl} transition>
             {({ TransitionProps }) => (
               <Fade {...TransitionProps} timeout={350}>
                 <div className={classes.paper}>
                   <Box>
-                    <Typography className={classes.settingsTextPopper}>
-                      Thông tin cá nhân
-                    </Typography>
+                    <Link
+                      to="/user/account/profile"
+                      style={{ textDecoration: "none" }}
+                    >
+                      <Typography className={classes.settingsTextPopper}>
+                        Thông tin cá nhân
+                      </Typography>
+                    </Link>
                   </Box>
                   <Box onClick={() => handleUserLogout()}>
                     <Typography className={classes.settingsTextPopper}>
@@ -326,13 +334,15 @@ export default function Navbar() {
       <div className="container">
         <div className="row" style={{ width: "100%" }}>
           <div className="col-2">
-            <a className="navbar-brand">
-              <img
-                src={Logo2}
-                width="115px"
-                style={{ position: "absolute", bottom: "0" }}
-              />
-            </a>
+            <Box>
+              <Link to="/">
+                <img
+                  src={Logo2}
+                  width="115px"
+                  style={{ position: "absolute", bottom: "0" }}
+                />
+              </Link>
+            </Box>
           </div>
           <div className="col-8">
             <div
@@ -380,9 +390,9 @@ export default function Navbar() {
                   <Box
                     className={classes.searchContainer}
                     style={{ margin: "0 1rem" }}
+                    onClick={handleChangeModal}
                   >
                     <button
-                      onClick={handleChangeModal}
                       style={{
                         backgroundColor: "transparent",
                         border: "none",

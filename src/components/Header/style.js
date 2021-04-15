@@ -24,6 +24,7 @@ export const useStyles = makeStyles((theme) => ({
     fontWeight: "500",
     padding: "0.5rem 0",
     borderBottom: "1px solid purple",
+    color: "rgba(231,71,243, 1)",
   },
 
   bgColor: {

@@ -18,3 +18,12 @@ export function postThongTinDangKiApiActionApi(userInfo) {
     data: userInfo,
   });
 }
+
+export function fetchUserInfoApiActionApi(taiKhoan) {
+  console.log(taiKhoan);
+  return axios({
+    url: `${DOMAIN}/QuanLyNguoiDung/ThongTinTaiKhoan`,
+    method: "POST",
+    data: { taiKhoan },
+  });
+}

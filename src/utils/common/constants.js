@@ -5,5 +5,6 @@ export const STATUS_CODE = {
   UNAUTHORIZED: 401,
   FOUND: 201,
 };
+export const MA_NHOM = "GP09";
 
 export const DOMAIN = "https://movie0706.cybersoft.edu.vn/api";

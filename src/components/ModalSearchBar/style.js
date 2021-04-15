@@ -49,6 +49,7 @@ export const useStyle = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
+    position: "relative",
   },
   searchContainer: {
     display: "inline-block",
@@ -76,5 +77,12 @@ export const useStyle = makeStyles((theme) => ({
       backgroundColor: "rgba(138,52,144, 0.7)",
       border: "2.5px solid rgba(236,70,248, 0.7)",
     },
+  },
+  iconClose: {
+    position: "absolute",
+    top: "1%",
+    right: "1%",
+    fontSize: "2.5rem",
+    cursor: "pointer",
   },
 }));

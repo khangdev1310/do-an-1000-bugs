@@ -8,7 +8,6 @@ export const useStyles = makeStyles((theme) => ({
     height: "100%",
     width: "100%",
     background: `linear-gradient(to right bottom,rgba(9,1,65, 0.9), rgba(231,71,243, 0.2)), url(${background1})`,
-    // background: `url(${background1})`,
     backgroundPosition: "50% 10%",
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",

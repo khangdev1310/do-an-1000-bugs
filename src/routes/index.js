@@ -8,6 +8,7 @@ import { FlareSharp } from "@material-ui/icons";
 import About from "../container/HomeTemplate/About";
 import Dashboard from "../container/AdminTemplate/Dashboard/Dashboard";
 import LichChieu from "../container/HomeTemplate/LichChieu/LichChieuLayout";
+import UserProfile from "../container/HomeTemplate/UserProfile";
 
 export const routesHome = [
   {
@@ -35,11 +36,16 @@ export const routesHome = [
     path: "/gioi-thieu",
     component: About,
   },
-  // {
-  //   exact: false,
-  //   path: "/movie/:id",
-  //   component: Detail,
-  // },
+  {
+    exact: false,
+    path: "/movie/:id",
+    component: Detail,
+  },
+  {
+    exact: false,
+    path: "/user/account/profile",
+    component: UserProfile,
+  },
 ];
 
 export const routesAdmin = [

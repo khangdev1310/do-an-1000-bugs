@@ -59,7 +59,6 @@ const App = () => {
           <Route path="/signup" component={SignUp} />
           <Route exact path="/checkout/:id" component={PhongVe} />
           <Route exact path="/admin" component={SignInAdmin} />
-          <Route exact path="/movie/:id" component={Detail} />
           <Route exact path="/admin/dashboard" component={Dashboard} />
           <Route path="*" component={PageNotFound} />
         </Switch>

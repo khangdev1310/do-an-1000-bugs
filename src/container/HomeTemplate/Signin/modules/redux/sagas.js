@@ -1,10 +1,15 @@
 import { call, put, takeLatest } from "@redux-saga/core/effects";
 import { STATUS_CODE } from "../../../../../utils/common/constants";
 import {
+  fetchUserInfoApiActionApi,
   postThongTinDangKiApiActionApi,
   postThongTinDangNhapApiActionApi,
 } from "../services/SignInSignUpService";
 import {
+  FETCH_USER_INFO_FAILED,
+  FETCH_USER_INFO_REQUESTS,
+  FETCH_USER_INFO_REQUESTS_SAGA,
+  FETCH_USER_INFO_SUCCESS,
   POST_THONG_TIN_DANG_NHAP_FACEBOOK_REQUESTS_SAGA,
   POST_THONG_TIN_DANG_NHAP_FAILED,
   POST_THONG_TIN_DANG_NHAP_REQUESTS,
@@ -113,7 +118,25 @@ function* postThongTinDangNhapFacebookApiActionSaga({ payload }) {
   }
 }
 
-function* postThongTinDangKiApiActionSaga({ payload }) {}
+function* fetchUserInfoApiActionSaga({ payload }) {
+  yield put({
+    type: FETCH_USER_INFO_REQUESTS,
+  });
+  try {
+    const { data, status } = yield call(fetchUserInfoApiActionApi, payload);
+    if (status === STATUS_CODE.SUCCESS) {
+      yield put({
+        type: FETCH_USER_INFO_SUCCESS,
+        payload: data,
+      });
+    }
+  } catch (err) {
+    yield put({
+      type: FETCH_USER_INFO_FAILED,
+      payload: err.response.data,
+    });
+  }
+}
 
 export const PostThongTinDangKiDangNhapSagas = [
   takeLatest(
@@ -124,4 +147,5 @@ export const PostThongTinDangKiDangNhapSagas = [
     POST_THONG_TIN_DANG_NHAP_FACEBOOK_REQUESTS_SAGA,
     postThongTinDangNhapFacebookApiActionSaga
   ),
+  takeLatest(FETCH_USER_INFO_REQUESTS_SAGA, fetchUserInfoApiActionSaga),
 ];

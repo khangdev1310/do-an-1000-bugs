@@ -10,6 +10,7 @@ import { Box, Button, Grid, Typography, withStyles } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import cinemaIcon from "./../../assets/cinema.svg";
 import { FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA } from "../../container/HomeTemplate/Home/modules/redux/constants";
+import CloseIcon from "@material-ui/icons/Close";
 
 const TransitionsModal = () => {
   const classes = useStyle();
@@ -33,12 +34,7 @@ const TransitionsModal = () => {
   let [maLichChieu, setMaLichChieu] = useState({
     maLichChieu: null,
   });
-
-  useEffect(() => {
-    return () => {
-      console.log("component will unmount");
-    };
-  }, []);
+  console.log(maLichChieu);
 
   //Khi user vừa chọn trong ô textfield đầu tiên thì sẽ
   // disppatch thông tin phim đó lên để lấy data cho các ô khác
@@ -352,6 +348,7 @@ const TransitionsModal = () => {
               suatChieu: newValue,
               buttonBuyTicket: true,
             });
+
             getMaLichChieuFunc(newValue);
           }}
           renderInput={(params) => (
@@ -408,6 +405,17 @@ const TransitionsModal = () => {
       >
         <Fade in={open}>
           <div className={classes.paper}>
+            <Box
+              onClick={
+                (handleClose,
+                () =>
+                  dispatch({
+                    type: "CHANGE_MODAL_OPEN",
+                  }))
+              }
+            >
+              <CloseIcon className={classes.iconClose} />
+            </Box>
             <Box className={classes.container}>
               <Box className={classes.searchContainer}>
                 <SearchIcon style={{ fontSize: "1.5rem" }} />

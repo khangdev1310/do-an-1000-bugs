@@ -1,30 +1,36 @@
 import {
-  POST_THONG_TIN_DANG_NHAP_FAILED,
-  POST_THONG_TIN_DANG_NHAP_REQUESTS,
-  POST_THONG_TIN_DANG_NHAP_SUCCESS,
+  FETCH_USER_INFO_REQUESTS,
+  FETCH_USER_INFO_SUCCESS,
+  FETCH_USER_INFO_FAILED,
+  CLEAN_UP_USER_INFO,
 } from "./constants";
 
 const initialState = {
   thongTinUser: null,
-  thongTinDangKi: null,
   err: null,
   isLoading: false,
 };
 
 export default (state = initialState, { type, payload }) => {
   switch (type) {
-    case POST_THONG_TIN_DANG_NHAP_REQUESTS:
+    case FETCH_USER_INFO_REQUESTS:
       state.isLoading = true;
       return { ...state };
 
-    case POST_THONG_TIN_DANG_NHAP_SUCCESS:
+    case FETCH_USER_INFO_SUCCESS:
+      state.thongTinUser = payload;
       state.isLoading = false;
       return { ...state };
 
-    case POST_THONG_TIN_DANG_NHAP_FAILED:
+    case FETCH_USER_INFO_FAILED:
       state.isLoading = false;
       state.err = payload;
       return { ...state };
+
+    case CLEAN_UP_USER_INFO: {
+      state.thongTinUser = null;
+      return { ...state };
+    }
 
     default:
       return { ...state };
