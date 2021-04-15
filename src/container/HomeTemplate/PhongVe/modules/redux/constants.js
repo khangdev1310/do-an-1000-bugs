@@ -16,3 +16,4 @@ export const FETCH_LAY_DANH_SACH_PHONG_VE_FAILED =
   "fetch_phong_ve/FETCH_LAY_DANH_SACH_PHONG_VE_FAILED";
 
 /*Action từ component thẳng lên reducer */
+export const BOOKING_SEAT = "booking_seat/BOOKING_SEAT";

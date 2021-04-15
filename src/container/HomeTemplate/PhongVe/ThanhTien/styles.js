@@ -10,13 +10,18 @@ export const useStyles = makeStyles((theme) => ({
     padding: "1rem",
     overflowY: "scroll",
     height: "100%",
-    paddingBottom: "100px",
+    paddingBottom: "150px",
     paddingLeft: "5%",
     paddingRight: "5%",
   },
   items: {
     borderBottom: "1px solid #E9E9E9",
     padding: "0.7rem 0",
+  },
+
+  itemsTextField: {
+    borderBottom: "1px solid #E9E9E9",
+    padding: "0.2rem 0",
   },
   total: {
     color: "#44c020",
@@ -49,5 +54,32 @@ export const useStyles = makeStyles((theme) => ({
     background: "#fff",
     textAlign: "center",
     zIndex: "2",
+  },
+
+  noticeText: {
+    fontSize: "14px",
+  },
+
+  movieTitle: {
+    fontSize: "16px",
+    fontWeight: "500",
+  },
+  movieText: {
+    fontSize: "14px",
+  },
+
+  titleSpan: {
+    fontSize: "15px",
+  },
+
+  pleased: {
+    marginTop: "0.2rem",
+    fontSize: "14px",
+    color: "rgb(236,70,248)",
+  },
+
+  soGhe: {
+    fontSize: "14px",
+    color: "rgb(236,70,248)",
   },
 }));
