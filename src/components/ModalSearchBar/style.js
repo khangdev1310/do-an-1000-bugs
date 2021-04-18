@@ -85,4 +85,8 @@ export const useStyle = makeStyles((theme) => ({
     fontSize: "2.5rem",
     cursor: "pointer",
   },
+
+  sweetAlert: {
+    zIndex: "100000 !important",
+  },
 }));

@@ -36,6 +36,8 @@ const UserInfo = ({ userInfo }) => {
       icon: `${icon}`,
       title: `${title}`,
       text: `${text}`,
+    }).then(function () {
+      window.location.reload();
     });
   };
 

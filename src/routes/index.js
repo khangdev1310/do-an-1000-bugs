@@ -43,7 +43,7 @@ export const routesHome = [
   },
   {
     exact: false,
-    path: "/user/account/profile",
+    path: "/profile",
     component: UserProfile,
   },
 ];

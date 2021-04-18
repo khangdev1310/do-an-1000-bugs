@@ -4,13 +4,19 @@ import {
   FETCH_LAY_DANH_SACH_PHONG_VE_FAILED,
   FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS,
   FETCH_LAY_DANH_SACH_PHONG_VE_SUCCESS,
+  BUYING_COMBO,
 } from "./constants";
+import { combos } from "./../../Combo/ComboType/dataCombo";
 
 const initialState = {
   infoPhongVe: null,
   isLoading: false,
   err: null,
   bookingSeat: [],
+  combosData: combos,
+  totalPrice: 0,
+  totalPriceSeat: 0,
+  totalPriceCombo: 0,
 };
 
 export default (state = initialState, { type, payload }) => {
@@ -29,7 +35,7 @@ export default (state = initialState, { type, payload }) => {
       state.err = payload;
       return { ...state };
 
-    case BOOKING_SEAT:
+    case BOOKING_SEAT: {
       const newBookingSeat = [...state.bookingSeat];
       if (payload.daDat) return { ...state };
       const index = newBookingSeat.findIndex((bookedSeat) => {
@@ -41,7 +47,38 @@ export default (state = initialState, { type, payload }) => {
         newBookingSeat.push(payload);
       }
       state.bookingSeat = newBookingSeat;
+      const totalSeat = state.bookingSeat.reduce((total, cur, index) => {
+        return (total += cur.giaVe);
+      }, 0);
+      state.totalPriceSeat = totalSeat;
+      state.totalPrice = state.totalPriceCombo + state.totalPriceSeat;
       return { ...state };
+    }
+
+    case BUYING_COMBO: {
+      const { combo, isAddMinus } = payload;
+      const arrCombosData = [...state.combosData];
+      console.log(combo, isAddMinus);
+      const index = arrCombosData.findIndex((comboData) => {
+        return comboData.ten === combo.ten;
+      });
+      if (isAddMinus > 0) {
+        arrCombosData[index].quantity += 1;
+      } else {
+        if (arrCombosData[index].quantity > 0) {
+          arrCombosData[index].quantity -= 1;
+        } else {
+          arrCombosData[index].quantity = 0;
+        }
+      }
+      state.combosData = arrCombosData;
+      const totalCombos = state.combosData.reduce((total, cur, index) => {
+        return (total += cur.gia * cur.quantity);
+      }, 0);
+      state.totalPriceCombo = totalCombos;
+      state.totalPrice = state.totalPriceCombo + state.totalPriceSeat;
+      return { ...state };
+    }
 
     default:
       return { ...state };

@@ -28,6 +28,7 @@ import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
+import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 
 // export default function PrimarySearchAppBar() {
 //   const classes = useStyles();
@@ -259,6 +260,7 @@ export default function Navbar() {
 
   const handleUserLogout = () => {
     localStorage.removeItem("USER");
+    window.location.reload();
   };
 
   const renderUserWelcome = () => {
@@ -289,10 +291,7 @@ export default function Navbar() {
               <Fade {...TransitionProps} timeout={350}>
                 <div className={classes.paper}>
                   <Box>
-                    <Link
-                      to="/user/account/profile"
-                      style={{ textDecoration: "none" }}
-                    >
+                    <Link to="/profile" style={{ textDecoration: "none" }}>
                       <Typography className={classes.settingsTextPopper}>
                         Thông tin cá nhân
                       </Typography>
@@ -404,7 +403,7 @@ export default function Navbar() {
                   </Box>
                 </li>
                 <li className="nav-item">
-                  <Box>
+                  <Box style={{ margin: "0 1rem" }}>
                     <Link
                       to="/lich-chieu"
                       style={{ textDecoration: "none", color: "#FAFAFA" }}
@@ -417,6 +416,19 @@ export default function Navbar() {
                         />
                       </Box>
                       <Typography>Lịch chiếu</Typography>
+                    </Link>
+                  </Box>
+                </li>
+                <li className="nav-item">
+                  <Box style={{ margin: "0 1rem" }}>
+                    <Link
+                      to="/admin"
+                      style={{ textDecoration: "none", color: "#FAFAFA" }}
+                    >
+                      <Box display="flex" justifyContent="center">
+                        <SupervisorAccountIcon />
+                      </Box>
+                      <Typography>Admin test</Typography>
                     </Link>
                   </Box>
                 </li>

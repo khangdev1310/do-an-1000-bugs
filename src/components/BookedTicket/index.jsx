@@ -60,7 +60,10 @@ const BookedTicket = ({ thongTin, stt }) => {
         <Fade in={open}>
           <div className={classes.paper}>
             <table
-              style={{ width: "100%", borderCollapse: "collapse" }}
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+              }}
               className="table"
             >
               <thead class="thead-dark">

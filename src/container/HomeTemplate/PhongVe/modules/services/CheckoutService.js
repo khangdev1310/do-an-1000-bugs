@@ -7,3 +7,15 @@ export function fetchLayDanhSachPhongVeApiAction(maCheckout) {
     url: `${DOMAIN}/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maCheckout}`,
   });
 }
+
+export function postThongTinDatVeApiAction(payload) {
+  const { accessToken, datVe } = payload;
+  return axios({
+    url: `${DOMAIN}/QuanLyDatVe/DatVe`,
+    data: datVe,
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+}

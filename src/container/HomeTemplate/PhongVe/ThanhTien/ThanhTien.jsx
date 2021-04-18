@@ -1,37 +1,112 @@
 import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
-import React from "react";
+import React, { useState } from "react";
 import { useStyles } from "./styles";
 import propCorn from "./../../../../assets/popcornCheckout.png";
 import ErrorIcon from "@material-ui/icons/Error";
+import Combo from "../Combo";
+import { useSelector, useDispatch } from "react-redux";
+import { POST_THONG_TIN_DAT_VE_REQUESTS_SAGA } from "../modules/redux/constants";
+import Swal from "sweetalert2";
 
-const ThanhTien = () => {
+const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
+  const dispatch = useDispatch();
   const classes = useStyles();
+  const [comboStatus, setComboStatus] = useState(false);
+  const priceSeat = useSelector(
+    (state) => state.PhongVeReducer?.totalPriceSeat
+  );
+  const priceCombo = useSelector(
+    (state) => state.PhongVeReducer?.totalPriceCombo
+  );
+  const priceAll = useSelector((state) => state.PhongVeReducer?.totalPrice);
+  const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
+  const { taiKhoan, email, soDT, accessToken } = JSON.parse(
+    localStorage.getItem("USER")
+  );
+  console.log(taiKhoan);
+  const [datVe, setDatVe] = useState({
+    maLichChieu,
+    danhSachVe: [],
+    taiKhoanNguoiDung: taiKhoan,
+  });
+
+  if (!infoPhongVe) {
+    return null;
+  }
+
+  const { thongTinPhim } = infoPhongVe;
+
+  const handleDispatch = () => {
+    let danhSachVe = [];
+    bookingSeat.forEach((danhSach) => {
+      let { maGhe, giaVe } = danhSach;
+      danhSachVe.push({ maGhe, giaVe });
+    });
+    datVe.danhSachVe = danhSachVe;
+    console.log(datVe);
+    if (datVe.danhSachVe.length > 0) {
+      dispatch({
+        type: POST_THONG_TIN_DAT_VE_REQUESTS_SAGA,
+        payload: { datVe, accessToken },
+      });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Bạn chưa chọn ghế",
+      });
+    }
+  };
+
+  const renderSeat = () => {
+    if (bookingSeat.length > 0) {
+      return bookingSeat.map((seat, index) => {
+        if (index === 0) {
+          return (
+            <Typography style={{ display: "inline", fontSize: "14px" }}>
+              {seat.tenGhe}
+            </Typography>
+          );
+        }
+        return (
+          <Typography style={{ display: "inline", fontSize: "14px" }}>
+            , {seat.tenGhe}
+          </Typography>
+        );
+      });
+    }
+  };
   return (
     <div className={classes.container}>
+      <Combo comboStatus={comboStatus} />
       <div className={classes.contents}>
         <Box className={classes.items}>
-          <Typography className={classes.total}>0 đ</Typography>
+          <Typography className={classes.total}>{priceAll} đ</Typography>
         </Box>
         <Box className={classes.items}>
-          <Typography className={classes.movieTitle}>Bố Già</Typography>
-          <Typography className={classes.movieText}>
-            BHD Star - Vincom 3/2
+          <Typography className={classes.movieTitle}>
+            {thongTinPhim.tenPhim}
           </Typography>
           <Typography className={classes.movieText}>
-            Ngày mai 06/04/2021 - 12:10 - RẠP 3
+            {thongTinPhim.tenCumRap}
+          </Typography>
+          <Typography className={classes.movieText}>
+            Ngày mai {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} -{" "}
+            {thongTinPhim.tenRap}
           </Typography>
         </Box>
         <Box className={classes.items}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <Typography className={classes.soGhe}>Ghế</Typography>
+              <Typography className={classes.soGhe}>
+                Ghế {renderSeat()}
+              </Typography>
             </Grid>
             <Grid item xs={6}>
               <Typography
                 className={classes.soGhe}
                 style={{ textAlign: "right" }}
               >
-                0 đ
+                {priceSeat} đ
               </Typography>
             </Grid>
           </Grid>
@@ -39,17 +114,19 @@ const ThanhTien = () => {
         <Box className={classes.items}>
           <Grid container spacing={3}>
             <Grid item xs={6}>
-              <img
-                src={propCorn}
-                style={{ marginRight: "9px", width: "17px", height: "22px" }}
-              />
+              <Box onClick={() => setComboStatus(!comboStatus)}>
+                <img
+                  src={propCorn}
+                  style={{ marginRight: "9px", width: "17px", height: "22px" }}
+                />
+              </Box>
             </Grid>
             <Grid item xs={6}>
               <Typography
                 className={classes.soGhe}
                 style={{ textAlign: "right" }}
               >
-                0 đ
+                {priceCombo} đ
               </Typography>
             </Grid>
           </Grid>
@@ -59,6 +136,8 @@ const ThanhTien = () => {
             id="standard-basic"
             label="Email"
             InputProps={{ disableUnderline: true }}
+            disabled
+            defaultValue={email}
           />
         </Box>
         <Box className={classes.itemsTextField}>
@@ -66,6 +145,8 @@ const ThanhTien = () => {
             id="standard-basic"
             label="Số điện thoại"
             InputProps={{ disableUnderline: true }}
+            disabled
+            defaultValue={soDT}
           />
         </Box>
         <Box className={classes.itemsTextField}>
@@ -93,7 +174,12 @@ const ThanhTien = () => {
               nhắn ZMS (tin nhắn Zalo) và Email đã nhập.
             </Typography>
           </Box>
-          <Button variant="contained" className={classes.button}>
+          <Button
+            type="submit"
+            variant="contained"
+            className={classes.button}
+            onClick={() => handleDispatch()}
+          >
             Đặt vé
           </Button>
         </Box>

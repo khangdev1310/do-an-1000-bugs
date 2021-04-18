@@ -20,8 +20,9 @@ const PhongVe = (props) => {
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(5);
   const [open, setOpen] = useState(false);
-  let checkSeat = 3;
+  let checkSeat = 1;
   console.log(minutes);
+  const maLichChieu = props.match.params.id;
 
   useEffect(() => {
     dispatch({
@@ -31,16 +32,22 @@ const PhongVe = (props) => {
   }, []);
 
   useEffect(() => {
-    const token = setTimeout(countDownTime, 1);
-    if (seconds == 0 && minutes == 0) {
-      clearTimeout(token);
-      setOpen(true);
-    }
+    // const token = setTimeout(countDownTime, 1);
+    // if (seconds == 0 && minutes == 0) {
+    //   clearTimeout(token);
+    //   setOpen(true);
+    // }
 
     return () => {
-      clearTimeout(token);
+      // clearTimeout(token);
     };
   });
+
+  if (!infoPhongVe) {
+    return null;
+  }
+
+  const { thongTinPhim } = infoPhongVe;
 
   const handleOpen = () => {
     setOpen(true);
@@ -89,6 +96,7 @@ const PhongVe = (props) => {
   const renderSeat = () => {
     return infoPhongVe?.danhSachGhe.map((ghe, index) => {
       if ((index + 1) % 16 === 0) {
+        checkSeat = index + 2;
         return (
           <>
             <Seat gheInfo={ghe} />
@@ -97,7 +105,7 @@ const PhongVe = (props) => {
         );
       }
       if (index === checkSeat) {
-        checkSeat += 8;
+        checkSeat += 12;
         return (
           <>
             <Seat gheInfo={ghe} />
@@ -105,7 +113,7 @@ const PhongVe = (props) => {
           </>
         );
       } else if (index === checkSeat) {
-        checkSeat += 4;
+        checkSeat += 3;
         return (
           <>
             <Seat gheInfo={ghe} />
@@ -148,13 +156,14 @@ const PhongVe = (props) => {
                 <img src={popcorn} width="50px" height="50px" />
                 <Box style={{ marginLeft: "1rem" }}>
                   <Typography className={classes.titleTheater}>
-                    BHD Star -{" "}
-                    <Typography style={{ color: "#000", display: "inline" }}>
-                      Vincom 3/2
-                    </Typography>
+                    {thongTinPhim.tenCumRap} -{" "}
+                    <Typography
+                      style={{ color: "#000", display: "inline" }}
+                    ></Typography>
                   </Typography>
                   <Typography className={classes.titleTheaterSpan}>
-                    Ngày mai - 12:10 - RẠP 3
+                    Ngày mai {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}{" "}
+                    - {thongTinPhim.tenRap}
                   </Typography>
                 </Box>
               </Box>
@@ -186,8 +195,8 @@ const PhongVe = (props) => {
               </Box>
             </Box>
           </Grid>
-          <Grid container item xs={3} spacing={0} style={{ height: "100%" }}>
-            <ThanhTien />
+          <Grid contaziner item xs={3} spacing={0} style={{ height: "100%" }}>
+            <ThanhTien infoPhongVe={infoPhongVe} maLichChieu={maLichChieu} />
           </Grid>
         </Grid>
       </div>

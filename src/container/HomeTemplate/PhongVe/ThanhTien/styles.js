@@ -5,14 +5,17 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: "0 0 15px rgb(0 0 0 / 30%)",
     height: "100%",
     position: "fixed",
+    backgroundColor: "#FAFAFA",
   },
   contents: {
     padding: "1rem",
     overflowY: "scroll",
     height: "100%",
-    paddingBottom: "150px",
+    paddingBottom: "300px",
     paddingLeft: "5%",
     paddingRight: "5%",
+    backgroundColor: "#FAFAFA",
+    zIndex: "2",
   },
   items: {
     borderBottom: "1px solid #E9E9E9",

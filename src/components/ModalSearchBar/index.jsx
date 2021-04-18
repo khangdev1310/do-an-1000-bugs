@@ -11,8 +11,11 @@ import SearchIcon from "@material-ui/icons/Search";
 import cinemaIcon from "./../../assets/cinema.svg";
 import { FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA } from "../../container/HomeTemplate/Home/modules/redux/constants";
 import CloseIcon from "@material-ui/icons/Close";
+import { useHistory } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const TransitionsModal = () => {
+  const history = useHistory();
   const classes = useStyle();
   const dispatch = useDispatch();
   const isModal = useSelector((state) => state.MovieReducer.isModal);
@@ -65,6 +68,27 @@ const TransitionsModal = () => {
 
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleDirect = () => {
+    if (!localStorage.getItem("USER")) {
+      Swal.fire({
+        customClass: {
+          container: classes.sweetAlert,
+        },
+        icon: "warning",
+        title: `Vui lòng đăng nhập!`,
+        showCancelButton: true,
+        confirmButtonText: `Đăng nhập`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push(`/signin`);
+        }
+        return;
+      });
+    } else {
+      history.push(`/checkout/${maLichChieu.maLichChieu}`);
+    }
   };
 
   const renderTenPhim = () => {
@@ -452,6 +476,9 @@ const TransitionsModal = () => {
                   variant="contained"
                   className={classes.buttonBuyTicket}
                   disabled={!infoSearch.buttonBuyTicket}
+                  onClick={() => {
+                    handleDirect();
+                  }}
                 >
                   <img src={cinemaIcon} width="30px" />
                   <Typography
