@@ -24,7 +24,7 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   container: {
-    maxWidth: "1080px",
+    maxWidth: "1280px",
     paddingTop: "2rem",
     margin: "0 auto",
     color: "white",
@@ -34,16 +34,18 @@ export const useStyle = makeStyles((theme) => ({
     fontSize: 0,
     lineHeight: 0,
     position: "absolute",
-    top: "50%",
+    top: "46%",
     display: "block",
     width: "20px",
     height: "20px",
     padding: "0",
-    transform: "translate(-150%, -50%)",
+    transform: "translate(100%, -50%)",
     cursor: "pointer",
     border: "none",
     outline: "none",
     background: "transparent",
+    zIndex: "2",
+
     "&:before": {
       fontFamily: "slick",
       fontSize: "20px",
@@ -56,13 +58,13 @@ export const useStyle = makeStyles((theme) => ({
     fontSize: 0,
     lineHeight: 0,
     position: "absolute",
-    top: "50%",
+    top: "46%",
     right: "0",
     display: "block",
     width: "20px",
     height: "20px",
     padding: "0",
-    transform: "translate(150%, -50%)",
+    transform: "translate(-50%, -50%)",
     cursor: "pointer",
     border: "none",
     outline: "none",
@@ -79,5 +81,16 @@ export const useStyle = makeStyles((theme) => ({
     "&:hover": {
       color: "#CCB3DB !important",
     },
+  },
+
+  titleContainer: {
+    marginLeft: "0.3rem",
+  },
+
+  titleColor: {
+    width: "0.2rem",
+    height: "2rem",
+    backgroundColor: "plum",
+    marginRight: "0.5rem",
   },
 }));

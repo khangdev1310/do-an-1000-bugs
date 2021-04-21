@@ -8,6 +8,17 @@ import { Box, Typography } from "@material-ui/core";
 const BookedTicket = ({ thongTin, stt }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+  const optionsDate = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+  const optionsTime = {
+    hour12: false,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  };
 
   const handleOpen = () => {
     setOpen(true);
@@ -16,10 +27,14 @@ const BookedTicket = ({ thongTin, stt }) => {
   const handleClose = () => {
     setOpen(false);
   };
-  const date = new Date(thongTin.ngayDat).toLocaleDateString();
-  const time = new Date(thongTin.ngayDat).toLocaleTimeString("en-US", {
-    hour12: false,
-  });
+  const date = new Date(thongTin.ngayDat).toLocaleDateString(
+    "en-GB",
+    optionsDate
+  );
+  const time = new Date(thongTin.ngayDat).toLocaleTimeString(
+    "en-GB",
+    optionsTime
+  );
 
   const renderBookedTicket = () => {
     return thongTin.danhSachGhe.map((danhSach) => {

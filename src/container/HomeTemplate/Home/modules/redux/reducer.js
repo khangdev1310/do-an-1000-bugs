@@ -9,14 +9,16 @@ import {
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS,
   FETCH_THONG_TIN_LICH_CHIEU_SUCCESS,
+  FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_SUCCESS,
 } from "./constants";
 
 const initialState = {
   movieList: [],
-  loading: false,
+  isLoading: false,
   err: null,
   theater: [],
   cumRap: [],
+  thongTinCumRap: null,
   maHeThongRap: "BHDStar",
   isModal: false,
   movieDetail: null,
@@ -27,16 +29,16 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case FETCH_MOVIES_REQUESTS:
-      state.loading = true;
+      state.isLoading = true;
       return { ...state };
 
     case FETCH_MOVIES_SUCCESS:
-      state.loading = false;
+      state.isLoading = false;
       state.movieList = payload;
       return { ...state };
 
     case FETCH_MOVIES_FAILED:
-      state.loading = false;
+      state.isLoading = false;
       state.err = payload;
       return { ...state };
 
@@ -67,6 +69,10 @@ export default (state = initialState, { type, payload }) => {
 
     case FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS:
       state.movieDetailLichChieu = payload;
+      return { ...state };
+
+    case FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_SUCCESS:
+      state.thongTinCumRap = payload;
       return { ...state };
 
     default:

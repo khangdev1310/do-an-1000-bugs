@@ -3,9 +3,10 @@ import React, { useEffect } from "react";
 import { useStyles } from "./styles";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import GradeIcon from "@material-ui/icons/Grade";
 
 const MovieItem = ({ movie }) => {
-  const { hinhAnh, biDanh, tenPhim, maPhim } = movie;
+  const { hinhAnh, biDanh, tenPhim, maPhim, danhGia } = movie;
   const classes = useStyles();
 
   return (
@@ -15,29 +16,41 @@ const MovieItem = ({ movie }) => {
           src={hinhAnh}
           alt={biDanh}
           width="100%"
-          height="100%"
+          height="275px"
           style={{ borderRadius: "4px" }}
         />
-        <div className={classes.overlay}></div>
-      </Box>
-      <Box>
         <Box className={classes.titleContainer}>
-          <Typography className={classes.title}>
-            {tenPhim.length > 26 ? tenPhim.substring(0, 26) + "..." : tenPhim}
-          </Typography>
-          {/* <Typography>100 phút</Typography> */}
+          <Typography className={classes.title}>{tenPhim}</Typography>
         </Box>
-      </Box>
-      <Box className={classes.buyTicketButton}>
-        <Link to={`/movie/${movie?.biDanh}-${movie?.maPhim}`}>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.buyTicketButton}
+
+        <Box display="flex" className={classes.description}>
+          <Box
+            display="flex"
+            alignItems="center"
+            className={classes.spacingSpan}
           >
-            CHI TIẾT
-          </Button>
-        </Link>
+            <GradeIcon style={{ fontSize: "12px", color: "plum" }} />
+            <Typography style={{ fontSize: "14px" }}>{danhGia}</Typography>
+          </Box>
+          <Box className={classes.spacingSpan}>
+            <Typography style={{ fontSize: "14px" }}>HD</Typography>
+          </Box>
+          <Box className={classes.spacingSpan}>
+            <Typography style={{ fontSize: "14px" }}>16+</Typography>
+          </Box>
+        </Box>
+
+        <Box className={classes.buyTicketContainer}>
+          <Link
+            to={`/movie/${movie?.biDanh}-${movie?.maPhim}`}
+            style={{ textDecoration: "none" }}
+          >
+            <Button variant="contained" className={classes.buyTicketButton}>
+              MUA VÉ
+            </Button>
+          </Link>
+        </Box>
+        <div className={classes.overlay}></div>
       </Box>
     </div>
   );

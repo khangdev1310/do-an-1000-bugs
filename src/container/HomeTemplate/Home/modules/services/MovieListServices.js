@@ -22,6 +22,12 @@ export function fetchLayThongTinLichChieuHeThongRapApiAction(maHeThongRap) {
   });
 }
 
+export function fetchLayThongTinCumRapTheoHeThongApiAction(maHeThongRap) {
+  return axios({
+    url: `${DOMAIN}/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`,
+  });
+}
+
 export function fetchLayThongTinLichChieuPhimApiAction(maPhim) {
   return axios({
     url: `${DOMAIN}/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,

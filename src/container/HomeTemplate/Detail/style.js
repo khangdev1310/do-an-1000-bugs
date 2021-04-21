@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import bgImage from "./../../../assets/money-heist.jpg";
+import background1 from "./../../../assets/background1.jpeg";
 
 export const useStyle = makeStyles((theme) => ({
   root: {
@@ -43,6 +44,19 @@ export const useStyle = makeStyles((theme) => ({
     color: theme.palette.text.secondary,
     zIndex: "1",
   },
+
+  bgColor: {
+    maxWidth: "1280px",
+    margin: "0 auto",
+    top: "0%",
+    width: "100%",
+    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.9), rgba(231,71,243, 0.2)), url(${background1})`,
+    backgroundPosition: "50% 10%",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+  },
+
   container: {
     maxWidth: "870px",
     margin: "0 auto",
@@ -57,7 +71,7 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   userComment: {
-    backgroundColor: "rgba(36,36,36,0.7)",
+    backgroundColor: "#303030",
     padding: "1rem 1rem",
     borderRadius: "10px",
   },
@@ -102,7 +116,14 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   mainTitle: {
-    fontSize: "24px",
+    fontSize: "30px",
+    color: "#e88ef0",
+    fontWeight: "400",
+  },
+
+  fontForProduction: {
+    fontWeight: "500",
+    margin: "0.2rem 0",
   },
 
   reviewContainer: {

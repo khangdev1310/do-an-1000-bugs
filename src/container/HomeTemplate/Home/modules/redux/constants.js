@@ -25,6 +25,10 @@ export const CHANGE_MA_HE_THONG = "CHANGE_MA_HE_THONG";
 export const FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA =
   "fetch_thong_tin_lich_chieu_phim/FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA";
 
+//Lấy thông tin cụm rạp theo hệ thống rap (Quản lí lịch chiếu admin)
+export const FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_REQUESTS_SAGA =
+  "fetch_thong_tin_cum_rap/FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_REQUESTS_SAGA";
+
 export const FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_REQUESTS_SAGA =
   "fetch_thong_tin_lich_chieu_phim_tabs/FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_REQUESTS_SAGA";
 
@@ -64,3 +68,7 @@ export const FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS =
   "fetch_thong_tin_lich_chieu_phim_tabs/FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_SUCCESS";
 export const FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_FAILED =
   "fetch_thong_tin_lich_chieu_phim_tabs/FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_FAILED";
+
+//Lấy thông tin cụm rạp theo hệ thống rap lên reducer(Quản lí lịch chiếu admin)
+export const FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_SUCCESS =
+  "fetch_thong_tin_cum_rap/FETCH_THONG_TIN_CUM_RAP_THEO_HE_THONG_SUCCESS";

@@ -1,17 +1,20 @@
-import { Box, Typography } from "@material-ui/core";
-import React from "react";
+import { Box, Button, Typography } from "@material-ui/core";
+import React, { useState } from "react";
 import BookedTicket from "../../../../../components/BookedTicket";
 import { useStyles } from "./styles";
 
 const History = ({ userInfo }) => {
   const classes = useStyles();
+  let [limit, setLimit] = useState(5);
+  console.log(limit);
 
   if (!userInfo) {
     return null;
   }
 
   const renderBookedTicket = () => {
-    return userInfo.thongTinDatVe.map((thongTin, index) => {
+    let arrReverse = [...userInfo.thongTinDatVe].slice(0).reverse();
+    return arrReverse.slice(0, limit).map((thongTin, index) => {
       return <BookedTicket thongTin={thongTin} stt={index + 1} />;
     });
   };
@@ -41,6 +44,14 @@ const History = ({ userInfo }) => {
           </thead>
           <tbody>{renderBookedTicket()}</tbody>
         </table>
+        <Button
+          fullWidth
+          onClick={() => {
+            setLimit((limit += 5));
+          }}
+        >
+          Xem thêm
+        </Button>
       </div>
     </div>
   );

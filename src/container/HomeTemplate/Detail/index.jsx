@@ -95,10 +95,7 @@ const Detail = (props) => {
   return (
     <>
       <Box className={classes.bgColor}>
-        <div
-          className="background background-filter"
-          style={{ backgroundImage: `url(${movieDetail?.hinhAnh})` }}
-        >
+        <div className="background background-filter">
           <Box className="u-non-blurred">
             <Link to="/movie">
               <ArrowBackIosIcon className={classes.backIcon} />
@@ -120,11 +117,15 @@ const Detail = (props) => {
                       <Box display="flex" className={classes.describeTitle}>
                         <Grid container spacing={1}>
                           <Grid item xs={9}>
-                            <Box>
+                            <Box style={{ paddingRight: "1rem" }}>
                               <Typography className={classes.mainTitle}>
                                 {movieDetail?.tenPhim}
                               </Typography>
-                              <Typography>Thời lượng: 113 phút</Typography>
+                              <Typography
+                                style={{ margin: "0.1rem 0 0.8rem 0" }}
+                              >
+                                Thời lượng: 113 phút
+                              </Typography>
                               <Box
                                 display="flex"
                                 alignItems="flex-start"
@@ -144,9 +145,30 @@ const Detail = (props) => {
                                   <Typography>325</Typography>
                                 </Box>
                               </Box>
-                              <Typography>Nhà sản xuất: Gia An</Typography>
-                              <Typography>Quốc gia: Mỹ</Typography>
-                              <Typography>Thể loại</Typography>
+                              <Box style={{ margin: "1rem 0" }}>
+                                <Typography
+                                  className={classes.fontForProduction}
+                                >
+                                  Nhà sản xuất:{" "}
+                                  <Typography display="inline">
+                                    Mike Tyson
+                                  </Typography>
+                                </Typography>
+                                <Typography
+                                  className={classes.fontForProduction}
+                                >
+                                  Quốc gia:{" "}
+                                  <Typography display="inline">Mỹ</Typography>
+                                </Typography>
+                                <Typography
+                                  className={classes.fontForProduction}
+                                >
+                                  Thể loại:{" "}
+                                  <Typography display="inline">
+                                    Hành động
+                                  </Typography>
+                                </Typography>
+                              </Box>
                             </Box>
                           </Grid>
                           <Grid item xs={3}>
@@ -192,7 +214,9 @@ const Detail = (props) => {
                         </Grid>
                         <Box>
                           <Typography>&nbsp;</Typography>
-                          <Typography>Nội dung</Typography>
+                          <Typography className={classes.fontForProduction}>
+                            Nội dung
+                          </Typography>
                           <Typography>{movieDetail?.moTa}</Typography>
                         </Box>
                       </Box>

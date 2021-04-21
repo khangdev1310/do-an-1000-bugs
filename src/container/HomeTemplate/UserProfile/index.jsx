@@ -27,6 +27,7 @@ const UserProfile = (props) => {
   const dispatch = useDispatch();
   const [changeTabs, setChangeTabs] = useState("UserInfo");
   const userInfo = useSelector((state) => state.UserReducer.thongTinUser);
+  const isLoading = useSelector((state) => state.UserReducer.isLoading);
 
   useMemo(() => {
     if (!localStorage.getItem("USER")) {
@@ -49,78 +50,86 @@ const UserProfile = (props) => {
     };
   }, []);
 
+  // if (isLoading) {
+  //   return (
+  //     <div style={{ height: "100vh", position: "absolute", zIndex: "" }}></div>
+  //   );
+  // }
+
   if (!userInfo) {
     return null;
   }
 
   return (
-    <div className={classes.bgColor}>
-      <div className={classes.container}>
-        <div className={classes.root}>
-          <Grid container spacing={3}>
-            <Grid item xs={3}>
-              <Box className={classes.borderTest}>
-                {/*User avatar */}
-                <Box display="flex">
-                  <img src={avatar} className={classes.img} />
-                  <Box className={classes.nameAvatarBox}>
-                    <Typography className={classes.nameUser}>
-                      {userInfo.hoTen}
-                    </Typography>
+    <>
+      <div className={classes.bgColor}>
+        <div className={classes.container}>
+          <div className={classes.root}>
+            <Grid container spacing={3}>
+              <Grid item xs={3}>
+                <Box className={classes.borderTest}>
+                  {/*User avatar */}
+                  <Box display="flex">
+                    <img src={avatar} className={classes.img} />
+                    <Box className={classes.nameAvatarBox}>
+                      <Typography className={classes.nameUser}>
+                        {userInfo.hoTen}
+                      </Typography>
+                      <Box
+                        display="flex"
+                        alignItems="center"
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setChangeTabs("UserInfo")}
+                      >
+                        <EditIcon style={{ fontSize: "14px" }} />
+                        <Typography className={classes.editHoSo}>
+                          Sửa hồ sơ
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                  <hr />
+                  {/*Chức năng */}
+                  <Box className={classes.boxContainerMenuItems}>
                     <Box
-                      display="flex"
-                      alignItems="center"
-                      style={{ cursor: "pointer" }}
+                      className={classes.menuItems}
                       onClick={() => setChangeTabs("UserInfo")}
                     >
-                      <EditIcon style={{ fontSize: "14px" }} />
-                      <Typography className={classes.editHoSo}>
-                        Sửa hồ sơ
+                      <AccountCircleIcon
+                        className={classes.iconMenuItems}
+                        style={{ color: "#EE4D2D" }}
+                      />
+                      <Typography className={classes.menuItemsText}>
+                        Tài khoản của tôi
+                      </Typography>
+                    </Box>
+                    <Box
+                      className={classes.menuItems}
+                      onClick={() => setChangeTabs("History")}
+                    >
+                      <ReceiptIcon
+                        className={classes.iconMenuItems}
+                        style={{ color: "#44B5FF" }}
+                      />
+                      <Typography className={classes.menuItemsText}>
+                        Lịch sử đặt vé
                       </Typography>
                     </Box>
                   </Box>
                 </Box>
-                <hr />
-                {/*Chức năng */}
-                <Box className={classes.boxContainerMenuItems}>
-                  <Box
-                    className={classes.menuItems}
-                    onClick={() => setChangeTabs("UserInfo")}
-                  >
-                    <AccountCircleIcon
-                      className={classes.iconMenuItems}
-                      style={{ color: "#EE4D2D" }}
-                    />
-                    <Typography className={classes.menuItemsText}>
-                      Tài khoản của tôi
-                    </Typography>
-                  </Box>
-                  <Box
-                    className={classes.menuItems}
-                    onClick={() => setChangeTabs("History")}
-                  >
-                    <ReceiptIcon
-                      className={classes.iconMenuItems}
-                      style={{ color: "#44B5FF" }}
-                    />
-                    <Typography className={classes.menuItemsText}>
-                      Lịch sử đặt vé
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
+              </Grid>
+              <Grid item xs={9}>
+                {changeTabs === "UserInfo" ? (
+                  <UserInfo userInfo={userInfo} />
+                ) : (
+                  <History userInfo={userInfo} />
+                )}
+              </Grid>
             </Grid>
-            <Grid item xs={9}>
-              {changeTabs === "UserInfo" ? (
-                <UserInfo userInfo={userInfo} />
-              ) : (
-                <History userInfo={userInfo} />
-              )}
-            </Grid>
-          </Grid>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

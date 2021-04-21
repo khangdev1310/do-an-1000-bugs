@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -18,9 +18,15 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
-import DashboardIcon from "@material-ui/icons/Dashboard";
-import { mainListItems } from "./listItems";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
+import QueryBuilderIcon from "@material-ui/icons/QueryBuilder";
+import MovieIcon from "@material-ui/icons/Movie";
 import QuanLiUsers from "./QuanLiUsers";
+import QuanLiMovie from "./QuanLiMovie";
+import QuanLiLichChieu from "./QuanLiLichChieu";
 
 function Copyright() {
   return (
@@ -122,6 +128,49 @@ export default function Dashboard(props) {
       props.history.push("/admin");
     }
   }, []);
+
+  const mainListItems = (
+    <div>
+      <Box
+        onClick={() => {
+          setChangePage("quanLiNguoiDung");
+        }}
+      >
+        <ListItem button>
+          <ListItemIcon>
+            <AccountBoxIcon />
+          </ListItemIcon>
+          <ListItemText primary="Quản lí người dùng" />
+        </ListItem>
+      </Box>
+      <Box
+        onClick={() => {
+          setChangePage("quanLiPhim");
+        }}
+      >
+        <ListItem button>
+          <ListItemIcon>
+            <MovieIcon />
+          </ListItemIcon>
+          <ListItemText primary="Quản lí phim" />
+        </ListItem>
+      </Box>
+      <Box
+        onClick={() => {
+          setChangePage("quanLiLichChieu");
+        }}
+      >
+        <ListItem button>
+          <ListItemIcon>
+            <QueryBuilderIcon />
+          </ListItemIcon>
+          <ListItemText primary="Quản lí lịch chiếu" />
+        </ListItem>
+      </Box>
+    </div>
+  );
+
+  const [changePage, setChangePage] = useState("quanLiNguoiDung");
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -129,6 +178,16 @@ export default function Dashboard(props) {
   };
   const handleDrawerClose = () => {
     setOpen(false);
+  };
+
+  const renderComponent = () => {
+    if (changePage === "quanLiNguoiDung") {
+      return <QuanLiUsers />;
+    } else if (changePage === "quanLiPhim") {
+      return <QuanLiMovie />;
+    } else {
+      return <QuanLiLichChieu />;
+    }
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
@@ -191,7 +250,8 @@ export default function Dashboard(props) {
             {/* Recent Orders */}
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <QuanLiUsers />
+                {/* <QuanLiUsers /> */}
+                {renderComponent()}
               </Paper>
             </Grid>
           </Grid>

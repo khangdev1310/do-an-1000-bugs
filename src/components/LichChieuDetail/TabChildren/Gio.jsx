@@ -1,7 +1,9 @@
-import { Box } from "@material-ui/core";
+import { Box, Link } from "@material-ui/core";
 import React from "react";
+import { useHistory } from "react-router-dom";
 
 const Gio = ({ gioChieu }) => {
+  const history = useHistory();
   console.log(gioChieu);
 
   const renderGio = () => {
@@ -17,9 +19,7 @@ const Gio = ({ gioChieu }) => {
               borderRadius: "7px",
               display: "inline-block",
             }}
-            onClick={() => {
-              console.log(gios.maLichChieu);
-            }}
+            onClick={() => history.push(`/checkout/${gios.maLichChieu}`)}
           >
             {gios.ngayChieuGioChieu.slice(-8, -3)}
           </Box>

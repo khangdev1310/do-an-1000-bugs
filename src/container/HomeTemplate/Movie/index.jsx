@@ -25,42 +25,10 @@ import MovieItem from "../../../components/MovieItem";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box p={3}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
-
 const Movie = () => {
   const classes = useStyle();
   const ref = useRef({});
+  const ref1 = useRef({});
   const [value, setValue] = React.useState(0);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
 
@@ -70,6 +38,14 @@ const Movie = () => {
 
   const previous = () => {
     ref.current.slickPrev();
+  };
+
+  const next1 = () => {
+    ref1.current.slickNext();
+  };
+
+  const previous1 = () => {
+    ref1.current.slickPrev();
   };
 
   const ArrowLeft = (props) => (
@@ -89,9 +65,22 @@ const Movie = () => {
     </div>
   );
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  const ArrowLeft1 = (props) => (
+    <div className={`${classes.prevArrow}`} onClick={previous1}>
+      <ArrowBackIosIcon
+        style={{ color: "#544874", transform: "scale(1.5)" }}
+        className={classes.hoverSVG}
+      />
+    </div>
+  );
+  const ArrowRight1 = (props) => (
+    <div className={`${classes.nextArrow}`} onClick={next1}>
+      <ArrowForwardIosIcon
+        style={{ color: "#544874", transform: "scale(1.5)" }}
+        className={classes.hoverSVG}
+      />
+    </div>
+  );
 
   const renderMovieList = () => {
     return movieList.map((movie) => {
@@ -102,36 +91,50 @@ const Movie = () => {
   const settings = {
     className: "center",
     // centerMode: true,
-    infinite: true,
+    infinite: false,
     centerPadding: "60px",
-    slidesToShow: 4,
+    slidesToShow: 6,
     speed: 500,
     rows: 1,
-    slidesPerRow: 2,
+    slidesPerRow: 4,
+    slidesToScroll: 3,
+
     prevArrow: <ArrowLeft />,
     nextArrow: <ArrowRight />,
+  };
+
+  const settings1 = {
+    className: "center",
+    // centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
+    slidesToShow: 6,
+    speed: 500,
+    rows: 1,
+    slidesPerRow: 1,
+    slidesToScroll: 6,
+    prevArrow: <ArrowLeft1 />,
+    nextArrow: <ArrowRight1 />,
   };
 
   return (
     <div className={classes.root}>
       <Box className={classes.bgColor}>
         <Box className={classes.container}>
-          <AppBar position="static" className={classes.bgNavTab}>
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              aria-label="simple tabs example"
-              centered
+          <Box className={classes.titleContainer} display="flex">
+            <div className={classes.titleColor}></div>
+            <Typography
+              style={{ fontWeight: "500", fontSize: "20px", color: "#FAFAFA" }}
             >
-              <Tab label="Đang chiếu" {...a11yProps(0)} />
-              <Tab label="Sắp chiếu" {...a11yProps(1)} />
-            </Tabs>
-          </AppBar>
-          <TabPanel value={value} index={0}>
-            <Slider {...settings} ref={ref}>
-              {renderMovieList()}
-            </Slider>
-          </TabPanel>
+              Phim đang chiếu
+            </Typography>
+          </Box>
+          <Slider {...settings} ref={ref}>
+            {renderMovieList()}
+          </Slider>
+          {/* <Slider {...settings1} ref={ref1}>
+            {renderMovieList()}
+          </Slider> */}
         </Box>
       </Box>
     </div>

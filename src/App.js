@@ -18,6 +18,8 @@ import React, { useEffect } from "react";
 import Detail from "./container/HomeTemplate/Detail";
 import history from "./history";
 import { Router } from "react-router-dom";
+import { MuiPickersUtilsProvider } from "@material-ui/pickers";
+import DateFnsUtils from "@date-io/date-fns";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,17 +54,19 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router history={history}>
-        <Switch>
-          {showLayoutHome(routesHome)}
-          <Route path="/signin" component={SignIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route exact path="/checkout/:id" component={PhongVe} />
-          <Route exact path="/admin" component={SignInAdmin} />
-          <Route exact path="/admin/dashboard" component={Dashboard} />
-          <Route path="*" component={PageNotFound} />
-        </Switch>
-      </Router>
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Router history={history}>
+          <Switch>
+            {showLayoutHome(routesHome)}
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+            <Route exact path="/checkout/:id" component={PhongVe} />
+            <Route exact path="/admin" component={SignInAdmin} />
+            <Route exact path="/admin/dashboard" component={Dashboard} />
+            <Route path="*" component={PageNotFound} />
+          </Switch>
+        </Router>
+      </MuiPickersUtilsProvider>
     </div>
   );
 };
