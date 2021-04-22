@@ -38,6 +38,10 @@ export const useStyles = makeStyles((theme) => ({
     fontSize: "16px",
     padding: "0rem 0rem 1.5rem 0",
     color: "#DF42EE",
+
+    [theme.breakpoints.down("sm")]: {
+      padding: "0rem 0rem 0.5rem 0",
+    },
   },
 
   subTitle: {
@@ -58,7 +62,7 @@ export const useStyles = makeStyles((theme) => ({
   },
 
   responsive: {
-    [theme.breakpoints.down("md")]: {
+    [theme.breakpoints.down("sm")]: {
       marginTop: "1rem",
       width: "100%",
       textAlign: "center",

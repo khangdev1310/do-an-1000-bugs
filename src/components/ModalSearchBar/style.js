@@ -66,6 +66,14 @@ export const useStyle = makeStyles((theme) => ({
   container: {
     marginTop: "-5rem",
     maxWidth: "45%",
+
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "60%",
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      maxWidth: "80%",
+    },
   },
   buttonBuyTicket: {
     marginTop: "1.5rem",

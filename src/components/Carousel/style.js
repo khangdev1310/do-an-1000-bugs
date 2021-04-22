@@ -123,7 +123,12 @@ export const useStyles = makeStyles((theme) => ({
       },
 
       ["@media (max-width:470px)"]: {
-        width: "200px",
+        width: "250px",
+        height: "330px",
+      },
+
+      ["@media (max-width:400px)"]: {
+        width: "210px",
         height: "300px",
       },
     },

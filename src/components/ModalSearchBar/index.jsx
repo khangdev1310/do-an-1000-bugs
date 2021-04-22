@@ -456,19 +456,49 @@ const TransitionsModal = () => {
               </Typography>
               <div className={classes.root}>
                 <Grid container spacing={1}>
-                  <Grid item md={12} className={classes.gridItems}>
+                  <Grid
+                    item
+                    md={12}
+                    sm={12}
+                    xs={12}
+                    className={classes.gridItems}
+                  >
                     {renderTenPhim()}
                   </Grid>
-                  <Grid item md={12} className={classes.gridItems}>
+                  <Grid
+                    item
+                    md={12}
+                    sm={12}
+                    xs={12}
+                    className={classes.gridItems}
+                  >
                     {renderCumRap()}
                   </Grid>
-                  <Grid item md={12} className={classes.gridItems}>
+                  <Grid
+                    item
+                    md={12}
+                    sm={12}
+                    xs={12}
+                    className={classes.gridItems}
+                  >
                     {renderRap()}
                   </Grid>
-                  <Grid item md={8} className={classes.gridItems}>
+                  <Grid
+                    item
+                    md={8}
+                    sm={6}
+                    xs={12}
+                    className={classes.gridItems}
+                  >
                     {renderNgayChieu()}
                   </Grid>
-                  <Grid item md={4} className={classes.gridItems}>
+                  <Grid
+                    item
+                    md={4}
+                    sm={6}
+                    xs={12}
+                    className={classes.gridItems}
+                  >
                     {renderGioChieu()}
                   </Grid>
                 </Grid>

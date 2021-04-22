@@ -131,27 +131,45 @@ const Movie = () => {
   };
 
   const settings1 = {
-    // className: "center",
-    // centerMode: true,
-    // infinite: false,
-    // centerPadding: "60px",
-    // slidesToShow: 6,
-    // speed: 500,
-    // rows: 1,
-    // slidesPerRow: 1,
-    // slidesToScroll: 6,
     className: "center",
     centerMode: true,
     infinite: true,
     swipeToSlide: true,
     centerPadding: "60px",
     slidesToShow: 6,
-    speed: 2000,
-    autoplay: true,
-    autoplaySpeed: 2000,
+    speed: 1000,
+    // autoplay: true,
+    // autoplaySpeed: 2000,
     slidesToScroll: 3,
     prevArrow: <ArrowLeft1 />,
     nextArrow: <ArrowRight1 />,
+    responsive: [
+      {
+        breakpoint: 1025,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          centerMode: false,
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          centerMode: false,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings2 = {
@@ -161,10 +179,35 @@ const Movie = () => {
     slidesToShow: 6,
     speed: 500,
     slidesToScroll: 3,
-    // autoplay: true,
-    // autoplaySpeed: 1000,
     prevArrow: <ArrowLeft2 />,
     nextArrow: <ArrowRight2 />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          centerMode: false,
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          centerMode: false,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   const settings3 = {
@@ -173,11 +216,36 @@ const Movie = () => {
     centerPadding: "60px",
     slidesToShow: 6,
     speed: 500,
-    // autoplay: true,
-    // autoplaySpeed: 1000,
     slidesToScroll: 3,
     prevArrow: <ArrowLeft3 />,
     nextArrow: <ArrowRight3 />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          centerMode: false,
+          slidesToShow: 3,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          centerMode: false,
+          slidesToShow: 2,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
 
   return (

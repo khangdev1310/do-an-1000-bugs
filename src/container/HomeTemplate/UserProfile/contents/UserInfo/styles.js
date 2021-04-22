@@ -11,6 +11,9 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-end",
+    [theme.breakpoints.down("xs")]: {
+      justifyContent: "flex-start",
+    },
   },
 
   titleText: {
@@ -25,6 +28,10 @@ export const useStyles = makeStyles((theme) => ({
   textFieldMain: {
     color: "rgba(85,85,85,.8)",
     fontSize: "14px",
+
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "12px",
+    },
   },
 
   inputContainer: {

@@ -35,3 +35,51 @@
   font-family: "Material Icons";
   content: "arrow_forward_ios";
 }
+
+@media only screen and (max-width: 960px) {
+  .slider-left {
+    top: 10%;
+    right: 112% !important;
+  }
+
+  .slider-right {
+    top: 10%;
+    left: 110% !important;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .slider-left {
+    top: 10%;
+    right: 110% !important;
+  }
+
+  .slider-right {
+    top: 10%;
+    left: 110% !important;
+  }
+
+  .slider-left div i,
+  .slider-right div i {
+    font-size: 2rem;
+    color: rgb(84, 72, 116);
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .slider-left {
+    top: 10%;
+    right: 109% !important;
+  }
+
+  .slider-right {
+    top: 10%;
+    left: 108% !important;
+  }
+
+  .slider-left div i,
+  .slider-right div i {
+    font-size: 1.5rem;
+    color: rgb(84, 72, 116);
+  }
+}

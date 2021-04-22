@@ -4,6 +4,7 @@ import background1 from "./../../../assets/background1.jpeg";
 export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    margin: "2rem 1rem",
     // "& .MuiInputLabel-outlined": {
     //   color: "violet",
     // },
@@ -47,6 +48,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
+    paddingBottom: "2rem",
   },
 
   container: {

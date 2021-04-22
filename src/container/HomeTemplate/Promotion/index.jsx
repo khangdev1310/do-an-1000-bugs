@@ -27,27 +27,27 @@ const Promotion = () => {
         <Box>
           <Typography className={classes.titleNews}>Tin nổi bật</Typography>
         </Box>
-        <Box>
-          <Grid container spacing={1}>
-            <Grid container item xs={12} spacing={0}>
+        <Box style={{ margin: "0 1rem" }}>
+          <Grid container spacing={0}>
+            <Grid container item xs={12}>
               <Typography>
                 <NavigateNextIcon />
                 Khai trương rạp xịn giá ngon, chuẩn xì-tai Sài Gòn
               </Typography>
             </Grid>
-            <Grid container item xs={12} spacing={0}>
+            <Grid container item xs={12}>
               <Typography>
                 <NavigateNextIcon />
                 BHD 59K/VÉ CẢ TUẦN !!!
               </Typography>
             </Grid>
-            <Grid container item xs={12} spacing={0}>
+            <Grid container item xs={12}>
               <Typography>
                 <NavigateNextIcon />
                 NGÔ THANH VÂN CHÍNH THỨC KHỞI ĐỘNG CUỘC THI THIẾT KẾ
               </Typography>
             </Grid>
-            <Grid container item xs={12} spacing={0}>
+            <Grid container item xs={12}>
               <Typography>
                 <NavigateNextIcon />
                 TIX 1K/VÉ NGẠI CHI GIÁ VÉ

@@ -15,4 +15,24 @@ export const useStyles = makeStyles((theme) => ({
   titleSpanText: {
     fontSize: "14px",
   },
+
+  thead: {
+    width: "100%",
+    display: "table",
+    backgroundColor: "plum",
+    // [theme.breakpoints.down("xs")]: {
+    //   width: "210%",
+    //   display: "table",
+    // },
+  },
+
+  tbody: {
+    display: "table",
+    width: "100%",
+    textAlign: "center",
+  },
+
+  table: {
+    width: "100%",
+  },
 }));

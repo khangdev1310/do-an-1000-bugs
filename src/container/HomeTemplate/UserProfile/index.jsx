@@ -66,7 +66,7 @@ const UserProfile = (props) => {
         <div className={classes.container}>
           <div className={classes.root}>
             <Grid container spacing={3}>
-              <Grid item xs={3}>
+              <Grid item md={3} sm={12} xs={12}>
                 <Box className={classes.borderTest}>
                   {/*User avatar */}
                   <Box display="flex">
@@ -118,7 +118,7 @@ const UserProfile = (props) => {
                   </Box>
                 </Box>
               </Grid>
-              <Grid item xs={9}>
+              <Grid item md={9} sm={12} xs={12}>
                 {changeTabs === "UserInfo" ? (
                   <UserInfo userInfo={userInfo} />
                 ) : (

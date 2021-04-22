@@ -33,53 +33,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundAttachment: "fixed",
     padding: "0.2rem 0",
   },
-  title: {
-    display: "none",
-    [theme.breakpoints.up("sm")]: {
-      display: "block",
-    },
-  },
 
-  hideSignMobile: {
-    // [theme.breakpoints.down("sm")]: {
-    //   display: "none",
-    // },
-
-    ["@media (max-width:992px)"]: {
-      display: "none",
-    },
-  },
-
-  navContainer: {
-    alignItems: "center",
-    justifyContent: "space-between",
-    flexDirection: "row",
-    minWidth: "500px",
-  },
-  search: {
-    position: "relative",
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
-    "&:hover": {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
-    },
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up("sm")]: {
-      marginLeft: theme.spacing(3),
-      width: "auto",
-    },
-  },
-  searchIcon: {
-    padding: theme.spacing(0, 2),
-    height: "100%",
-    position: "absolute",
-    pointerEvents: "none",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
   searchContainer: {
     display: "flex",
     alignItems: "center",
@@ -87,34 +41,116 @@ export const useStyles = makeStyles((theme) => ({
     width: "50px",
     height: "50px",
     borderRadius: "100%",
+    border: "1px solid transparent",
     backgroundImage: `linear-gradient(to left bottom, rgba(231,71,243, 0.9), rgba(231,71,243, 0.9))`,
     webkitBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
   },
-  inputRoot: {
-    color: "inherit",
-  },
-  inputInput: {
-    padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
-    paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
-    transition: theme.transitions.create("width"),
-    width: "100%",
-    [theme.breakpoints.up("md")]: {
-      width: "20ch",
-    },
-  },
-  sectionDesktop: {
-    display: "none",
-    [theme.breakpoints.up("md")]: {
-      display: "flex",
-    },
-  },
-  sectionMobile: {
+
+  navItems: {
     display: "flex",
-    [theme.breakpoints.up("md")]: {
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+  },
+
+  hideOnMobile: {
+    display: "block",
+    [theme.breakpoints.down("xs")]: {
       display: "none",
     },
+  },
+
+  hideOnDesktop: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+      transform: "translate(-150%, 0%)",
+    },
+  },
+
+  root: {
+    flexGrow: 1,
+  },
+  appBar: {
+    top: "auto",
+    bottom: 0,
+    backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 1), rgba(9,1,65, 1))`,
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+    padding: "0.2rem 0",
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: "4rem",
+    // display: "block",
+    [theme.breakpoints.down("xs")]: {
+      visibility: "hidden",
+    },
+  },
+
+  wrapper: {
+    position: "fixed",
+    top: "0",
+    right: "0",
+    width: "100%",
+    height: "100%",
+    overflowX: "scroll",
+    transition: "all 0.5s ease",
+    color: "rgb(236,70,248)",
+    backgroundColor: "rgba(0,0,0,0.4)",
+    zIndex: "1199",
+  },
+
+  navForMobile: {
+    position: "fixed",
+    top: "0",
+    right: "0",
+    width: "20rem",
+    height: "100%",
+    // boxShadow: "2px 2px 50px rgb(204, 204, 204)",
+    overflowX: "scroll",
+    transform: "translateX(100%)",
+    transition: "all 0.5s ease",
+    color: "rgb(236,70,248)",
+    backgroundColor: "rgba(37,36,39,0.95)",
+
+    zIndex: "1200 !important",
+  },
+
+  activeNavForMobile: {
+    transform: "translateX(0%)",
+    opacity: "1",
+  },
+
+  container: {
+    margin: "1rem",
+  },
+
+  titleForMobile: {
+    marginLeft: "1rem",
+    fontSize: "18px",
+    fontWeight: "300",
+    color: "#FAFAFA",
+  },
+
+  searchContainerMobile: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "35px",
+    height: "35px",
+    borderRadius: "100%",
+    backgroundImage: `linear-gradient(to left bottom, rgba(231,71,243, 0.9), rgba(231,71,243, 0.9))`,
+    webkitBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+    mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+    boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
   },
 }));

@@ -1,4 +1,12 @@
-import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Grid,
+  InputAdornment,
+  OutlinedInput,
+  TextField,
+  Typography,
+} from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useStyles } from "./styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +15,8 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { DOMAIN, STATUS_CODE } from "../../../../../utils/common/constants";
 import { CLEAN_UP_USER_INFO } from "../../../Signin/modules/redux/constants";
+import IconButton from "material-ui/IconButton";
+import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const UserInfo = ({ userInfo }) => {
   console.log(userInfo);
@@ -80,12 +90,12 @@ const UserInfo = ({ userInfo }) => {
       <hr />
       <Box>
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12} className={classes.centerAll}>
             <Typography className={classes.textFieldMain}>
               Tên đăng nhập
             </Typography>
           </Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <TextField
               disabled
               size="small"
@@ -101,16 +111,17 @@ const UserInfo = ({ userInfo }) => {
         </Grid>
 
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12} className={classes.centerAll}>
             <Typography className={classes.textFieldMain}>Mật khẩu</Typography>
           </Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <TextField
               size="small"
               id="outlined-basic"
               variant="outlined"
               fullWidth
               name="matKhau"
+              type="password"
               defaultValue={userInfo && userInfo.matKhau}
               onChange={(e) => {
                 handleChange(e);
@@ -120,10 +131,10 @@ const UserInfo = ({ userInfo }) => {
         </Grid>
 
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12} className={classes.centerAll}>
             <Typography className={classes.textFieldMain}>Tên</Typography>
           </Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <TextField
               size="small"
               id="outlined-basic"
@@ -139,10 +150,10 @@ const UserInfo = ({ userInfo }) => {
         </Grid>
 
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12} className={classes.centerAll}>
             <Typography className={classes.textFieldMain}>Email</Typography>
           </Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <TextField
               size="small"
               id="outlined-basic"
@@ -158,12 +169,12 @@ const UserInfo = ({ userInfo }) => {
         </Grid>
 
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12} className={classes.centerAll}>
             <Typography className={classes.textFieldMain}>
               Số Điện Thoại
             </Typography>
           </Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <TextField
               size="small"
               id="outlined-basic"
@@ -180,8 +191,8 @@ const UserInfo = ({ userInfo }) => {
         </Grid>
 
         <Grid container spacing={2} className={classes.inputContainer}>
-          <Grid item xs={2}></Grid>
-          <Grid item xs={9} className={classes.centerAll}>
+          <Grid item md={2} sm={3} xs={12}></Grid>
+          <Grid item md={9} sm={8} xs={12} className={classes.centerAll}>
             <Button
               variant="contained"
               color="secondary"

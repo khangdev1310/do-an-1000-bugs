@@ -12,7 +12,7 @@ const Footer = () => {
     <div className={`${classes.root} ${classes.bgColor}`}>
       <Grid container className={classes.container}>
         <Grid container item xs={12}>
-          <Grid item md={3} sm={4} xs={12}>
+          <Grid item md={3} sm={4} xs={12} className={classes.responsive}>
             <Typography className={classes.title}>Cinema Việt Nam</Typography>
             <Box className={classes.subTitle}>
               <Typography variant="subtitle1" component="p">
@@ -34,7 +34,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid md={3} item sm={4} xs={12}>
+          <Grid md={3} item sm={4} xs={12} className={classes.responsive}>
             <Typography className={classes.title}>
               Điều khoản sử dụng
             </Typography>
@@ -54,7 +54,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          <Grid md={3} item sm={4} xs={12}>
+          <Grid md={3} item sm={4} xs={12} className={classes.responsive}>
             <Typography className={classes.title}>
               Kết nối với chúng tôi
             </Typography>

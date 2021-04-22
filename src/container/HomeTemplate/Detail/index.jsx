@@ -112,9 +112,6 @@ const Detail = (props) => {
       <Box className={classes.bgColor}>
         <div className="background background-filter">
           <Box className="u-non-blurred">
-            <Link to="/movie">
-              <ArrowBackIosIcon className={classes.backIcon} />
-            </Link>
             <Box className={`${classes.container}`}>
               <div className={classes.root}>
                 <Grid container spacing={1}>

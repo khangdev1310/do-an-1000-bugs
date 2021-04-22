@@ -2,6 +2,13 @@ import { Box, Button, Typography } from "@material-ui/core";
 import React, { useState } from "react";
 import BookedTicket from "../../../../../components/BookedTicket";
 import { useStyles } from "./styles";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import Paper from "@material-ui/core/Paper";
 
 const History = ({ userInfo }) => {
   const classes = useStyles();
@@ -19,6 +26,8 @@ const History = ({ userInfo }) => {
     });
   };
 
+  const rows = renderBookedTicket();
+
   return (
     <div>
       <div className={classes.borderTest}>
@@ -29,11 +38,19 @@ const History = ({ userInfo }) => {
           </Typography>
         </Box>
         <hr />
-        <table
-          style={{ width: "100%", borderCollapse: "collapse" }}
+        {/* <table
+          style={{
+            display: "block",
+            overflowX: "auto",
+            whiteSpace: "nowrap",
+            margin: "0 auto",
+            width: "100%",
+            border: "3px solid plum",
+            borderRadius: "8px",
+          }}
           className="table"
         >
-          <thead class="thead-dark">
+          <thead className={`${classes.thead}`}>
             <tr>
               <th scope="col">STT</th>
               <th scope="col">Tên phim</th>
@@ -42,8 +59,22 @@ const History = ({ userInfo }) => {
               <th scope="col">Giá vé</th>
             </tr>
           </thead>
-          <tbody>{renderBookedTicket()}</tbody>
-        </table>
+          <tbody className={classes.tbody}>{renderBookedTicket()}</tbody>
+        </table> */}
+        <TableContainer component={Paper}>
+          <Table className={classes.table} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>STT</TableCell>
+                <TableCell>Tên phim</TableCell>
+                <TableCell>Số ghế</TableCell>
+                <TableCell>Ngày giờ đặt</TableCell>
+                <TableCell>Giá vé</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>{renderBookedTicket()}</TableBody>
+          </Table>
+        </TableContainer>
         <Button
           fullWidth
           onClick={() => {

@@ -15,6 +15,21 @@ export const useStyle = makeStyles((theme) => ({
     height: "350px",
     borderRadius: "15px",
     cursor: "pointer",
+
+    [theme.breakpoints.down("sm")]: {
+      width: "400px",
+      height: "250px",
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      width: "300px",
+      height: "200px",
+    },
+
+    ["@media (max-width:400px)"]: {
+      width: "200px",
+      height: "170px",
+    },
   },
   bgColor: {
     maxWidth: "1280px",
@@ -29,9 +44,8 @@ export const useStyle = makeStyles((theme) => ({
   },
   container: {
     margin: "0 auto",
-    padding: "7rem 0",
+    padding: "3rem 0",
     maxWidth: "1280px",
-    minHeight: "574px",
   },
   containerNews: {
     margin: "0 auto",
