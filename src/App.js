@@ -20,6 +20,7 @@ import history from "./history";
 import { Router } from "react-router-dom";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
+import ScrollToTop from "./utils/common/ScrollToTop";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ const App = () => {
     <div className="App">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Router history={history}>
+          <ScrollToTop />
           <Switch>
             {showLayoutHome(routesHome)}
             <Route path="/signin" component={SignIn} />

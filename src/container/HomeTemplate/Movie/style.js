@@ -84,7 +84,7 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   titleContainer: {
-    marginLeft: "0.3rem",
+    marginLeft: "0rem",
   },
 
   titleColor: {

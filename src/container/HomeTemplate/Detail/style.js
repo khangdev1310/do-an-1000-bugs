@@ -38,12 +38,79 @@ export const useStyle = makeStyles((theme) => ({
     },
   },
 
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   paper: {
+    position: "relative",
     padding: theme.spacing(1),
     textAlign: "center",
-    color: theme.palette.text.secondary,
-    zIndex: "1",
+    // backgroundColor: "rgba(37,36,39,0.4)",
+    color: "#FAFAFA",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(3, 3, 3),
+    width: "75%",
+    height: "75%",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
   },
+
+  exitIcon: {
+    position: "absolute",
+    top: "0%",
+    right: "0%",
+    cursor: "pointer",
+  },
+
+  containerImage: {
+    position: "relative",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    backgroundColor: "rgba(236,70,248,0.9)",
+
+    "& img": {
+      transition: "all 0.2s ease-in-out",
+    },
+
+    "&:hover": {
+      "& img": {
+        transition: "all 0.3s ease-in-out",
+        boxShadow: "0px 0px 10px 1px rgba(236,70,248,0.61)",
+      },
+    },
+  },
+
+  stackContainer: {
+    position: "absolute",
+    bottom: "-5%",
+    left: "0%",
+    backgroundColor: "rgba(236,70,248,0.9)",
+    transition: "all 1s linear",
+    width: "100%",
+    margin: "initial",
+    borderRadius: "0 0 10px 10px",
+  },
+
+  stackItem: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "column",
+    color: "#FAFAFA",
+    fontSize: "10px !important",
+  },
+
+  // paper: {
+  //   padding: theme.spacing(1),
+  //   textAlign: "center",
+  //   color: theme.palette.text.secondary,
+  //   zIndex: "1",
+  // },
 
   bgColor: {
     maxWidth: "1280px",

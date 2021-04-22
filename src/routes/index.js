@@ -18,11 +18,6 @@ export const routesHome = [
   },
   {
     exact: false,
-    path: "/movie",
-    component: Movie,
-  },
-  {
-    exact: false,
     path: "/lich-chieu",
     component: LichChieu,
   },

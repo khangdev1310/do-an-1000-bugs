@@ -30,6 +30,13 @@ import {
   FETCH_THONG_TIN_PHIM_REQUESTS_SAGA,
 } from "./modules/redux/constants";
 import TabContainer from "../../../components/LichChieuDetail/TabContainer";
+import { makeStyles } from "@material-ui/core/styles";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
+import Fade from "@material-ui/core/Fade";
+import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
+import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -69,9 +76,17 @@ const Detail = (props) => {
   const movieDetail = useSelector(
     (state) => state.MovieDetailReducer.movieDetail
   );
+  const [value, setValue] = React.useState(0);
+  const [open, setOpen] = React.useState(false);
   const dispatch = useDispatch();
 
-  const [value, setValue] = React.useState(0);
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -105,12 +120,62 @@ const Detail = (props) => {
                 <Grid container spacing={1}>
                   <Grid container item xs={12} spacing={3}>
                     <Grid item xs={4}>
-                      <Box>
+                      <Box className={classes.containerImage}>
                         <img
                           src={movieDetail?.hinhAnh}
-                          width="90%"
+                          width="100%"
                           style={{ borderRadius: "10px" }}
                         />
+                        <Grid
+                          container
+                          spacing={3}
+                          className={classes.stackContainer}
+                        >
+                          <Grid item xs={6} className={classes.stackItem}>
+                            <Box
+                              display="flex"
+                              alignItems="center"
+                              flexDirection="column"
+                              onClick={handleOpen}
+                              style={{ cursor: "pointer" }}
+                            >
+                              <PlayCircleFilledIcon
+                                style={{ color: "#FAFAFA" }}
+                              />
+                              <Typography
+                                component="p"
+                                style={{
+                                  fontWeight: "300",
+                                  fontSize: "14px",
+                                  marginTop: "5px",
+                                  color: "#FAFAFA",
+                                }}
+                              >
+                                Chi tiết
+                              </Typography>
+                            </Box>
+                          </Grid>
+                          <Grid item xs={6} className={classes.stackItem}>
+                            <Box
+                              display="flex"
+                              alignItems="center"
+                              flexDirection="column"
+                            >
+                              <ErrorOutlineIcon style={{ color: "#FAFAFA" }} />
+                              <Typography
+                                component="p"
+                                style={{
+                                  fontWeight: "300",
+                                  fontSize: "14px",
+                                  marginTop: "5px",
+                                  color: "#FAFAFA",
+                                }}
+                              >
+                                Chi tiết
+                              </Typography>
+                            </Box>
+                          </Grid>
+                        </Grid>
                       </Box>
                     </Grid>
                     <Grid item xs={8}>
@@ -625,6 +690,40 @@ const Detail = (props) => {
             </Box>
           </Box>
         </div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <div className={classes.exitIcon} onClick={handleClose}>
+                <HighlightOffIcon
+                  style={{
+                    color: "#FAFAFA",
+                    fontSize: "3rem",
+                  }}
+                />
+              </div>
+              <iframe
+                width="100%"
+                height="100%"
+                src={movieDetail?.trailer}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              ></iframe>
+            </div>
+          </Fade>
+        </Modal>
       </Box>
     </>
   );

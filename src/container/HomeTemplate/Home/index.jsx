@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import Carousel from "../../../components/Carousel";
 import { useDispatch, useSelector } from "react-redux";
+import Movie from "../Movie";
 
 const Home = () => {
   const movieList = useSelector((state) => state.MovieReducer.movieList);
@@ -12,6 +13,7 @@ const Home = () => {
   return (
     <div>
       <Carousel movieList={arrRandom} />
+      <Movie />
     </div>
   );
 };

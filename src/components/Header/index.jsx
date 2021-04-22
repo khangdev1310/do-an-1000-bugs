@@ -356,22 +356,6 @@ export default function Navbar() {
                   justifyContent: "center",
                 }}
               >
-                <li className="nav-item active">
-                  <Box style={{ margin: "0 1rem" }}>
-                    <Link
-                      to="/movie"
-                      style={{
-                        textDecoration: "none",
-                        color: "#FAFAFA",
-                      }}
-                    >
-                      <Box display="flex" justifyContent="center">
-                        <img src={multimedia} width="30px" />
-                      </Box>
-                      <Typography>Phim</Typography>
-                    </Link>
-                  </Box>
-                </li>
                 <li className="nav-item">
                   <Box style={{ margin: "0 1rem" }}>
                     <Link
