@@ -7,7 +7,7 @@ const LayoutLichChieu = () => {
       style={{
         backgroundColor: "rgba(255,255,255,1)",
         border: "1px solid red",
-        width: "940px",
+        width: "960px",
         margin: "2rem 1rem",
       }}
     >

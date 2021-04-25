@@ -58,7 +58,7 @@ const useStyles = makeStyles((theme) => ({
     },
     "& .MuiTabs-flexContainerVertical": {
       maxHeight: "500px",
-      overflowY: "scroll",
+      overflowY: "overlay",
     },
   },
   tabs: {
@@ -134,7 +134,9 @@ export default function TabChild() {
       >
         {renderCumRaps()}
       </Tabs>
-      <div style={{ maxHeight: "500px", overflowY: "auto" }}>
+      <div
+        style={{ maxHeight: "500px", overflowY: "auto", overflowX: "hidden" }}
+      >
         {renderDanhSachPhim()}
       </div>
     </div>
