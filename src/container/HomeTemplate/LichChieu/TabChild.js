@@ -115,11 +115,9 @@ export default function TabChild() {
   const renderDanhSachPhim = () => {
     return cumRaps[0]?.lstCumRap.map((phims, index) => {
       return (
-        <div key={index} style={{ maxHeight: "500px", overflowY: "scroll" }}>
-          <TabPanel value={value} index={index}>
-            <ChildTabs phims={phims} />
-          </TabPanel>
-        </div>
+        <TabPanel value={value} index={index} key={index}>
+          <ChildTabs phims={phims} />
+        </TabPanel>
       );
     });
   };
@@ -136,7 +134,9 @@ export default function TabChild() {
       >
         {renderCumRaps()}
       </Tabs>
-      {renderDanhSachPhim()}
+      <div style={{ maxHeight: "500px", overflowY: "auto" }}>
+        {renderDanhSachPhim()}
+      </div>
     </div>
   );
 }
