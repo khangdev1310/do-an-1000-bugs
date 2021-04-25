@@ -1,5 +1,6 @@
 import { Box, Typography } from "@material-ui/core";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import Gio from "./Gio";
 
 const Rap = ({ rapChieu, gioChieu }) => {
@@ -11,7 +12,7 @@ const Rap = ({ rapChieu, gioChieu }) => {
       return gioChieu?.map((gio, indexGioChieu) => {
         if (indexRapChieu === indexGioChieu) {
           return (
-            <Box>
+            <Box key={uuidv4()}>
               <Typography>{rapChieu[indexRapChieu].tenCumRap}</Typography>
               <Gio gioChieu={gioChieu[indexRapChieu]} />
             </Box>

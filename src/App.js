@@ -21,6 +21,7 @@ import { Router } from "react-router-dom";
 import { MuiPickersUtilsProvider } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 import ScrollToTop from "./utils/common/ScrollToTop";
+import { v4 as uuidv4 } from "uuid";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ const App = () => {
             exact
             path={route.path}
             component={route.component}
-            key={index}
+            key={uuidv4()}
           />
         );
       });

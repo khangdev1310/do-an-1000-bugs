@@ -12,7 +12,8 @@ export const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
     // padding: theme.spacing(2, 4, 3),
     width: "60%",
-    maxHeight: "100%",
+    maxHeight: "60%",
+    overflowY: "scroll",
 
     [theme.breakpoints.down("xs")]: {
       width: "90%",

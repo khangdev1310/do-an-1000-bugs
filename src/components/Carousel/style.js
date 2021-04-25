@@ -7,9 +7,11 @@ import background1 from "./../../assets/background1.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   header: {
+    // display: "none",
+    opacity: "0%",
     maxWidth: "980px",
     margin: "0 auto",
-    paddingTop: "2%",
+    paddingTop: "4rem",
     fontFamily: "Montserrat, sans-serif",
   },
 
@@ -63,24 +65,22 @@ export const useStyles = makeStyles((theme) => ({
       },
     },
   },
-  container: {
-    position: "relative",
-    height: "100%",
-    width: "100%",
-    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.9), rgba(231,71,243, 0.2)), url(${background1})`,
-    // background: `url(${background1})`,
-    backgroundPosition: "50% 10%",
-    backgroundSize: "cover",
-    backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed",
-    paddingBottom: "0.05rem",
-  },
+
   bgColor: {
     maxWidth: "1280px",
     margin: "0 auto",
     top: "0%",
     width: "100%",
   },
+
+  centerItem: {
+    "& img": {
+      transform: "scale(1.12)",
+      transition: "all 0.3s ease-in-out",
+      boxShadow: "0px 0px 10px 1px rgba(236,70,248,0.61)",
+    },
+  },
+
   carousel: {
     width: "75%",
     maxWidth: "1280px",

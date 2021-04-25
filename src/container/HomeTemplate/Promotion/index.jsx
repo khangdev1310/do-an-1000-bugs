@@ -7,10 +7,13 @@ import poster4 from "../../../assets/promotion4.jpeg";
 import { Carousel } from "3d-react-carousal";
 import { Box, Grid, Typography } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import { useParams } from "react-router-dom";
+
 import "./style.css";
 
-const Promotion = () => {
+const Promotion = (props) => {
   const classes = useStyle();
+  let params = useParams();
   let slides = [
     <img src={poster1} alt="1" className={classes.img} />,
     <img src={poster2} alt="2" className={classes.img} />,
@@ -25,7 +28,7 @@ const Promotion = () => {
       </Box>
       <Box className={classes.containerNews}>
         <Box>
-          <Typography className={classes.titleNews}>Tin nổi bật</Typography>
+          <Typography className={classes.titleNews}>Tin tức</Typography>
         </Box>
         <Box style={{ margin: "0 1rem" }}>
           <Grid container spacing={0}>

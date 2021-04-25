@@ -5,38 +5,7 @@ export const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     margin: "2rem 1rem",
-    // "& .MuiInputLabel-outlined": {
-    //   color: "violet",
-    // },
-    // "& .MuiFormControl-root": {
-    //   backgroundColor: "rgb(49,49,49)",
-    // },
   },
-
-  //   inputRoot: {
-  //     color: "#FAFAFA !important",
-
-  //     "& .MuiOutlinedInput-notchedOutline": {
-  //       border: "1px solid rgba(37,36,39,1)",
-  //     },
-  //     "&:hover .MuiOutlinedInput-notchedOutline": {
-  //       borderColor: "purple",
-  //     },
-  //     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-  //       borderColor: "purple",
-  //     },
-  //   },
-  //   label: {
-  //     "&$focused": {
-  //       color: "#FAFAFA",
-  //     },
-  //   },
-  //   focused: {},
-  //   outlinedInput: {
-  //     "&$focused $notchedOutline": {
-  //       border: "1px solid #FAFAFA",
-  //     },
-  //   },
 
   bgColor: {
     position: "relative",
@@ -48,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    paddingBottom: "2rem",
+    padding: "3rem 0",
   },
 
   container: {

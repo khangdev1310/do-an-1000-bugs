@@ -30,3 +30,7 @@ export const POST_THONG_TIN_DAT_VE_FAILED =
 /*Action từ component thẳng lên reducer */
 export const BOOKING_SEAT = "booking_seat/BOOKING_SEAT";
 export const BUYING_COMBO = "buying_combo/BUYING_COMBO";
+
+//Clean sau khi khỏi component
+export const CLEAN_UP_REDUCER_PHONG_VE =
+  "clean_up_reducer_phong_ve/CLEAN_UP_REDUCER_PHONG_VE";

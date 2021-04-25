@@ -1,6 +1,7 @@
 import { Box, Link } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const Gio = ({ gioChieu }) => {
   const history = useHistory();
@@ -11,6 +12,7 @@ const Gio = ({ gioChieu }) => {
       return gioChieu.map((gios) => {
         return (
           <Box
+            key={uuidv4()}
             style={{
               cursor: "pointer",
               padding: "0.5rem 1rem",

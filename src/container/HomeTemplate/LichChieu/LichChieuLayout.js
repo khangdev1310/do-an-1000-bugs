@@ -7,8 +7,8 @@ const LayoutLichChieu = () => {
       style={{
         backgroundColor: "rgba(255,255,255,1)",
         border: "1px solid red",
-        width: "980px",
-        margin: "2rem auto",
+        width: "940px",
+        margin: "2rem 1rem",
       }}
     >
       <TabParents />

@@ -16,6 +16,7 @@ import podcast from "./../../assets/podcast.svg";
 import ModalTrailer from "./ModalTrailer";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 
 const Carousel = ({ movieList }) => {
   const classes = useStyles();
@@ -89,7 +90,7 @@ const Carousel = ({ movieList }) => {
   const renderMovieList = () => {
     return movieList.map((movie) => {
       return (
-        <div>
+        <div key={uuidv4()}>
           <div className={classes.containerAll}>
             <div className={classes.containerImage}>
               <img src={movie?.hinhAnh} />

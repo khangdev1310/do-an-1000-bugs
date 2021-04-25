@@ -12,6 +12,7 @@ import { FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA } from "./modules/redux/cons
 import Seat from "./Seat";
 import SeatEmpty from "./SeatEmpty";
 import Summarize from "./Summarize";
+import { useParams } from "react-router-dom";
 
 const PhongVe = (props) => {
   const classes = useStyles();

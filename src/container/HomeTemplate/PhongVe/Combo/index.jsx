@@ -5,6 +5,7 @@ import { Box, Grid, Typography } from "@material-ui/core";
 import { combos } from "./ComboType/dataCombo";
 import { useSelector, useDispatch } from "react-redux";
 import ComboType from "./ComboType";
+import { v4 as uuidv4 } from "uuid";
 
 const Combo = ({ comboStatus }) => {
   const classes = useStyles();
@@ -12,7 +13,7 @@ const Combo = ({ comboStatus }) => {
 
   const renderComboType = () => {
     return combos?.map((combo) => {
-      return <ComboType combo={combo} />;
+      return <ComboType combo={combo} key={uuidv4()} />;
     });
   };
   return (

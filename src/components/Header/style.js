@@ -27,6 +27,16 @@ export const useStyles = makeStyles((theme) => ({
     color: "rgba(231,71,243, 1)",
   },
 
+  logo: {
+    width: "100px",
+    position: "fixed",
+    top: "0",
+
+    [theme.breakpoints.down("xs")]: {
+      width: "60px",
+    },
+  },
+
   bgColor: {
     backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 1), rgba(9,1,65, 1))`,
     backgroundRepeat: "no-repeat",
@@ -46,6 +56,10 @@ export const useStyles = makeStyles((theme) => ({
     webkitBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+
+    [theme.breakpoints.up("md")]: {
+      display: "none",
+    },
   },
 
   navItems: {
@@ -57,16 +71,23 @@ export const useStyles = makeStyles((theme) => ({
 
   hideOnMobile: {
     display: "block",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "none",
     },
   },
 
   hideOnDesktop: {
     display: "none",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       display: "block",
       transform: "translate(-150%, 0%)",
+    },
+
+    ["@media (max-width:400px)"]: {
+      transform: "translate(-350%, 0%)",
+    },
+    ["@media (max-width:350px)"]: {
+      transform: "translate(-500%, 0%)",
     },
   },
 
@@ -75,11 +96,12 @@ export const useStyles = makeStyles((theme) => ({
   },
   appBar: {
     top: "auto",
-    bottom: 0,
-    backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 1), rgba(9,1,65, 1))`,
+    // bottom: 0,
+    // backgroundImage: `linear-gradient(to right bottom, rgba(231,71,243, 1), rgba(9,1,65, 1))`,
     backgroundRepeat: "no-repeat",
     backgroundAttachment: "fixed",
-    padding: "0.2rem 0",
+    padding: "0.2rem 1rem",
+    backgroundColor: "rgba(0,0,0,0.85)",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -91,7 +113,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     marginLeft: "4rem",
     // display: "block",
-    [theme.breakpoints.down("xs")]: {
+    [theme.breakpoints.down("sm")]: {
       visibility: "hidden",
     },
   },
@@ -152,5 +174,13 @@ export const useStyles = makeStyles((theme) => ({
     webkitBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     mozBoxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
     boxShadow: "0px 0px 20px 3px rgba(231,71,243, 0.9)",
+  },
+
+  searchModalButton: {
+    margin: "0 1rem",
+    // [theme.breakpoints.up("md")]: {
+    //   visibility: "hidden",
+    //   display: "none",
+    // },
   },
 }));

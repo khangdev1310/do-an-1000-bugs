@@ -7,6 +7,10 @@ export const useStyles = makeStyles((theme) => ({
     borderRadius: "5px",
   },
 
+  "& .MuiPaper-elevation1": {
+    boxShadow: "none",
+  },
+
   titleText: {
     fontWeight: "500",
     fontSize: "18px",

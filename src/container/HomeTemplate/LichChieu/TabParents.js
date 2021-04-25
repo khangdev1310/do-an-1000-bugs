@@ -83,20 +83,24 @@ export default function TabParents() {
   };
 
   return (
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={1}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        {renderHeThongRaps()}
-      </Tabs>
-      <TabPanel value={1} index={1}>
-        <TabChild />
-      </TabPanel>
+    <div className={classes.bgColor} name="lichChieuBlock">
+      <div className={classes.container}>
+        <div className={classes.root}>
+          <Tabs
+            orientation="vertical"
+            variant="scrollable"
+            value={1}
+            onChange={handleChange}
+            aria-label="Vertical tabs example"
+            className={classes.tabs}
+          >
+            {renderHeThongRaps()}
+          </Tabs>
+          <TabPanel value={1} index={1}>
+            <TabChild />
+          </TabPanel>
+        </div>
+      </div>
     </div>
   );
 }

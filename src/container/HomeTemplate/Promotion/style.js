@@ -44,7 +44,7 @@ export const useStyle = makeStyles((theme) => ({
   },
   container: {
     margin: "0 auto",
-    padding: "3rem 0",
+    padding: "7rem 0 3rem 0",
     maxWidth: "1280px",
   },
   containerNews: {
@@ -62,5 +62,6 @@ export const useStyle = makeStyles((theme) => ({
     padding: "11px 25px",
     borderRadius: "10px",
     marginBottom: "1rem",
+    fontWeight: "500",
   },
 }));

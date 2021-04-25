@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Header } from "./../../components/Header";
 import { Route } from "react-router-dom";
 import Footer from "./../../components/Footer";
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LayoutHome = (props) => {
   const classes = useStyles();
+  const ref = useRef(null);
   const isLoadingProfile = useSelector((state) => state.UserReducer.isLoading);
   const isLoadingHome = useSelector((state) => state.MovieReducer.isLoading);
 

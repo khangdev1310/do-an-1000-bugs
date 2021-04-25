@@ -11,6 +11,7 @@ import {
   CHANGE_MA_HE_THONG,
   FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
 } from "../../../container/HomeTemplate/Home/modules/redux/constants";
+import { v4 as uuidv4 } from "uuid";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -86,6 +87,7 @@ export default function TabContainer() {
     return heThongRaps.map((heThongRap, index) => {
       return (
         <Tab
+          key={uuidv4()}
           label={<img src={heThongRap.logo} width="50px" height="50px" />}
           onClick={() => {
             const maHeThongRap = heThongRap.maHeThongRap;

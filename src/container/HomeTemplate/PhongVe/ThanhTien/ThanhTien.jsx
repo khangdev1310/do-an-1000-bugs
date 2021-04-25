@@ -7,6 +7,7 @@ import Combo from "../Combo";
 import { useSelector, useDispatch } from "react-redux";
 import { POST_THONG_TIN_DAT_VE_REQUESTS_SAGA } from "../modules/redux/constants";
 import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
 const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
   const dispatch = useDispatch();
@@ -62,13 +63,19 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
       return bookingSeat.map((seat, index) => {
         if (index === 0) {
           return (
-            <Typography style={{ display: "inline", fontSize: "14px" }}>
+            <Typography
+              style={{ display: "inline", fontSize: "14px" }}
+              key={uuidv4()}
+            >
               {seat.tenGhe}
             </Typography>
           );
         }
         return (
-          <Typography style={{ display: "inline", fontSize: "14px" }}>
+          <Typography
+            style={{ display: "inline", fontSize: "14px" }}
+            key={uuidv4()}
+          >
             , {seat.tenGhe}
           </Typography>
         );

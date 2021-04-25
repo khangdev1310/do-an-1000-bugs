@@ -27,80 +27,28 @@ import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
 
 const Movie = () => {
   const classes = useStyle();
-  const ref1 = useRef({});
-  const ref2 = useRef({});
-  const ref3 = useRef({});
+  const ref = useRef({});
   const [value, setValue] = React.useState(0);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
 
-  const next1 = () => {
-    ref1.current.slickNext();
+  const next = () => {
+    ref.current.slickNext();
   };
 
-  const previous1 = () => {
-    ref1.current.slickPrev();
+  const previous = () => {
+    ref.current.slickPrev();
   };
 
-  const next2 = () => {
-    ref2.current.slickNext();
-  };
-
-  const previous2 = () => {
-    ref2.current.slickPrev();
-  };
-
-  const next3 = () => {
-    ref3.current.slickNext();
-  };
-
-  const previous3 = () => {
-    ref3.current.slickPrev();
-  };
-
-  const ArrowLeft1 = (props) => (
-    <div className={`${classes.prevArrow}`} onClick={previous1}>
+  const ArrowLeft = (props) => (
+    <div className={`${classes.prevArrow}`} onClick={previous}>
       <ArrowBackIosIcon
         style={{ color: "#544874", transform: "scale(1.5)" }}
         className={classes.hoverSVG}
       />
     </div>
   );
-  const ArrowRight1 = (props) => (
-    <div className={`${classes.nextArrow}`} onClick={next1}>
-      <ArrowForwardIosIcon
-        style={{ color: "#544874", transform: "scale(1.5)" }}
-        className={classes.hoverSVG}
-      />
-    </div>
-  );
-
-  const ArrowLeft2 = (props) => (
-    <div className={`${classes.prevArrow}`} onClick={previous2}>
-      <ArrowBackIosIcon
-        style={{ color: "#544874", transform: "scale(1.5)" }}
-        className={classes.hoverSVG}
-      />
-    </div>
-  );
-  const ArrowRight2 = (props) => (
-    <div className={`${classes.nextArrow}`} onClick={next2}>
-      <ArrowForwardIosIcon
-        style={{ color: "#544874", transform: "scale(1.5)" }}
-        className={classes.hoverSVG}
-      />
-    </div>
-  );
-
-  const ArrowLeft3 = (props) => (
-    <div className={`${classes.prevArrow}`} onClick={previous3}>
-      <ArrowBackIosIcon
-        style={{ color: "#544874", transform: "scale(1.5)" }}
-        className={classes.hoverSVG}
-      />
-    </div>
-  );
-  const ArrowRight3 = (props) => (
-    <div className={`${classes.nextArrow}`} onClick={next3}>
+  const ArrowRight = (props) => (
+    <div className={`${classes.nextArrow}`} onClick={next}>
       <ArrowForwardIosIcon
         style={{ color: "#544874", transform: "scale(1.5)" }}
         className={classes.hoverSVG}
@@ -112,90 +60,49 @@ const Movie = () => {
   const sliceMovieList2 = [...movieList].slice(16, 31);
   const sliceMovieList3 = [...movieList].slice(32, movieList.length);
 
-  const renderMovieList1 = () => {
-    return sliceMovieList1.map((movie, index) => {
-      return <MovieItem movie={movie} />;
-    });
-  };
-
-  const renderMovieList2 = () => {
-    return sliceMovieList2.map((movie, index) => {
-      return <MovieItem movie={movie} />;
-    });
-  };
-
   const renderMovieList3 = () => {
     return sliceMovieList3.map((movie, index) => {
-      return <MovieItem movie={movie} />;
+      return <MovieItem movie={movie} key={index} />;
     });
   };
 
-  const settings1 = {
-    className: "center",
-    centerMode: true,
+  const settings = {
     infinite: true,
-    swipeToSlide: true,
     centerPadding: "60px",
     slidesToShow: 6,
-    speed: 1000,
-    // autoplay: true,
-    // autoplaySpeed: 2000,
+    dots: false,
+    infinite: false,
+
+    speed: 500,
     slidesToScroll: 3,
-    prevArrow: <ArrowLeft1 />,
-    nextArrow: <ArrowRight1 />,
+    prevArrow: <ArrowLeft />,
+    nextArrow: <ArrowRight />,
+    rows: 2,
     responsive: [
       {
         breakpoint: 1025,
         settings: {
           slidesToShow: 5,
           slidesToScroll: 2,
-          infinite: true,
-          dots: true,
+          infinite: false,
+          dots: false,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           centerMode: false,
-          slidesToShow: 3,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          centerMode: false,
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
-  const settings2 = {
-    className: "center",
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 6,
-    speed: 500,
-    slidesToScroll: 3,
-    prevArrow: <ArrowLeft2 />,
-    nextArrow: <ArrowRight2 />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
+          infinite: false,
           slidesToShow: 4,
           slidesToScroll: 2,
-          infinite: true,
-          dots: true,
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           centerMode: false,
           slidesToShow: 3,
+          infinite: false,
           slidesToScroll: 2,
         },
       },
@@ -204,44 +111,7 @@ const Movie = () => {
         settings: {
           centerMode: false,
           slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
-  const settings3 = {
-    className: "center",
-    infinite: true,
-    centerPadding: "60px",
-    slidesToShow: 6,
-    speed: 500,
-    slidesToScroll: 3,
-    prevArrow: <ArrowLeft3 />,
-    nextArrow: <ArrowRight3 />,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 2,
-          infinite: true,
-          dots: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          centerMode: false,
-          slidesToShow: 3,
-          slidesToScroll: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          centerMode: false,
-          slidesToShow: 2,
+          infinite: false,
           slidesToScroll: 1,
         },
       },
@@ -249,33 +119,9 @@ const Movie = () => {
   };
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} name="phimBlock">
       <Box className={classes.bgColor}>
         <Box className={classes.container}>
-          <Box className={classes.titleContainer} display="flex">
-            <div className={classes.titleColor}></div>
-            <Typography
-              style={{ fontWeight: "500", fontSize: "20px", color: "#FAFAFA" }}
-            >
-              Phim đang chiếu
-            </Typography>
-          </Box>
-          <Slider {...settings1} ref={ref1}>
-            {renderMovieList1()}
-          </Slider>
-
-          <Box className={classes.titleContainer} display="flex">
-            <div className={classes.titleColor}></div>
-            <Typography
-              style={{ fontWeight: "500", fontSize: "20px", color: "#FAFAFA" }}
-            >
-              Phim doanh thu cao nhất
-            </Typography>
-          </Box>
-          <Slider {...settings2} ref={ref2}>
-            {renderMovieList2()}
-          </Slider>
-
           <Box className={classes.titleContainer} display="flex">
             <div className={classes.titleColor}></div>
             <Typography
@@ -284,7 +130,7 @@ const Movie = () => {
               Phim cháy vé
             </Typography>
           </Box>
-          <Slider {...settings3} ref={ref3}>
+          <Slider {...settings} ref={ref}>
             {renderMovieList3()}
           </Slider>
         </Box>

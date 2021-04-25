@@ -1,4 +1,4 @@
-import { useStyle } from "./style";
+import { useStyles } from "./styles";
 import React, { useEffect, useState } from "react";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -14,11 +14,10 @@ import CloseIcon from "@material-ui/icons/Close";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const TransitionsModal = () => {
+const SearchBarDesktop = () => {
   const history = useHistory();
-  const classes = useStyle();
+  const classes = useStyles();
   const dispatch = useDispatch();
-  const isModal = useSelector((state) => state.MovieReducer.isModal);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
   const searchMovieFind = useSelector(
     (state) => state.MovieReducer.searchMovieFind
@@ -33,14 +32,11 @@ const TransitionsModal = () => {
     suatChieu: "",
     buttonBuyTicket: false,
   });
-
+  console.log(infoSearch);
   let [maLichChieu, setMaLichChieu] = useState({
     maLichChieu: null,
   });
 
-  //Khi user vừa chọn trong ô textfield đầu tiên thì sẽ
-  // disppatch thông tin phim đó lên để lấy data cho các ô khác
-  // (mặc định chỉ có mỗi ô đầu có dữ liệu nên phải đợi user chọn phim mới lấy đc info)
   const handleDispatchMovie = (maPhim) => {
     if (maPhim !== null || maPhim !== "") {
       dispatch({
@@ -49,11 +45,6 @@ const TransitionsModal = () => {
       });
     }
   };
-
-  const [open, setOpen] = React.useState(false);
-  useEffect(() => {
-    setOpen(isModal);
-  }, [isModal]);
 
   useEffect(() => {
     if (infoSearch.phim !== "") {
@@ -64,10 +55,6 @@ const TransitionsModal = () => {
       handleDispatchMovie(infoSearch.maPhim);
     }
   }, [infoSearch]);
-
-  const handleClose = () => {
-    setOpen(false);
-  };
 
   const handleDirect = () => {
     if (!localStorage.getItem("USER")) {
@@ -98,8 +85,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           options={arr}
           value={infoSearch.phim}
           getOptionLabel={(option) => option}
@@ -127,7 +112,11 @@ const TransitionsModal = () => {
             });
           }}
           renderInput={(params) => (
-            <TextField {...params} id="phim" label="Phim" variant="outlined" />
+            <TextField
+              {...params}
+              label="Phim"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
+            />
           )}
         />
       );
@@ -142,8 +131,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           options={arr}
           value={infoSearch.cumRap}
           getOptionLabel={(option) => option}
@@ -163,7 +150,7 @@ const TransitionsModal = () => {
               {...params}
               id="cumRap"
               label="Cụm Rạp"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -172,8 +159,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           value={infoSearch.cumRap}
           getOptionDisabled={(option) => true}
           options={["Vui lòng chọn phim"]}
@@ -182,7 +167,7 @@ const TransitionsModal = () => {
               {...params}
               id="cumRap"
               label="Cụm Rạp"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -205,8 +190,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           options={showExactRapChieu}
           value={infoSearch.tenRap}
           getOptionLabel={(option) => option}
@@ -225,7 +208,7 @@ const TransitionsModal = () => {
               {...params}
               id="tenRap"
               label="Tên Rạp"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -234,8 +217,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           value={infoSearch.cumRap}
           options={["Vui lòng chọn phim và cụm rạp"]}
           getOptionDisabled={(option) => true}
@@ -244,7 +225,7 @@ const TransitionsModal = () => {
               {...params}
               id="tenRap"
               label="Tên Rạp"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -269,8 +250,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           options={arrDay}
           value={infoSearch.ngayChieu}
           getOptionLabel={(option) => option}
@@ -288,7 +267,7 @@ const TransitionsModal = () => {
               {...params}
               id="ngayChieu"
               label="Ngày Chiếu"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -297,8 +276,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           value={infoSearch.ngayChieu}
           options={["Vui lòng chọn phim, cụm rạp và rạp"]}
           getOptionDisabled={(option) => true}
@@ -307,7 +284,7 @@ const TransitionsModal = () => {
               {...params}
               id="ngayChieu"
               label="Ngày Chiếu"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -351,8 +328,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           options={showGioChieu}
           value={infoSearch.suatChieu}
           getOptionLabel={(option) => option}
@@ -379,7 +354,7 @@ const TransitionsModal = () => {
               {...params}
               id="suatChieu"
               label="Suất Chiếu"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -388,8 +363,6 @@ const TransitionsModal = () => {
       return (
         <Autocomplete
           classes={classes}
-          size="small"
-          fullWidth="true"
           value={infoSearch.suatChieu}
           options={["Vui lòng chọn phim, cụm rạp, rạp, ngày chiếu"]}
           getOptionDisabled={(option) => true}
@@ -398,7 +371,7 @@ const TransitionsModal = () => {
               {...params}
               id="suatChieu"
               label="Suất Chiếu"
-              variant="outlined"
+              InputProps={{ ...params.InputProps, disableUnderline: true }}
             />
           )}
         />
@@ -407,123 +380,50 @@ const TransitionsModal = () => {
   };
 
   return (
-    <div>
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        className={classes.modal}
-        open={open}
-        onClose={
-          (handleClose,
-          () =>
-            dispatch({
-              type: "CHANGE_MODAL_OPEN",
-            }))
-        }
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
-      >
-        <Fade in={open}>
-          <div className={classes.paper}>
-            <Box
-              onClick={
-                (handleClose,
-                () =>
-                  dispatch({
-                    type: "CHANGE_MODAL_OPEN",
-                  }))
-              }
+    <div className={classes.bgColor}>
+      <div className={classes.container}>
+        {/* <h3 style={{ textAlign: "center" }}>Mua vé nhanh</h3> */}
+        <Grid container spacing={1}>
+          <Grid container item xs={2} spacing={0} className={classes.item}>
+            {renderTenPhim()}
+          </Grid>
+          <Grid container item xs={2} spacing={0} className={classes.item}>
+            {renderCumRap()}
+          </Grid>
+          <Grid container item xs={2} spacing={0} className={classes.item}>
+            {renderRap()}
+          </Grid>
+          <Grid container item xs={2} spacing={0} className={classes.item}>
+            {renderNgayChieu()}
+          </Grid>
+          <Grid container item xs={2} spacing={0} className={classes.item}>
+            {renderGioChieu()}
+          </Grid>
+          <Grid
+            container
+            item
+            xs={2}
+            spacing={0}
+            className={classes.buttonWrapper}
+          >
+            {/* <Button variant="contained" className={classes.button}>
+              Mua vé ngay
+            </Button> */}
+            <Button
+              variant="contained"
+              className={classes.button}
+              disabled={!infoSearch.buttonBuyTicket}
+              onClick={() => {
+                handleDirect();
+              }}
             >
-              <CloseIcon className={classes.iconClose} />
-            </Box>
-            <Box className={classes.container}>
-              <Box className={classes.searchContainer}>
-                <SearchIcon style={{ fontSize: "1.5rem" }} />
-              </Box>
-              <Typography
-                style={{
-                  color: "violet",
-                  margin: "1rem 0",
-                  fontWeight: "bold",
-                }}
-                variant="h4"
-              >
-                Tìm ngay phim bạn thích!
-              </Typography>
-              <div className={classes.root}>
-                <Grid container spacing={1}>
-                  <Grid
-                    item
-                    md={12}
-                    sm={12}
-                    xs={12}
-                    className={classes.gridItems}
-                  >
-                    {renderTenPhim()}
-                  </Grid>
-                  <Grid
-                    item
-                    md={12}
-                    sm={12}
-                    xs={12}
-                    className={classes.gridItems}
-                  >
-                    {renderCumRap()}
-                  </Grid>
-                  <Grid
-                    item
-                    md={12}
-                    sm={12}
-                    xs={12}
-                    className={classes.gridItems}
-                  >
-                    {renderRap()}
-                  </Grid>
-                  <Grid
-                    item
-                    md={8}
-                    sm={6}
-                    xs={12}
-                    className={classes.gridItems}
-                  >
-                    {renderNgayChieu()}
-                  </Grid>
-                  <Grid
-                    item
-                    md={4}
-                    sm={6}
-                    xs={12}
-                    className={classes.gridItems}
-                  >
-                    {renderGioChieu()}
-                  </Grid>
-                </Grid>
-                <Button
-                  variant="contained"
-                  className={classes.buttonBuyTicket}
-                  disabled={!infoSearch.buttonBuyTicket}
-                  onClick={() => {
-                    handleDirect();
-                  }}
-                >
-                  <img src={cinemaIcon} width="30px" />
-                  <Typography
-                    variant="span"
-                    style={{ marginLeft: "5px", color: "#FAFAFA" }}
-                  >
-                    Mua vé
-                  </Typography>
-                </Button>
-              </div>
-            </Box>
-          </div>
-        </Fade>
-      </Modal>
+              Mua vé ngay
+            </Button>
+          </Grid>
+        </Grid>
+      </div>
     </div>
   );
 };
 
-export default TransitionsModal;
+export default SearchBarDesktop;

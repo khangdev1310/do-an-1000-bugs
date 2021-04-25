@@ -7,6 +7,7 @@ import Box from "@material-ui/core/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { Grid, makeStyles } from "@material-ui/core";
 import ChildTabs from "./Children";
+import { v4 as uuidv4 } from "uuid";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -50,11 +51,12 @@ const useStyles = makeStyles((theme) => ({
     overflow: "scroll",
 
     "& .MuiTabs-indicator": {
-      backgroundColor: "#f50057 !important",
+      backgroundColor: "transparent !important",
     },
     "& .MuiTabScrollButton-vertical": {
       display: "none",
     },
+    "& .MuiTabs-flexContainerVertical": {},
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -76,14 +78,16 @@ export default function TabChild() {
         <Tab
           label={
             <>
-              <Grid container spacing={1}>
-                <Grid container item xs={12} spacing={3}>
+              <Grid container spacing={0}>
+                <Grid container item xs={12} spacing={1}>
                   <Grid item xs={2}>
                     <img src={cumRaps[0].logo} width="40px" height="40px" />
                   </Grid>
                   <Grid item xs={10}>
                     <Box style={{ textAlign: "left", marginLeft: "0.5rem" }}>
-                      <Typography style={{ fontSize: "14px" }}>
+                      <Typography
+                        style={{ fontSize: "12px", fontWeight: "500" }}
+                      >
                         {cumRap.tenCumRap}
                       </Typography>
 

@@ -8,6 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { useSelector, useDispatch } from "react-redux";
 import { FETCH_THONG_TIN_LICH_CHIEU_PHIM_TABS_REQUESTS_SAGA } from "../../../container/HomeTemplate/Home/modules/redux/constants";
+import { v4 as uuidv4 } from "uuid";
 import NgayGioChieu from "./NgayGioChieu";
 
 function TabPanel(props) {
@@ -102,7 +103,7 @@ export default function TabChildren() {
       const listDayShowTabs = [...listDayShow];
 
       return listDayShowTabs.map((day, index) => {
-        return <Tab label={day} {...a11yProps(index)} />;
+        return <Tab key={uuidv4()} label={day} {...a11yProps(index)} />;
       });
     }
   };
@@ -134,7 +135,7 @@ export default function TabChildren() {
 
       return listDayShowTabs.map((day, index) => {
         return (
-          <TabPanel value={value} index={index}>
+          <TabPanel key={uuidv4()} value={value} index={index}>
             <NgayGioChieu day={day} rapChieu={rapChieu} />
           </TabPanel>
         );

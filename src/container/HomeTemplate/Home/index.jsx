@@ -1,9 +1,30 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Carousel from "../../../components/Carousel";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../Movie";
+import SearchBarDesktop from "../../../components/SearchBarForDesktop/SearchBarDesktop";
+import LichChieu from "./../LichChieu/TabParents";
+import HomeApp from "../../../components/HomeApp";
+import { makeStyles } from "@material-ui/core";
+import background1 from "./../../../assets/background1.jpeg";
+import LazyLoad from "react-lazyload";
+
+const useStyles = makeStyles((theme) => ({
+  bgColor: {
+    position: "relative",
+    height: "100%",
+    width: "100%",
+    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.8), rgba(231,71,243, 0.2)), url(${background1})`,
+    backgroundPosition: "50% 10%",
+    backgroundSize: "cover",
+    backgroundRepeat: "no-repeat",
+    backgroundAttachment: "fixed",
+  },
+}));
 
 const Home = () => {
+  const classes = useStyles();
+  const refApp = useRef(null);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
   let arrRandom = [];
   for (let i = 0; i < 6; i++) {
@@ -11,9 +32,16 @@ const Home = () => {
   }
 
   return (
-    <div>
+    <div className={classes.bgColor} name="homeBlock">
       <Carousel movieList={arrRandom} />
+      <SearchBarDesktop />
       <Movie />
+      <LazyLoad offset={100}>
+        <LichChieu />
+      </LazyLoad>
+      <LazyLoad offset={100}>
+        <HomeApp />
+      </LazyLoad>
     </div>
   );
 };
