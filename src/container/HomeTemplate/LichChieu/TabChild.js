@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "transparent !important",
     display: "flex",
     height: "500px",
-    overflow: "scroll",
+    // overflow: "scroll",
 
     "& .MuiTabs-indicator": {
       backgroundColor: "transparent !important",
@@ -56,7 +56,10 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTabScrollButton-vertical": {
       display: "none",
     },
-    "& .MuiTabs-flexContainerVertical": {},
+    "& .MuiTabs-flexContainerVertical": {
+      maxHeight: "500px",
+      overflowY: "scroll",
+    },
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -112,9 +115,11 @@ export default function TabChild() {
   const renderDanhSachPhim = () => {
     return cumRaps[0]?.lstCumRap.map((phims, index) => {
       return (
-        <TabPanel value={value} index={index} key={index}>
-          <ChildTabs phims={phims} />
-        </TabPanel>
+        <div key={index} style={{ maxHeight: "500px", overflowY: "scroll" }}>
+          <TabPanel value={value} index={index}>
+            <ChildTabs phims={phims} />
+          </TabPanel>
+        </div>
       );
     });
   };

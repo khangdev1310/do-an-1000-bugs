@@ -17,7 +17,7 @@ export const useStyles = makeStyles((theme) => ({
     "& .MuiBox-root": {
       padding: "0rem",
       maxHeight: "500px",
-      overflow: "scroll",
+      // overflow: "scroll",
     },
     "& .MuiTab-root": {
       minWidth: "100px",
