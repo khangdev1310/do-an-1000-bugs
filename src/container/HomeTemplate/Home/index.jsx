@@ -36,9 +36,7 @@ const Home = () => {
       <Carousel movieList={arrRandom} />
       <SearchBarDesktop />
       <Movie />
-      <LazyLoad offset={100}>
-        <LichChieu />
-      </LazyLoad>
+      <LichChieu />
       <LazyLoad offset={100}>
         <HomeApp />
       </LazyLoad>

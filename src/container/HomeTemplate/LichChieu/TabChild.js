@@ -8,6 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Grid, makeStyles } from "@material-ui/core";
 import ChildTabs from "./Children";
 import { v4 as uuidv4 } from "uuid";
+import bhdstarcineplex from "./../../../assets/bhdStar.png";
+import cinestar from "./../../../assets/cns.jpeg";
+import megags from "./../../../assets/megaGS.jpeg";
+import lottecinema from "./../../../assets/lotte.jpeg";
+import galaxycinema from "./../../../assets/galaxy.jpeg";
+import cgv from "./../../../assets/cgv.png";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -75,6 +81,17 @@ export default function TabChild() {
     setValue(newValue);
   };
 
+  // const renderRap = (link) => {
+  //   let removeChar = link.split("-").join("");
+  //   console.log(removeChar);
+  //   let findChar = removeChar.lastIndexOf("/");
+  //   console.log(findChar);
+  //   let findLastDot = removeChar.lastIndexOf(".");
+  //   console.log(findLastDot);
+  //   let srcName = removeChar.substring(findChar + 1, findLastDot);
+  //   return <img src={bhdstarcineplex} width="40px" height="40px" />;
+  // };
+
   const renderCumRaps = () => {
     return cumRaps[0]?.lstCumRap.map((cumRap, index) => {
       return (
@@ -84,7 +101,8 @@ export default function TabChild() {
               <Grid container spacing={0}>
                 <Grid container item xs={12} spacing={1}>
                   <Grid item xs={2}>
-                    <img src={cumRaps[0].logo} width="40px" height="40px" />
+                    <img src={bhdstarcineplex} width="40px" height="40px" />
+                    {/* {renderRap(cumRaps[0].logo)} */}
                   </Grid>
                   <Grid item xs={10}>
                     <Box style={{ textAlign: "left", marginLeft: "0.5rem" }}>

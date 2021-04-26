@@ -18,6 +18,9 @@ import * as Yup from "yup";
 import { useStyles } from "./style";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import { Link as LinkRouter } from "react-router-dom";
+import { MA_NHOM } from "../../../utils/common/constants";
+import { useDispatch, useSelector } from "react-redux";
+import { POST_THONG_TIN_DANG_KI_REQUESTS_SAGA } from "./../Signin/modules/redux/constants";
 
 function Copyright() {
   return (
@@ -49,6 +52,7 @@ const CssTextField = withStyles({
 })(TextField);
 
 function SignUp() {
+  const dispatch = useDispatch();
   const [loginFacebookInfo, setLoginFacebookInfo] = useState({
     isLoggedIn: false,
     userID: "",
@@ -66,6 +70,8 @@ function SignUp() {
       hoTen: "",
       email: "",
       soDt: "",
+      maLoaiNguoiDung: "KhachHang",
+      maNhom: MA_NHOM,
     },
     validationSchema: Yup.object({
       taiKhoan: Yup.string("Invalid account format").required(
@@ -83,11 +89,13 @@ function SignUp() {
       soDt: Yup.number()
         .typeError("Số điện thoại không hợp lệ")
         .positive("Số điện thoại không hợp lệ")
-        .max(10, "Số điện thoại không hợp lệ")
         .required("Vui lòng điền vào!"),
     }),
     onSubmit: (values) => {
-      console.log(values);
+      dispatch({
+        type: POST_THONG_TIN_DANG_KI_REQUESTS_SAGA,
+        payload: values,
+      });
     },
   });
 

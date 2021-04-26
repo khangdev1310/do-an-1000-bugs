@@ -32,7 +32,7 @@ export const useStyle = makeStyles((theme) => ({
     },
   },
   bgColor: {
-    maxWidth: "1280px",
+    maxWidth: "100%",
     margin: "0 auto",
     top: "0%",
     width: "100%",

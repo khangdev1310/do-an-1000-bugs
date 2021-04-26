@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "transparent",
     },
 
+    "& .MuiAccordionDetails-root": {
+      overflowY: "auto",
+    },
+
     "& .MuiPaper-elevation1": {
       boxShadow: "none",
     },

@@ -6,6 +6,10 @@ export const DOMAIN = `https://movie0706.cybersoft.edu.vn/api`;
 export const POST_THONG_TIN_DANG_NHAP_REQUESTS_SAGA =
   "post_thong_tin_dang_nhap/POST_THONG_TIN_DANG_NHAP_REQUESTS_SAGA";
 
+//lấy post thông tin đăng kí
+export const POST_THONG_TIN_DANG_KI_REQUESTS_SAGA =
+  "post_thong_tin_dang_ki/POST_THONG_TIN_DANG_KI_REQUESTS_SAGA";
+
 //lấy post thông tin đăng nhập bằng facebook lên SAGA
 export const POST_THONG_TIN_DANG_NHAP_FACEBOOK_REQUESTS_SAGA =
   "post_thong_tin_dang_nhap/POST_THONG_TIN_DANG_NHAP_FACEBOOK_REQUESTS_SAGA";

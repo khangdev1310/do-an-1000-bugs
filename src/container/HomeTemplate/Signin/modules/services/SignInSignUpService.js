@@ -12,6 +12,7 @@ export function postThongTinDangNhapApiActionApi(userInfo) {
 }
 
 export function postThongTinDangKiApiActionApi(userInfo) {
+  console.log(userInfo);
   return axios({
     url: `${DOMAIN}/QuanLyNguoiDung/DangKy`,
     method: "POST",

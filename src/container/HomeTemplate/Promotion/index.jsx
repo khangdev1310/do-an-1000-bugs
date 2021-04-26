@@ -8,7 +8,6 @@ import { Carousel } from "3d-react-carousal";
 import { Box, Grid, Typography } from "@material-ui/core";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import { useParams } from "react-router-dom";
-
 import "./style.css";
 
 const Promotion = (props) => {

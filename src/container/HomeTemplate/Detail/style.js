@@ -25,6 +25,22 @@ export const useStyle = makeStyles((theme) => ({
     },
   },
 
+  rootStar: {
+    width: "30%",
+    display: "flex",
+    flexDirection: "column",
+    "& > * + *": {
+      marginTop: theme.spacing(1),
+    },
+    "& label": {
+      display: "initial",
+    },
+
+    "& .MuiRating-root": {
+      color: "rgba(236,70,248,1)",
+    },
+  },
+
   inputRoot: {
     color: "#5A5A5A !important",
     "& .MuiOutlinedInput-notchedOutline": {
@@ -49,8 +65,8 @@ export const useStyle = makeStyles((theme) => ({
     textAlign: "center",
     // backgroundColor: "rgba(37,36,39,0.4)",
     color: "#FAFAFA",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(3, 3, 3),
+    // boxShadow: theme.shadows[5],
+    // padding: theme.spacing(3, 3, 3),
     width: "75%",
     height: "75%",
     display: "flex",
@@ -63,6 +79,7 @@ export const useStyle = makeStyles((theme) => ({
     position: "absolute",
     top: "0%",
     right: "0%",
+    transform: "translate(20%, -20%)",
     cursor: "pointer",
   },
 
@@ -113,8 +130,7 @@ export const useStyle = makeStyles((theme) => ({
   // },
 
   bgColor: {
-    maxWidth: "1280px",
-    margin: "0 auto",
+    maxWidth: "100%",
     top: "0%",
     width: "100%",
     background: `linear-gradient(to right bottom,rgba(9,1,65, 0.9), rgba(231,71,243, 0.2)), url(${background1})`,
@@ -124,11 +140,29 @@ export const useStyle = makeStyles((theme) => ({
     backgroundAttachment: "fixed",
   },
 
+  containerForMovie: {
+    maxWidth: "1280px",
+    margin: "0 auto",
+    paddingTop: "7rem",
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+  },
+
+  containerForTabs: {
+    maxWidth: "1280px",
+    margin: "0 auto",
+  },
+
   container: {
     maxWidth: "870px",
     margin: "0 auto",
-    paddingTop: "3rem",
+    paddingTop: "1rem",
     color: "#FAFAFA",
+  },
+
+  realContainer: {
+    margin: "0 1rem",
   },
 
   containerForComment: {
@@ -138,7 +172,7 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   userComment: {
-    backgroundColor: "#303030",
+    backgroundColor: "#313131",
     padding: "1rem 1rem",
     borderRadius: "10px",
   },
@@ -149,6 +183,31 @@ export const useStyle = makeStyles((theme) => ({
     padding: "1rem 1rem",
     borderRadius: "10px",
     color: "",
+  },
+
+  scoreOtherUsers: {
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
+    },
+  },
+
+  imgAvatar: {
+    borderRadius: "50%",
+    margin: "1rem 0rem 0rem 0.5rem",
+
+    [theme.breakpoints.down("xs")]: {
+      width: "45px",
+      height: "45px",
+    },
+  },
+
+  imgAvatarOtherUsers: {
+    borderRadius: "50%",
+    margin: "0rem 0rem 0rem 0.5rem",
+    [theme.breakpoints.down("xs")]: {
+      width: "45px",
+      height: "45px",
+    },
   },
 
   backIcon: {
@@ -210,5 +269,42 @@ export const useStyle = makeStyles((theme) => ({
       backgroundColor: "rgba(138,52,144, 0.7)",
       border: "2.5px solid rgba(236,70,248, 0.7)",
     },
+  },
+
+  hideOnMobileScore: {
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+    },
+  },
+
+  forMobile: {
+    display: "none",
+    paddingTop: "3.9rem",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+    },
+  },
+
+  containerImageMobile: {
+    position: "relative",
+    "& > img": {
+      maxHeight: "200px",
+      objectFit: "cover",
+    },
+  },
+
+  overlay: {
+    position: "absolute",
+    top: "0",
+    width: "100%",
+    height: "100%",
+    background: "linear-gradient(to top, rgb(0, 0, 0), transparent 100%)",
+  },
+
+  playButton: {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
   },
 }));

@@ -88,12 +88,13 @@ export default function TabChildren() {
       });
       const listDay = rapChieu?.map((lichChieus) => {
         return lichChieus.lichChieuPhim.map((lichChieu) => {
-          return new Date(lichChieu.ngayChieuGioChieu).toLocaleDateString();
+          return new Date(lichChieu.ngayChieuGioChieu);
         });
       });
 
       const arrDay = listDay === undefined ? ["none"] : [...listDay];
       const arr1d = [].concat(...arrDay);
+      console.log(arr1d);
 
       const listDayShow = new Set(
         arr1d.map((day) => {
@@ -103,7 +104,13 @@ export default function TabChildren() {
       const listDayShowTabs = [...listDayShow];
 
       return listDayShowTabs.map((day, index) => {
-        return <Tab key={uuidv4()} label={day} {...a11yProps(index)} />;
+        return (
+          <Tab
+            key={uuidv4()}
+            label={day == "Invalid Date" ? "Không có suất chiếu" : day}
+            {...a11yProps(index)}
+          />
+        );
       });
     }
   };
@@ -123,17 +130,25 @@ export default function TabChildren() {
           return new Date(lichChieu.ngayChieuGioChieu).toLocaleDateString();
         });
       });
+      console.log(listDay);
 
       const arrDay = listDay === undefined ? ["none"] : [...listDay];
       const arr1d = [].concat(...arrDay);
+      console.log(arr1d);
+
       const listDayShow = new Set(
         arr1d.map((day) => {
-          return new Date(day).toLocaleDateString();
+          return day;
         })
       );
+      console.log(listDayShow);
       const listDayShowTabs = [...listDayShow];
+      console.log(listDayShowTabs);
 
       return listDayShowTabs.map((day, index) => {
+        {
+          console.log(day);
+        }
         return (
           <TabPanel key={uuidv4()} value={value} index={index}>
             <NgayGioChieu day={day} rapChieu={rapChieu} />

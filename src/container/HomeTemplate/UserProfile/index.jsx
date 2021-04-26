@@ -28,6 +28,7 @@ const UserProfile = (props) => {
   const [changeTabs, setChangeTabs] = useState("UserInfo");
   const userInfo = useSelector((state) => state.UserReducer.thongTinUser);
   const isLoading = useSelector((state) => state.UserReducer.isLoading);
+  let { hoTen } = JSON.parse(localStorage.getItem("USER"));
 
   useMemo(() => {
     if (!localStorage.getItem("USER")) {
@@ -70,7 +71,10 @@ const UserProfile = (props) => {
                 <Box className={classes.borderTest}>
                   {/*User avatar */}
                   <Box display="flex">
-                    <img src={avatar} className={classes.img} />
+                    <img
+                      src={`https://i.pravatar.cc/150/?u=${hoTen}`}
+                      className={classes.img}
+                    />
                     <Box className={classes.nameAvatarBox}>
                       <Typography className={classes.nameUser}>
                         {userInfo.hoTen}

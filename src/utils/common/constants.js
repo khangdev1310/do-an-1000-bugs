@@ -3,7 +3,7 @@ export const STATUS_CODE = {
   NOT_FOUND: 400,
   SERVER_ERROR: 500,
   UNAUTHORIZED: 401,
-  FOUND: 201,
+  CREATED: 201,
 };
 export const MA_NHOM = "GP09";
 
