@@ -127,9 +127,6 @@ export default function TabContainer() {
 
   const renderHeThongRaps = () => {
     return heThongRaps.map((heThongRap, index) => {
-      {
-        console.log(heThongRap);
-      }
       return (
         <Tab
           key={uuidv4()}

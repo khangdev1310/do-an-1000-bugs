@@ -239,6 +239,10 @@ export const useStyle = makeStyles((theme) => ({
     margin: "0 auto",
     marginTop: "5rem",
     color: "#FAFAFA",
+
+    "& .MuiBox-root-169": {
+      padding: "5px",
+    },
   },
 
   mainTitle: {

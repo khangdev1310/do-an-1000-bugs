@@ -18,10 +18,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Rap = ({ rapChieu, gioChieu }) => {
   const classes = useStyles();
-  console.log("---");
-  console.log(rapChieu);
-  console.log(gioChieu);
-
   const renderGio = () => {
     return rapChieu?.map((rap, indexRapChieu) => {
       return gioChieu?.map((gio, indexGioChieu) => {
