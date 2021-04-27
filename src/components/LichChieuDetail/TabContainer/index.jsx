@@ -14,6 +14,7 @@ import {
 import { v4 as uuidv4 } from "uuid";
 import { Grid } from "@material-ui/core";
 import TabMobile from "../TabMobile";
+import { useMediaQuery } from "react-responsive";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -109,6 +110,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function TabContainer() {
   const classes = useStyles();
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
   const [value, setValue] = React.useState(0);
   const dispatch = useDispatch();
   const heThongRaps = useSelector((state) => state.MovieReducer.theater);
@@ -158,33 +160,37 @@ export default function TabContainer() {
 
   return (
     <>
-      <div className={classes.root}>
-        <Grid container>
-          <Grid container item md={3} sm={2}>
-            <Tabs
-              orientation="vertical"
-              variant="scrollable"
-              value={value}
-              onChange={handleChange}
-              aria-label="Vertical tabs example"
-              className={classes.tabs}
-              TabIndicatorProps={{
-                style: { backgroundColor: "rgb(236,70,248)" },
-              }}
-            >
-              {renderHeThongRaps()}
-            </Tabs>
-          </Grid>
-          <TabPanel container item md={9} sm={10}>
-            <TabPanel value={1} index={1}>
-              <TabChildren />
+      {isMobile ? (
+        <div className={classes.forXs}>
+          {console.log("ure using mobile")}
+          <TabMobile />
+        </div>
+      ) : (
+        <div className={classes.root}>
+          <Grid container>
+            <Grid container item md={3} sm={2}>
+              <Tabs
+                orientation="vertical"
+                variant="scrollable"
+                value={value}
+                onChange={handleChange}
+                aria-label="Vertical tabs example"
+                className={classes.tabs}
+                TabIndicatorProps={{
+                  style: { backgroundColor: "rgb(236,70,248)" },
+                }}
+              >
+                {renderHeThongRaps()}
+              </Tabs>
+            </Grid>
+            <TabPanel container item md={9} sm={10}>
+              <TabPanel value={1} index={1}>
+                <TabChildren />
+              </TabPanel>
             </TabPanel>
-          </TabPanel>
-        </Grid>
-      </div>
-      <div className={classes.forXs}>
-        <TabMobile />
-      </div>
+          </Grid>
+        </div>
+      )}
     </>
   );
 }
