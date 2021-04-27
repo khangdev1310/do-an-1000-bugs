@@ -54,6 +54,49 @@ export const Header = () => {
     setAnchorEl(anchorEl ? null : event.currentTarget);
   };
 
+  const getUserNameLocal = () => {
+    const localUser = JSON.parse(localStorage.getItem("USER"));
+    if (localUser) {
+      return (
+        <Box>
+          <Typography variant="h6">
+            Xin chào,{" "}
+            <Typography
+              style={{
+                color: "white",
+                cursor: "pointer",
+                fontSize: "18px",
+                fontWeight: "500",
+              }}
+            >
+              {localUser.hoTen.length > 15
+                ? localUser.hoTen.substring(0, 15) + "..."
+                : localUser.hoTen}
+            </Typography>
+          </Typography>
+        </Box>
+      );
+    } else {
+      return (
+        <Box
+          display="flex"
+          justifyContent="center"
+          className={classes.hideSignMobile}
+        >
+          <Link
+            to="/signin"
+            style={{ textDecoration: "none", color: "#FAFAFA" }}
+          >
+            <Box display="flex" justifyContent="center">
+              <img src={login} width="30px" />
+            </Box>
+            <Typography>Đăng nhập</Typography>
+          </Link>
+        </Box>
+      );
+    }
+  };
+
   const NavForMobile = () => {
     return (
       <div>
@@ -76,9 +119,7 @@ export const Header = () => {
               <Box onClick={() => setOpenNav(!openNav)}>
                 <MenuIcon style={{ fontSize: "2rem" }} />
               </Box>
-              <Box>
-                <Typography variant="h6">Xin chào, Gia An</Typography>
-              </Box>
+              {getUserNameLocal()}
             </Box>
             {/* //*/}
             <hr color="#585858" />
@@ -89,9 +130,11 @@ export const Header = () => {
                 <img src={shout} width="30px" />
               </Box>
               <Box>
-                <Typography className={classes.titleForMobile}>
-                  Khuyến mãi
-                </Typography>
+                <Link to="/promotion">
+                  <Typography className={classes.titleForMobile}>
+                    Khuyến mãi
+                  </Typography>
+                </Link>
               </Box>
             </Box>
             {/* //*/}
@@ -102,7 +145,7 @@ export const Header = () => {
               <Box className={classes.searchContainerMobile}>
                 <SearchIcon style={{ fontSize: "1rem", color: "#FAFAFA" }} />
               </Box>
-              <Box>
+              <Box onClick={() => handleChangeModal()}>
                 <Typography className={classes.titleForMobile}>
                   Tìm phim
                 </Typography>
@@ -111,19 +154,27 @@ export const Header = () => {
             {/* //*/}
             <hr color="#585858" />
 
-            {/* Lịch chiếu */}
-            <Box display="flex" alignItems="center">
-              <Box>
-                <img src={schedule} width="30px" style={{ color: "blue" }} />
+            {/* Logout */}
+            {localStorage.getItem("USER") ? (
+              <Box
+                display="flex"
+                alignItems="center"
+                onClick={() => handleUserLogout()}
+              >
+                <Box>
+                  <img src={login} width="30px" />
+                </Box>
+                <Box>
+                  <Typography className={classes.titleForMobile}>
+                    Đăng xuất
+                  </Typography>
+                </Box>
+                <hr color="#585858" />
               </Box>
-              <Box>
-                <Typography className={classes.titleForMobile}>
-                  Lịch chiếu
-                </Typography>
-              </Box>
-            </Box>
+            ) : (
+              ""
+            )}
             {/* //*/}
-            <hr color="#585858" />
           </Box>
         </div>
       </div>

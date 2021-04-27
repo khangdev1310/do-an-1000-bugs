@@ -172,7 +172,7 @@ export const useStyle = makeStyles((theme) => ({
   },
 
   userComment: {
-    backgroundColor: "#313131",
+    backgroundColor: "#90909087",
     padding: "1rem 1rem",
     borderRadius: "10px",
   },

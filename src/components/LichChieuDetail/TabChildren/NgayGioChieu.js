@@ -8,14 +8,9 @@ const NgayGioChieu = ({ day, rapChieu }) => {
       return lichChieu;
     });
   });
-  console.log(iterRapChieu);
-  console.log(day);
 
   const gioChieu = iterRapChieu?.map((gio, index) => {
     return gio.filter((ngayGio) => {
-      {
-        console.log(new Date(ngayGio.ngayChieuGioChieu).toLocaleDateString());
-      }
       return new Date(ngayGio.ngayChieuGioChieu).toLocaleDateString() === day;
     });
   });

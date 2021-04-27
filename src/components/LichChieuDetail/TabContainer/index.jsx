@@ -12,6 +12,8 @@ import {
   FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
 } from "../../../container/HomeTemplate/Home/modules/redux/constants";
 import { v4 as uuidv4 } from "uuid";
+import { Grid } from "@material-ui/core";
+import TabMobile from "../TabMobile";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -53,15 +55,55 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     height: "100%",
     color: "#000",
+    width: "670px",
+    height: "670px",
+    borderRadius: "5px",
+    padding: "1rem 0",
 
     "& .MuiBox-root": {
       padding: "0rem",
-      // maxHeight: "500px",
-      // overflow: "scroll",
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      display: "none",
     },
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
+  },
+
+  item: {
+    position: "relative",
+    padding: "0.25rem 0",
+  },
+
+  hr: {
+    position: "absolute",
+    bottom: "0",
+    left: "0",
+    width: "100%",
+    height: "1px",
+    color: "grey",
+    backgroundColor: "#F0F0F0",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+
+  tenHeThongRap: {
+    display: "flex",
+    alignItems: "center",
+    textAlign: "left",
+    [theme.breakpoints.down("sm")]: {
+      display: "none",
+    },
+  },
+
+  forXs: {
+    display: "none",
+    [theme.breakpoints.down("xs")]: {
+      display: "block",
+    },
   },
 }));
 
@@ -85,10 +127,25 @@ export default function TabContainer() {
 
   const renderHeThongRaps = () => {
     return heThongRaps.map((heThongRap, index) => {
+      {
+        console.log(heThongRap);
+      }
       return (
         <Tab
           key={uuidv4()}
-          label={<img src={heThongRap.logo} width="50px" height="50px" />}
+          label={
+            <Grid container spacing={0} className={classes.item}>
+              <Grid item md={4} sm={9}>
+                <img src={heThongRap.logo} width="50px" height="50px" />
+              </Grid>
+              <Grid item md={8} className={classes.tenHeThongRap}>
+                <Typography style={{ fontSize: "14px", fontWeight: "500" }}>
+                  {heThongRap.tenHeThongRap}
+                </Typography>
+              </Grid>
+              <div className={classes.hr}></div>
+            </Grid>
+          }
           onClick={() => {
             const maHeThongRap = heThongRap.maHeThongRap;
             dispatch({
@@ -103,20 +160,34 @@ export default function TabContainer() {
   };
 
   return (
-    <div className={classes.root}>
-      <Tabs
-        orientation="vertical"
-        variant="scrollable"
-        value={value}
-        onChange={handleChange}
-        aria-label="Vertical tabs example"
-        className={classes.tabs}
-      >
-        {renderHeThongRaps()}
-      </Tabs>
-      <TabPanel value={1} index={1}>
-        <TabChildren />
-      </TabPanel>
-    </div>
+    <>
+      <div className={classes.root}>
+        <Grid container>
+          <Grid container item md={3} sm={2}>
+            <Tabs
+              orientation="vertical"
+              variant="scrollable"
+              value={value}
+              onChange={handleChange}
+              aria-label="Vertical tabs example"
+              className={classes.tabs}
+              TabIndicatorProps={{
+                style: { backgroundColor: "rgb(236,70,248)" },
+              }}
+            >
+              {renderHeThongRaps()}
+            </Tabs>
+          </Grid>
+          <TabPanel container item md={9} sm={10}>
+            <TabPanel value={1} index={1}>
+              <TabChildren />
+            </TabPanel>
+          </TabPanel>
+        </Grid>
+      </div>
+      <div className={classes.forXs}>
+        <TabMobile />
+      </div>
+    </>
   );
 }

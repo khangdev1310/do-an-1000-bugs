@@ -1,4 +1,4 @@
-import { call, delay, put, takeLatest } from "redux-saga/effects";
+import { call, delay, put, takeEvery, takeLatest } from "redux-saga/effects";
 import {
   FETCH_HE_THONG_RAP_FAILED,
   FETCH_HE_THONG_RAP_SUCCESS,
@@ -70,9 +70,9 @@ function* fetchRapApiActionSaga() {
 }
 
 function* fetchLayThongTinLichChieuHeThongRapApiActionSaga({ payload }) {
-  yield put({
-    type: FETCH_THONG_TIN_LICH_CHIEU_REQUESTS,
-  });
+  // yield put({
+  //   type: FETCH_THONG_TIN_LICH_CHIEU_REQUESTS,
+  // });
   try {
     const { data, status } = yield call(
       fetchLayThongTinLichChieuHeThongRapApiAction,
@@ -152,7 +152,7 @@ export const MovieBigSagas = [
     FETCH_LAY_THONG_TIN_HE_THONG_RAP_REQUESTS_SAGA,
     fetchRapApiActionSaga
   ),
-  takeLatest(
+  takeEvery(
     FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
     fetchLayThongTinLichChieuHeThongRapApiActionSaga
   ),

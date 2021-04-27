@@ -57,7 +57,7 @@ export default function TabParents() {
       type: FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
       payload: maHeThongRap,
     });
-  });
+  }, []);
 
   const renderHeThongRaps = () => {
     return heThongRaps.map((heThongRap, index) => {
@@ -67,6 +67,10 @@ export default function TabParents() {
           key={index}
           onClick={() => {
             const maHeThongRap = heThongRap.maHeThongRap;
+            dispatch({
+              type: FETCH_LAY_THONG_TIN_LICH_CHIEU_HE_THONG_RAP_REQUESTS_SAGA,
+              payload: maHeThongRap,
+            });
             dispatch({
               type: CHANGE_MA_HE_THONG,
               payload: maHeThongRap,

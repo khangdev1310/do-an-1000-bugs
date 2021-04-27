@@ -48,7 +48,35 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
-    width: "670px",
+    width: "620px",
+    [theme.breakpoints.down("sm")]: {
+      width: "600px",
+    },
+
+    ["@media (max-width:760px)"]: {
+      width: "550px",
+    },
+
+    ["@media (max-width:700px)"]: {
+      width: "450px",
+    },
+
+    "& .MuiTab-textColorPrimary.Mui-selected": {
+      color: "rgb(236,70,248)",
+    },
+
+    "& .MuiAppBar-colorDefault": {
+      backgroundColor: "#fff",
+      color: "#000",
+    },
+
+    "& .MuiPaper-elevation4": {
+      boxShadow: "none",
+    },
+
+    "& .MuiTab-root": {
+      minWidth: "100px",
+    },
   },
 }));
 
@@ -94,7 +122,6 @@ export default function TabChildren() {
 
       const arrDay = listDay === undefined ? ["none"] : [...listDay];
       const arr1d = [].concat(...arrDay);
-      console.log(arr1d);
 
       const listDayShow = new Set(
         arr1d.map((day) => {
@@ -117,40 +144,40 @@ export default function TabChildren() {
 
   const renderNoiDung = () => {
     if (movieDetailLichChieu) {
-      console.log(movieDetailLichChieu);
       let arr = movieDetailLichChieu.heThongRapChieu.filter((cumRap) => {
         return cumRap.maHeThongRap === maHeThongRap;
       });
       let rapChieu = arr[0]?.cumRapChieu.map((cumRap) => {
         return cumRap;
       });
-      console.log(rapChieu);
       const listDay = rapChieu?.map((lichChieus) => {
         return lichChieus.lichChieuPhim.map((lichChieu) => {
           return new Date(lichChieu.ngayChieuGioChieu).toLocaleDateString();
         });
       });
-      console.log(listDay);
 
       const arrDay = listDay === undefined ? ["none"] : [...listDay];
       const arr1d = [].concat(...arrDay);
-      console.log(arr1d);
 
       const listDayShow = new Set(
         arr1d.map((day) => {
           return day;
         })
       );
-      console.log(listDayShow);
       const listDayShowTabs = [...listDayShow];
-      console.log(listDayShowTabs);
 
       return listDayShowTabs.map((day, index) => {
-        {
-          console.log(day);
-        }
         return (
-          <TabPanel key={uuidv4()} value={value} index={index}>
+          <TabPanel
+            key={uuidv4()}
+            value={value}
+            index={index}
+            style={{
+              maxHeight: "600px",
+              overflowY: "auto",
+              overflowX: "hidden",
+            }}
+          >
             <NgayGioChieu day={day} rapChieu={rapChieu} />
           </TabPanel>
         );
@@ -166,6 +193,7 @@ export default function TabChildren() {
           onChange={handleChange}
           indicatorColor="primary"
           textColor="primary"
+          TabIndicatorProps={{ style: { backgroundColor: "rgb(236,70,248)" } }}
           variant="scrollable"
           scrollButtons="auto"
           aria-label="scrollable auto tabs example"
