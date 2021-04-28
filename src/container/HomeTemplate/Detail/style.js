@@ -237,11 +237,15 @@ export const useStyle = makeStyles((theme) => ({
   tabs: {
     maxWidth: "870px",
     margin: "0 auto",
-    marginTop: "5rem",
+    marginTop: "3rem",
     color: "#FAFAFA",
 
     "& .MuiBox-root-169": {
       padding: "5px",
+    },
+
+    [theme.breakpoints.down("xs")]: {
+      marginTop: "1.5rem",
     },
   },
 
@@ -310,5 +314,18 @@ export const useStyle = makeStyles((theme) => ({
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
+  },
+
+  ngayKhoiChieuMobile: {
+    color: "#9B9B9B",
+    fontSize: "15px",
+  },
+  titleMobile: {
+    fontSize: "18px",
+    fontWeight: "500",
+  },
+  subMobile: {
+    color: "#9B9B9B",
+    fontSize: "15px",
   },
 }));

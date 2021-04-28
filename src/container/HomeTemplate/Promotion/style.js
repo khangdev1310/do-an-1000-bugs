@@ -5,10 +5,25 @@ export const useStyle = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
+  wrapper: {
+    "& img": {
+      borderRadius: "10px",
+    },
+  },
+
+  wrapperText: {
+    margin: "0.25rem 0.25rem",
+  },
+
+  mainText: {
+    fontSize: "16px",
+    fontWeight: "500",
+  },
+
+  subText: {
+    fontSize: "14px",
+    fontWeight: "400",
+    marginTop: "0.5rem",
   },
   img: {
     width: "600px",
@@ -49,8 +64,8 @@ export const useStyle = makeStyles((theme) => ({
   },
   containerNews: {
     margin: "0 auto",
-    // padding: "7rem 0",
-    maxWidth: "980px",
+    padding: "3rem 0",
+    maxWidth: "940px",
     color: "white",
     paddingBottom: "1rem",
     color: "rgb(223,66,238)",

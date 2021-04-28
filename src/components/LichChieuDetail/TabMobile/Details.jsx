@@ -16,10 +16,9 @@ const useStyles = makeStyles((theme) => ({
       padding: "1rem",
     },
   },
-
   heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontSize: "14px",
+    fontWeight: "500",
   },
 }));
 
@@ -45,14 +44,21 @@ const Details = ({ heThongRap, heThongRapChieu }) => {
               id="panel1a-header"
             >
               <Grid container>
-                <Grid item xs={2}>
-                  <img src={hinhAnhRap} width="50px" height="50px" />
+                <Grid item xs={3}>
+                  <img
+                    src={hinhAnhRap}
+                    width="50px"
+                    height="50px"
+                    style={{ borderRadius: "4px" }}
+                  />
                 </Grid>
-                <Grid item xs={10}>
+                <Grid item xs={9}>
                   <Typography className={classes.heading}>
                     {show.tenCumRap}
                   </Typography>
-                  <Typography>Chi tiết</Typography>
+                  <Typography style={{ fontSize: "13px", fontWeight: "400" }}>
+                    [Chi tiết]
+                  </Typography>
                 </Grid>
               </Grid>
             </AccordionSummary>
@@ -87,41 +93,7 @@ const Details = ({ heThongRap, heThongRapChieu }) => {
       );
     }
   };
-  return (
-    <div className={classes.root}>
-      {renderNgayChieu()}
-      {/* <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-          <Typography className={classes.heading}>Accordion 1</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel2a-content"
-          id="panel2a-header"
-        >
-          <Typography className={classes.heading}>Accordion 2</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-            malesuada lacus ex, sit amet blandit leo lobortis eget.
-          </Typography>
-        </AccordionDetails>
-      </Accordion> */}
-    </div>
-  );
+  return <div className={classes.root}>{renderNgayChieu()}</div>;
 };
 
 export default Details;

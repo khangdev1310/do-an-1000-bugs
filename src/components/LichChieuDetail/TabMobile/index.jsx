@@ -21,8 +21,11 @@ export default function TabMobile() {
   const dispatch = useDispatch();
   const heThongRaps = useSelector((state) => state.MovieReducer.theater);
   const maHeThongRap = useSelector((state) => state.MovieReducer.maHeThongRap);
+  // const heThongRapChieu = useSelector(
+  //   (state) => state.MovieReducer.movieDetailLichChieu
+  // );
   const heThongRapChieu = useSelector(
-    (state) => state.MovieReducer.movieDetailLichChieu
+    (state) => state.MovieDetailReducer.movieDetail
   );
   console.log(heThongRapChieu);
 
@@ -34,13 +37,6 @@ export default function TabMobile() {
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel1a-content"
             id="panel1a-header"
-            // onClick={() => {
-            //   const maHeThongRap = heThongRap.maHeThongRap;
-            //   dispatch({
-            //     type: CHANGE_MA_HE_THONG,
-            //     payload: maHeThongRap,
-            //   });
-            // }}
           >
             <Grid container spacing={0} className={classes.item}>
               <Grid item xs={3}>

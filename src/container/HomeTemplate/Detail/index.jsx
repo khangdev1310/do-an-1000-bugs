@@ -533,6 +533,7 @@ const Detail = (props) => {
             </Fade>
           </Modal>
         </Box>
+        {/*Mobile */}
         <Box className={classes.forMobile}>
           <Box className={classes.containerImageMobile}>
             <img src={movieDetail?.hinhAnh} width="100%" />
@@ -542,6 +543,20 @@ const Detail = (props) => {
                 style={{ fontSize: "4rem", color: "#dbdbdb" }}
               />
             </div>
+          </Box>
+          <Box style={{ color: "#FAFAFA", margin: "1rem" }}>
+            <Typography className={classes.ngayKhoiChieuMobile}>
+              {new Date(movieDetail?.ngayKhoiChieu).toLocaleDateString(
+                "en-GB",
+                { month: "2-digit", day: "2-digit", year: "numeric" }
+              )}
+            </Typography>
+            <Typography className={classes.titleMobile}>
+              {movieDetail?.tenPhim}
+            </Typography>
+            <Typography className={classes.subMobile}>
+              120 phút - {movieDetail?.danhGia} IMDb - 2D/Digital
+            </Typography>
           </Box>
         </Box>
         <Box className={classes.containerForTabs}>

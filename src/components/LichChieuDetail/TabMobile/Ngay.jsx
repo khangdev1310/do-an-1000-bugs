@@ -10,10 +10,28 @@ import Gio from "./Gio";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
+
+    "& .MuiAccordion-root": {
+      backgroundColor: "transparent",
+    },
+
+    "& .MuiPaper-elevation1": {
+      boxShadow: "none",
+    },
   },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+
+  MuiAccordionroot: {
+    "&.MuiAccordion-root:before": {
+      backgroundColor: "transparent",
+    },
+  },
+
+  titleDate: {
+    padding: "0.25rem 0.5rem",
+    backgroundColor: "plum",
+    fontWeight: "500",
+    fontSize: "14px",
+    borderRadius: "4px",
   },
 }));
 
@@ -36,13 +54,17 @@ const Ngay = ({ details }) => {
   const renderNgay = () => {
     return listDayShow.map((day) => {
       return (
-        <Accordion>
+        <Accordion
+          classes={{
+            root: classes.MuiAccordionroot,
+          }}
+        >
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-            <Typography className={classes.heading}>{day}</Typography>
+            <Typography className={classes.titleDate}>Ngày: {day}</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Gio details={details} day={day} />

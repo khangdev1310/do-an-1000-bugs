@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
 
   hr: {
     position: "absolute",
-    bottom: "0",
+    bottom: "-10%",
     left: "0",
     width: "100%",
     height: "1px",
