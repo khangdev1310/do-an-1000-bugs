@@ -43,6 +43,7 @@ import PlayCircleOutlineIcon from "@material-ui/icons/PlayCircleOutline";
 import Rating from "@material-ui/lab/Rating";
 import Swal from "sweetalert2";
 import avatarDefault from "./../../../assets/avatar-none.jpeg";
+import StarHalfIcon from "@material-ui/icons/StarHalf";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -193,6 +194,35 @@ const Detail = (props) => {
     }
   };
 
+  const renderStarUsersComment = (comment) => {
+    let arr = [];
+    let test = <GradeIcon style={{ fontSize: "0.8rem" }} />;
+    let half = (
+      <>
+        <GradeIcon style={{ fontSize: "0.8rem" }} />
+        <StarHalfIcon style={{ fontSize: "0.8rem" }} />
+      </>
+    );
+
+    if (comment.danhGia > 1) {
+      let checkStar;
+      if (comment.danhGia % 2 == 0) {
+        checkStar = comment.danhGia / 2;
+        for (let i = 0; i < checkStar; i++) {
+          arr.push(test);
+        }
+      } else {
+        checkStar = (comment.danhGia - 1) / 2;
+        for (let i = 0; i < checkStar; i++) {
+          i === checkStar - 1 ? arr.push(half) : arr.push(test);
+        }
+      }
+      return arr.map((value) => {
+        return value;
+      });
+    } else return <StarHalfIcon style={{ fontSize: "0.8rem" }} />;
+  };
+
   const handleRenderUsersComment = () => {
     if (comments) {
       let arrReverse = [...comments].slice(0).reverse();
@@ -237,11 +267,7 @@ const Detail = (props) => {
                       alignItems="center"
                       justifyContent="center"
                     >
-                      <GradeIcon style={{ fontSize: "0.8rem" }} />
-                      <GradeIcon style={{ fontSize: "0.8rem" }} />
-                      <GradeIcon style={{ fontSize: "0.8rem" }} />
-                      <GradeIcon style={{ fontSize: "0.8rem" }} />
-                      <GradeIcon style={{ fontSize: "0.8rem" }} />
+                      {renderStarUsersComment(comment)}
                     </Box>
                   </Box>
                 </Grid>

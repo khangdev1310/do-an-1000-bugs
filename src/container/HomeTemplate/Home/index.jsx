@@ -8,6 +8,8 @@ import HomeApp from "../../../components/HomeApp";
 import { makeStyles } from "@material-ui/core";
 import background1 from "./../../../assets/background1.jpeg";
 import LazyLoad from "react-lazyload";
+import { useMediaQuery } from "react-responsive";
+import MovieHomeForPhone from "../../../components/MovieHomeForPhone";
 
 const useStyles = makeStyles((theme) => ({
   bgColor: {
@@ -26,14 +28,20 @@ const Home = () => {
   const classes = useStyles();
   const refApp = useRef(null);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
+  console.log(movieList);
   let arrRandom = [];
   for (let i = 0; i < 6; i++) {
     arrRandom.push(movieList[i]);
   }
+  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
 
   return (
     <div className={classes.bgColor} name="homeBlock">
-      <Carousel movieList={arrRandom} />
+      {!isMobile ? (
+        <Carousel movieList={arrRandom} />
+      ) : (
+        <MovieHomeForPhone movieList={movieList} />
+      )}
       <SearchBarDesktop />
       <Movie />
       <LichChieu />

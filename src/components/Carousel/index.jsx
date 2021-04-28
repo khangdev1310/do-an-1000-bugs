@@ -135,25 +135,6 @@ const Carousel = ({ movieList }) => {
   return (
     <div className={classes.container}>
       <div className={`${classes.bgColor}`}>
-        <Grid container className={classes.header}>
-          <Grid
-            item
-            md={6}
-            className={`${classes.headerItem}`}
-            style={{ justifyContent: "flex-start" }}
-          >
-            <Box display="flex">
-              <img src={podcast} width="30px" />
-              <Typography
-                variant="h4"
-                style={{ fontWeight: "500", marginLeft: "1rem" }}
-              >
-                Phim đang chiếu
-              </Typography>
-            </Box>
-          </Grid>
-          <Grid item md={6} className={classes.headerItem}></Grid>
-        </Grid>
         <Box className={classes.carousel}>
           <Slider ref={ref} {...settings}>
             {renderMovieList()}

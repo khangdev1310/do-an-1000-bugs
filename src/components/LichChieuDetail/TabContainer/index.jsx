@@ -167,7 +167,7 @@ export default function TabContainer() {
         </div>
       ) : (
         <div className={classes.root}>
-          <Grid container>
+          <Grid container spacing={1}>
             <Grid container item md={3} sm={2}>
               <Tabs
                 orientation="vertical"

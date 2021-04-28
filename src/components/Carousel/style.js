@@ -85,6 +85,7 @@ export const useStyles = makeStyles((theme) => ({
     width: "75%",
     maxWidth: "1280px",
     margin: "0rem auto",
+    paddingTop: "8rem",
 
     "& img": {
       width: "275px",

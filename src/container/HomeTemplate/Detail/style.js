@@ -210,18 +210,18 @@ export const useStyle = makeStyles((theme) => ({
     },
   },
 
-  backIcon: {
-    position: "absolute",
-    top: "30px",
-    left: "50px",
-    color: "rgba(236,70,248,1)",
-    fontSize: "2.5rem",
-    transition: "all 0.2s",
-    "&:hover": {
-      color: "rgba(165, 47, 173)",
-      transform: "scale(0.9)",
-    },
-  },
+  // backIcon: {
+  //   position: "absolute",
+  //   top: "30px",
+  //   left: "50px",
+  //   color: "rgba(236,70,248,1)",
+  //   fontSize: "2.5rem",
+  //   transition: "all 0.2s",
+  //   "&:hover": {
+  //     color: "rgba(165, 47, 173)",
+  //     transform: "scale(0.9)",
+  //   },
+  // },
 
   describeTitle: {
     flexDirection: "column",
@@ -297,7 +297,7 @@ export const useStyle = makeStyles((theme) => ({
     position: "relative",
     "& > img": {
       maxHeight: "200px",
-      objectFit: "cover",
+      objectFit: "contain",
     },
   },
 
