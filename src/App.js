@@ -63,7 +63,7 @@ const App = () => {
             {showLayoutHome(routesHome)}
             <Route path="/signin" component={SignIn} />
             <Route path="/signup" component={SignUp} />
-            <Route exact path="/checkout/:id" component={PhongVe} />
+            {/* <Route exact path="/checkout/:id" component={PhongVe} /> */}
             <Route exact path="/admin" component={SignInAdmin} />
             <Route exact path="/admin/dashboard" component={Dashboard} />
             <Route path="*" component={PageNotFound} />

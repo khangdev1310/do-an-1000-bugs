@@ -9,6 +9,7 @@ import About from "../container/HomeTemplate/About";
 import Dashboard from "../container/AdminTemplate/Dashboard/Dashboard";
 import LichChieu from "../container/HomeTemplate/LichChieu/LichChieuLayout";
 import UserProfile from "../container/HomeTemplate/UserProfile";
+import PhongVe from "../container/HomeTemplate/PhongVe";
 
 export const routesHome = [
   {
@@ -40,6 +41,11 @@ export const routesHome = [
     exact: false,
     path: "/profile",
     component: UserProfile,
+  },
+  {
+    exact: false,
+    path: "/checkout/:id",
+    component: PhongVe,
   },
 ];
 

@@ -89,7 +89,7 @@ export const useStyle = makeStyles((theme) => ({
   iconClose: {
     position: "absolute",
     top: "1%",
-    right: "1%",
+    right: "3%",
     fontSize: "2.5rem",
     cursor: "pointer",
   },

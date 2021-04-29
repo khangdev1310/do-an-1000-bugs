@@ -104,7 +104,7 @@ export const useStyle = makeStyles((theme) => ({
 
   stackContainer: {
     position: "absolute",
-    bottom: "-5%",
+    bottom: "0%",
     left: "0%",
     backgroundColor: "rgba(236,70,248,0.9)",
     transition: "all 1s linear",

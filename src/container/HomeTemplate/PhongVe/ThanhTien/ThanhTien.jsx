@@ -1,55 +1,51 @@
-import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  Grid,
+  TextField,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import React, { useState } from "react";
 import { useStyles } from "./styles";
-import propCorn from "./../../../../assets/popcornCheckout.png";
-import ErrorIcon from "@material-ui/icons/Error";
-import Combo from "../Combo";
+import Modal from "@material-ui/core/Modal";
+import Backdrop from "@material-ui/core/Backdrop";
+import Fade from "@material-ui/core/Fade";
 import { useSelector, useDispatch } from "react-redux";
 import { POST_THONG_TIN_DAT_VE_REQUESTS_SAGA } from "../modules/redux/constants";
 import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
+import Confirm from "./Confirm/Confirm";
 
 const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [comboStatus, setComboStatus] = useState(false);
   const priceSeat = useSelector(
     (state) => state.PhongVeReducer?.totalPriceSeat
   );
-  const priceCombo = useSelector(
-    (state) => state.PhongVeReducer?.totalPriceCombo
-  );
-  const priceAll = useSelector((state) => state.PhongVeReducer?.totalPrice);
   const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
-  const { taiKhoan, email, soDT, accessToken } = JSON.parse(
-    localStorage.getItem("USER")
-  );
-  console.log(taiKhoan);
-  const [datVe, setDatVe] = useState({
-    maLichChieu,
-    danhSachVe: [],
-    taiKhoanNguoiDung: taiKhoan,
-  });
-
+  const [open, setOpen] = React.useState(false);
   if (!infoPhongVe) {
     return null;
   }
 
-  const { thongTinPhim } = infoPhongVe;
+  const handleOpen = () => {
+    setOpen(true);
+  };
 
-  const handleDispatch = () => {
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleCheck = () => {
     let danhSachVe = [];
     bookingSeat.forEach((danhSach) => {
       let { maGhe, giaVe } = danhSach;
       danhSachVe.push({ maGhe, giaVe });
     });
-    datVe.danhSachVe = danhSachVe;
-    console.log(datVe);
-    if (datVe.danhSachVe.length > 0) {
-      dispatch({
-        type: POST_THONG_TIN_DAT_VE_REQUESTS_SAGA,
-        payload: { datVe, accessToken },
-      });
+
+    if (danhSachVe.length > 0) {
+      setOpen(true);
     } else {
       Swal.fire({
         icon: "warning",
@@ -63,19 +59,13 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
       return bookingSeat.map((seat, index) => {
         if (index === 0) {
           return (
-            <Typography
-              style={{ display: "inline", fontSize: "14px" }}
-              key={uuidv4()}
-            >
+            <Typography className={classes.name} key={uuidv4()}>
               {seat.tenGhe}
             </Typography>
           );
         }
         return (
-          <Typography
-            style={{ display: "inline", fontSize: "14px" }}
-            key={uuidv4()}
-          >
+          <Typography className={classes.name} key={uuidv4()}>
             , {seat.tenGhe}
           </Typography>
         );
@@ -83,114 +73,96 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
     }
   };
   return (
-    <div className={classes.container}>
-      <Combo comboStatus={comboStatus} />
-      <div className={classes.contents}>
-        <Box className={classes.items}>
-          <Typography className={classes.total}>{priceAll} đ</Typography>
-        </Box>
-        <Box className={classes.items}>
-          <Typography className={classes.movieTitle}>
-            {thongTinPhim.tenPhim}
-          </Typography>
-          <Typography className={classes.movieText}>
-            {thongTinPhim.tenCumRap}
-          </Typography>
-          <Typography className={classes.movieText}>
-            Ngày mai {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu} -{" "}
-            {thongTinPhim.tenRap}
-          </Typography>
-        </Box>
-        <Box className={classes.items}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Typography className={classes.soGhe}>
-                Ghế {renderSeat()}
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.soGhe}
-                style={{ textAlign: "right" }}
-              >
-                {priceSeat} đ
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box className={classes.items}>
-          <Grid container spacing={3}>
-            <Grid item xs={6}>
-              <Box onClick={() => setComboStatus(!comboStatus)}>
-                <img
-                  src={propCorn}
-                  style={{ marginRight: "9px", width: "17px", height: "22px" }}
-                />
-              </Box>
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.soGhe}
-                style={{ textAlign: "right" }}
-              >
-                {priceCombo} đ
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box className={classes.itemsTextField}>
-          <TextField
-            id="standard-basic"
-            label="Email"
-            InputProps={{ disableUnderline: true }}
-            disabled
-            defaultValue={email}
-          />
-        </Box>
-        <Box className={classes.itemsTextField}>
-          <TextField
-            id="standard-basic"
-            label="Số điện thoại"
-            InputProps={{ disableUnderline: true }}
-            disabled
-            defaultValue={soDT}
-          />
-        </Box>
-        <Box className={classes.itemsTextField}>
-          <TextField
-            id="standard-basic"
-            label="Mã giảm giá"
-            InputProps={{ disableUnderline: true }}
-          />
-        </Box>
-        <Box style={{ marginTop: "0.5rem" }}>
-          <Typography className={classes.titleSpan}>
-            Hình thức thanh toán
-          </Typography>
-          <Typography className={classes.pleased}>
-            Vui lòng chọn ghế để hiển thị phương thức thanh toán phù hợp.
-          </Typography>
-        </Box>
-        <Box>
-          <Box className={classes.notice}>
-            <Typography align="center" className={classes.noticeText}>
-              <ErrorIcon
-                style={{ color: "rgb(236,70,248)", marginRight: "8px" }}
+    <div className={classes.bgThanhToan}>
+      <div className={classes.containerThanhToan}>
+        <div className={classes.formatTop}></div>
+        <Grid container>
+          <Grid item xs={12} sm={4} style={{ padding: "0.5rem" }}>
+            <Box display="flex">
+              <img
+                src={infoPhongVe.thongTinPhim.hinhAnh}
+                width="90px"
+                style={{ borderRadius: "4px" }}
               />
-              Vé đã mua không thể đổi hoặc hoàn tiền Mã vé sẽ được gửi qua tin
-              nhắn ZMS (tin nhắn Zalo) và Email đã nhập.
-            </Typography>
-          </Box>
-          <Button
-            type="submit"
-            variant="contained"
-            className={classes.button}
-            onClick={() => handleDispatch()}
-          >
-            Đặt vé
-          </Button>
-        </Box>
+              <Box style={{ margin: "0.25rem" }}>
+                <Typography className={classes.name}>
+                  {infoPhongVe.thongTinPhim.tenPhim}
+                </Typography>
+                <Typography
+                  className={classes.name}
+                  style={{ display: "block" }}
+                >
+                  2D
+                </Typography>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4} style={{ padding: "0.5rem" }}>
+            <Box>
+              <Typography className={classes.main}>
+                Rạp:{" "}
+                <Typography className={classes.name}>
+                  {infoPhongVe.thongTinPhim.tenCumRap}
+                </Typography>
+              </Typography>
+              <Typography className={classes.main}>
+                Suất chiếu:{" "}
+                <Typography className={classes.name}>
+                  {infoPhongVe.thongTinPhim.ngayChieu}{" "}
+                  {infoPhongVe.thongTinPhim.gioChieu}
+                </Typography>
+              </Typography>
+              <Typography className={classes.main}>
+                Phòng chiếu:{" "}
+                <Typography className={classes.name}>
+                  {infoPhongVe.thongTinPhim.tenRap}
+                </Typography>
+              </Typography>
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4} style={{ padding: "0.5rem" }}>
+            <Box>
+              <Typography className={classes.main}>
+                Ghế:{" "}
+                <Typography className={classes.name}>{renderSeat()}</Typography>
+              </Typography>
+            </Box>
+            <Box>
+              <Typography className={classes.main}>
+                Giá:{" "}
+                <Typography className={classes.name}>{priceSeat}</Typography>
+              </Typography>
+            </Box>
+            <Button
+              fullWidth
+              onClick={handleCheck}
+              variant="contained"
+              style={{ backgroundColor: "plum", marginTop: "1rem" }}
+            >
+              Xác nhận
+            </Button>
+          </Grid>
+        </Grid>
+        <div className={classes.formatBottom}></div>
       </div>
+      <Modal
+        aria-labelledby="transition-modal-title"
+        aria-describedby="transition-modal-description"
+        className={classes.modal}
+        open={open}
+        onClose={handleClose}
+        closeAfterTransition
+        BackdropComponent={Backdrop}
+        BackdropProps={{
+          timeout: 500,
+        }}
+      >
+        <Fade in={open}>
+          <div className={classes.paper}>
+            <Confirm infoPhongVe={infoPhongVe} />
+          </div>
+        </Fade>
+      </Modal>
     </div>
   );
 };

@@ -13,6 +13,7 @@ import {
   FETCH_LAY_DANH_SACH_PHONG_VE_SUCCESS,
   POST_THONG_TIN_DAT_VE_REQUESTS_SAGA,
 } from "./constants";
+import history from "./../../../../../history";
 
 function* fetchLayDanhSachPhongVeActionSaga({ payload }) {
   yield put({
@@ -49,11 +50,12 @@ function* postThongTinDatVeActionSaga({ payload }) {
   try {
     const { data, status } = yield call(postThongTinDatVeApiAction, payload);
     if (status === STATUS_CODE.SUCCESS) {
-      handleNoti(
-        "success",
-        "Đặt vé thành công",
-        "Vui lòng kiểm tra email và số điện thoại để lấy mã!"
-      );
+      Swal.fire({
+        icon: "success",
+        title: "Đặt vé thành công",
+        text: "Vui lòng kiểm tra email và số điện thoại để lấy mã!",
+      });
+      yield call(history.push, "/");
     }
   } catch (err) {
     handleNoti("error", "Đặt vé thất bại", `${err.response.data}`);

@@ -1,88 +1,59 @@
 import { makeStyles } from "@material-ui/core";
+import top from "../../../../assets/veXemPhim.png";
+import bottom from "../../../../assets/veXemPhimBottom.png";
+import background1 from "../../../../assets/background1.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
-  container: {
-    boxShadow: "0 0 15px rgb(0 0 0 / 30%)",
-    height: "100%",
-    position: "fixed",
-    backgroundColor: "#FAFAFA",
-  },
-  contents: {
-    padding: "1rem",
-    overflowY: "scroll",
-    height: "100%",
-    paddingBottom: "300px",
-    paddingLeft: "5%",
-    paddingRight: "5%",
-    backgroundColor: "#FAFAFA",
-    zIndex: "2",
-  },
-  items: {
-    borderBottom: "1px solid #E9E9E9",
-    padding: "0.7rem 0",
-  },
-
-  itemsTextField: {
-    borderBottom: "1px solid #E9E9E9",
-    padding: "0.2rem 0",
-  },
-  total: {
-    color: "#44c020",
-    fontSize: "34px",
-    textAlign: "center",
-  },
-  button: {
-    position: "absolute",
-    left: "0",
-    bottom: 0,
-    paddingTop: "15px",
-    height: "60px",
-    cursor: "pointer",
-    fontSize: "24px",
-    textAlign: "center",
-    color: "#e9e9e9!important",
+  formatTop: {
     width: "100%",
-    backgroundImage: "linear-gradient(223deg,#b4ec51 0,#429321 100%)",
-    borderRadius: "0px",
-  },
-  notice: {
-    paddingLeft: "5%",
-    paddingRight: "5%",
-    paddingBottom: "4%",
-    position: "absolute",
-    left: 0,
-    right: 0,
-    bottom: "60px",
-    marginRight: "4px",
-    background: "#fff",
-    textAlign: "center",
-    zIndex: "2",
+    background: `url(${top}) repeat-x top left transparent`,
+    height: "8px",
+    overflow: "hidden",
   },
 
-  noticeText: {
-    fontSize: "14px",
+  modal: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    boxShadow: theme.shadows[5],
+    width: "50%",
+    height: "75%",
+    padding: "1rem",
+    overflowX: "hidden",
+    overflowY: "auto",
+    [theme.breakpoints.down("xs")]: {
+      width: "90%",
+      height: "70%",
+    },
   },
 
-  movieTitle: {
-    fontSize: "16px",
-    fontWeight: "500",
-  },
-  movieText: {
-    fontSize: "14px",
-  },
-
-  titleSpan: {
-    fontSize: "15px",
+  bgThanhToan: {
+    background: `linear-gradient(to right bottom,rgba(9,1,65, 0.8), rgba(231,71,243, 0.2)), url(${background1})`,
+    width: "100%",
+    margin: "0 auto",
+    color: "#FAFAFA",
   },
 
-  pleased: {
-    marginTop: "0.2rem",
-    fontSize: "14px",
-    color: "rgb(236,70,248)",
+  main: {
+    fontWeight: "400",
+    color: "#CCCCCC",
   },
 
-  soGhe: {
-    fontSize: "14px",
-    color: "rgb(236,70,248)",
+  name: {
+    display: "inline-block",
+    color: "#FAFAFA",
+    fontWeight: "700",
+  },
+
+  containerThanhToan: {},
+
+  formatBottom: {
+    width: "100%",
+    background: `url(${bottom}) repeat-x bottom left transparent`,
+    height: "8px",
+    overflow: "hidden",
   },
 }));

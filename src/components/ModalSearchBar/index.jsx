@@ -6,7 +6,14 @@ import Fade from "@material-ui/core/Fade";
 import { useSelector, useDispatch } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import Autocomplete from "@material-ui/lab/Autocomplete";
-import { Box, Button, Grid, Typography, withStyles } from "@material-ui/core";
+import {
+  Box,
+  Button,
+  createMuiTheme,
+  Grid,
+  Typography,
+  withStyles,
+} from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import cinemaIcon from "./../../assets/cinema.svg";
 import { FETCH_THONG_TIN_LICH_CHIEU_PHIM_REQUESTS_SAGA } from "../../container/HomeTemplate/Home/modules/redux/constants";

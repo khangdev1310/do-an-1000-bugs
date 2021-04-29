@@ -1,12 +1,22 @@
 import { makeStyles } from "@material-ui/core";
 
-export const useStyles = makeStyles(() => ({
+export const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  },
+
   wrapperEach: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    margin: "2rem 1rem",
+    // margin: "2rem",
+    textAlign: "center",
   },
   seat: {
     borderRadius: "3px",

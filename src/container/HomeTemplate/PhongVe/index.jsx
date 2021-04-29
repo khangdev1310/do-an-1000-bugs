@@ -4,7 +4,6 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import { useStyles } from "./style";
-import popcorn from "./../../../assets/popcorn.png";
 import screen from "./../../../assets/screen.png";
 import ThanhTien from "./ThanhTien/ThanhTien";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +11,6 @@ import { FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA } from "./modules/redux/cons
 import Seat from "./Seat";
 import SeatEmpty from "./SeatEmpty";
 import Summarize from "./Summarize";
-import { useParams } from "react-router-dom";
 
 const PhongVe = (props) => {
   const classes = useStyles();
@@ -23,7 +21,9 @@ const PhongVe = (props) => {
   const [open, setOpen] = useState(false);
   let checkSeat = 1;
   console.log(minutes);
-  const maLichChieu = props.match.params.id;
+  if (!localStorage.getItem("USER")) {
+    props.history.push("/");
+  }
 
   useEffect(() => {
     dispatch({
@@ -131,14 +131,14 @@ const PhongVe = (props) => {
   };
 
   return (
-    <div>
+    <div className={classes.bgColor}>
       <div className={classes.container}>
         {handleOpenModal()}
-        <Grid container spacing={0}>
+        <Grid container spacing={0} style={{ flexDirection: "column" }}>
           <Grid
             container
             item
-            xs={9}
+            xs={12}
             spacing={0}
             style={{
               height: "100%",
@@ -148,57 +148,19 @@ const PhongVe = (props) => {
             }}
           >
             <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="space-between"
-              style={{ width: "800px" }}
+              style={{
+                marginTop: "1.5rem",
+              }}
+              className={classes.overflow}
             >
-              <Box display="flex" alignItems="center">
-                <img src={popcorn} width="50px" height="50px" />
-                <Box style={{ marginLeft: "1rem" }}>
-                  <Typography className={classes.titleTheater}>
-                    {thongTinPhim.tenCumRap} -{" "}
-                    <Typography
-                      style={{ color: "#000", display: "inline" }}
-                    ></Typography>
-                  </Typography>
-                  <Typography className={classes.titleTheaterSpan}>
-                    Ngày mai {thongTinPhim.ngayChieu} - {thongTinPhim.gioChieu}{" "}
-                    - {thongTinPhim.tenRap}
-                  </Typography>
-                </Box>
-              </Box>
-              <Box
-                display="flex"
-                flexDirection="column"
-                alignItems="center"
-                justifyContent="center"
-              >
-                <Typography className={classes.titleTheaterSpan}>
-                  Thời gian giữ ghế
-                </Typography>
-                <Typography className={classes.countDown}>
-                  {minutes.toString().length < 2 ? "0" + minutes : minutes}:
-                  {seconds.toString().length < 2 ? "0" + seconds : seconds}
-                </Typography>
-              </Box>
-            </Box>
-            <Box
-              style={{ marginTop: "1.5rem" }}
-              display="flex"
-              alignItems="center"
-              flexDirection="column"
-            >
-              <img src={screen} />
-              <Box>{renderSeat()}</Box>
-              <Box>
-                <Summarize />
-              </Box>
+              <img src={screen} className={classes.overflow} />
+              <Box className={classes.overflow}>{renderSeat()}</Box>
             </Box>
           </Grid>
-          <Grid contaziner item xs={3} spacing={0} style={{ height: "100%" }}>
-            <ThanhTien infoPhongVe={infoPhongVe} maLichChieu={maLichChieu} />
-          </Grid>
+          <Box>
+            <Summarize />
+          </Box>
+          <ThanhTien infoPhongVe={infoPhongVe} />
         </Grid>
       </div>
     </div>
