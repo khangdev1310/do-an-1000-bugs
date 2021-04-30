@@ -5,6 +5,7 @@ import {
   FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS,
   FETCH_LAY_DANH_SACH_PHONG_VE_SUCCESS,
   BUYING_COMBO,
+  CLEAN_UP_REDUCER_PHONG_VE,
 } from "./constants";
 import { combos } from "./../../Combo/ComboType/dataCombo";
 
@@ -33,6 +34,17 @@ export default (state = initialState, { type, payload }) => {
     case FETCH_LAY_DANH_SACH_PHONG_VE_FAILED:
       state.isLoading = false;
       state.err = payload;
+      return { ...state };
+
+    case CLEAN_UP_REDUCER_PHONG_VE:
+      state.infoPhongVe = null;
+      state.isLoading = false;
+      state.err = null;
+      state.bookingSeat = [];
+      state.combosData = combos;
+      state.totalPrice = 0;
+      state.totalPriceSeat = 0;
+      state.totalPriceCombo = 0;
       return { ...state };
 
     case BOOKING_SEAT: {

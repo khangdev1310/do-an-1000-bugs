@@ -6,7 +6,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SearchIcon from "@material-ui/icons/Search";
 import shout from "./../../assets/shout.svg";
 import Logo2 from "./../../assets/cinema.png";
-import schedule from "./../../assets/schedule.svg";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 import login from "./../../assets/login.svg";
 import { useStyles } from "./style";
 import { Box } from "@material-ui/core";
@@ -16,6 +16,7 @@ import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
 import * as Scroll from "react-scroll";
 import { Link as LinkScroll, Events, scrollSpy } from "react-scroll";
+import AccountBoxIcon from "@material-ui/icons/AccountBox";
 
 export const Header = () => {
   const classes = useStyles();
@@ -154,6 +155,28 @@ export const Header = () => {
             {/* //*/}
             <hr color="#585858" />
 
+            {/* Profile */}
+            {localStorage.getItem("USER") ? (
+              <Link to="/profile">
+                <Box display="flex" alignItems="center">
+                  <Box>
+                    <AccountBoxIcon
+                      style={{ fontSize: "2rem", color: "#fff" }}
+                    />
+                  </Box>
+                  <Box>
+                    <Typography className={classes.titleForMobile}>
+                      Thông tin cá nhân
+                    </Typography>
+                  </Box>
+                </Box>
+                <hr color="#585858" />
+              </Link>
+            ) : (
+              ""
+            )}
+            {/* //*/}
+
             {/* Logout */}
             {localStorage.getItem("USER") ? (
               <Box
@@ -205,6 +228,7 @@ export const Header = () => {
                 {localUser.hoTen.length > 15
                   ? localUser.hoTen.substring(0, 15) + "..."
                   : localUser.hoTen}
+                <ArrowDropDownIcon style={{ display: "inline-block" }} />
               </Typography>
             </Typography>
           </Box>

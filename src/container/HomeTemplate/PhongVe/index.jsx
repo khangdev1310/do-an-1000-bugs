@@ -7,7 +7,10 @@ import { useStyles } from "./style";
 import screen from "./../../../assets/screen.png";
 import ThanhTien from "./ThanhTien/ThanhTien";
 import { useDispatch, useSelector } from "react-redux";
-import { FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA } from "./modules/redux/constants";
+import {
+  CLEAN_UP_REDUCER_PHONG_VE,
+  FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA,
+} from "./modules/redux/constants";
 import Seat from "./Seat";
 import SeatEmpty from "./SeatEmpty";
 import Summarize from "./Summarize";
@@ -30,17 +33,32 @@ const PhongVe = (props) => {
       type: FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA,
       payload: props.match.params.id,
     });
-  }, []);
-
-  useEffect(() => {
-    // const token = setTimeout(countDownTime, 1);
-    // if (seconds == 0 && minutes == 0) {
-    //   clearTimeout(token);
-    //   setOpen(true);
-    // }
 
     return () => {
-      // clearTimeout(token);
+      dispatch({
+        type: CLEAN_UP_REDUCER_PHONG_VE,
+      });
+    };
+  }, []);
+
+  const countDownTime = () => {
+    if (seconds == 0) {
+      setSeconds(59);
+      setMinutes(minutes - 1);
+    } else {
+      setSeconds(seconds - 1);
+    }
+  };
+
+  useEffect(() => {
+    const token = setTimeout(countDownTime, 1000);
+    if (seconds == 0 && minutes == 0) {
+      clearTimeout(token);
+      setOpen(true);
+    }
+
+    return () => {
+      clearTimeout(token);
     };
   });
 
@@ -78,20 +96,16 @@ const PhongVe = (props) => {
               Đã hết thời gian giữ ghế. Vui lòng thực hiện đơn hàng trong thời
               hạn 5 phút
             </Typography>
-            <Button onClick={() => window.location.reload()}>Đặt vé lại</Button>
+            <Button
+              onClick={() => window.location.reload()}
+              className={classes.datVeLai}
+            >
+              Đặt vé lại
+            </Button>
           </div>
         </Fade>
       </Modal>
     );
-  };
-
-  const countDownTime = () => {
-    if (seconds == 0) {
-      setSeconds(59);
-      setMinutes(minutes - 1);
-    } else {
-      setSeconds(seconds - 1);
-    }
   };
 
   const renderSeat = () => {
@@ -133,6 +147,29 @@ const PhongVe = (props) => {
   return (
     <div className={classes.bgColor}>
       <div className={classes.container}>
+        <Box
+          display="flex"
+          flexDirection="column"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Typography className={classes.titleTheaterSpan}>
+            Thời gian giữ ghế
+          </Typography>
+          <Box display="flex" alignItems="center" justifyContent="center">
+            <Box className={classes.countDownWrapper}>
+              <Typography className={classes.countDown}>
+                {minutes.toString().length < 2 ? "0" + minutes : minutes}
+              </Typography>
+            </Box>
+            <Typography className={classes.haiCham}>:</Typography>
+            <Box className={classes.countDownWrapper}>
+              <Typography className={classes.countDown}>
+                {seconds.toString().length < 2 ? "0" + seconds : seconds}
+              </Typography>
+            </Box>
+          </Box>
+        </Box>
         {handleOpenModal()}
         <Grid container spacing={0} style={{ flexDirection: "column" }}>
           <Grid
