@@ -95,25 +95,25 @@ const PhongVe = (props) => {
     });
   }
   const countDownTime = () => {
-    // if (seconds == 0) {
-    //   setSeconds(59);
-    //   setMinutes(minutes - 1);
-    // } else {
-    //   setSeconds(seconds - 1);
-    // }
+    if (seconds == 0) {
+      setSeconds(59);
+      setMinutes(minutes - 1);
+    } else {
+      setSeconds(seconds - 1);
+    }
   };
 
-  // useEffect(() => {
-  //   const token = setTimeout(countDownTime, 1000);
-  //   if (seconds == 0 && minutes == 0) {
-  //     clearTimeout(token);
-  //     setOpen(true);
-  //   }
+  useEffect(() => {
+    const token = setTimeout(countDownTime, 1000);
+    if (seconds == 0 && minutes == 0) {
+      clearTimeout(token);
+      setOpen(true);
+    }
 
-  //   return () => {
-  //     clearTimeout(token);
-  //   };
-  // });
+    return () => {
+      clearTimeout(token);
+    };
+  });
 
   if (!infoPhongVe) {
     return null;
