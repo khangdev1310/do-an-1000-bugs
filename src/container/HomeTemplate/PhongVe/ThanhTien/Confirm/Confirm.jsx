@@ -49,6 +49,7 @@ const Confirm = ({ infoPhongVe }) => {
   const priceSeat = useSelector(
     (state) => state.PhongVeReducer?.totalPriceSeat
   );
+  const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
   const { taiKhoan, email, soDT, accessToken } = JSON.parse(
     localStorage.getItem("USER")
   );
@@ -58,7 +59,6 @@ const Confirm = ({ infoPhongVe }) => {
     taiKhoanNguoiDung: taiKhoan,
   });
   const { thongTinPhim } = infoPhongVe;
-  const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
 
   const handleDispatch = () => {
     let danhSachVe = [];
@@ -253,4 +253,4 @@ const Confirm = ({ infoPhongVe }) => {
   );
 };
 
-export default withRouter(Confirm);
+export default withRouter(React.memo(Confirm));

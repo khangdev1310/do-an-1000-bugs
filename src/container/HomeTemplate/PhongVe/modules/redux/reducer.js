@@ -14,6 +14,7 @@ const initialState = {
   isLoading: false,
   err: null,
   bookingSeat: [],
+  bookedSeat: [],
   combosData: combos,
   totalPrice: 0,
   totalPriceSeat: 0,
@@ -29,6 +30,10 @@ export default (state = initialState, { type, payload }) => {
     case FETCH_LAY_DANH_SACH_PHONG_VE_SUCCESS:
       state.isLoading = false;
       state.infoPhongVe = payload;
+      let booked = state.infoPhongVe.danhSachGhe.filter((bookedSeat) => {
+        return bookedSeat.daDat === true;
+      });
+      state.bookedSeat = booked;
       return { ...state };
 
     case FETCH_LAY_DANH_SACH_PHONG_VE_FAILED:

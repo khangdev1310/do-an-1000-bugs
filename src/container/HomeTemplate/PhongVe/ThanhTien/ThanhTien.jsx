@@ -6,7 +6,7 @@ import {
   Typography,
   withStyles,
 } from "@material-ui/core";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useStyles } from "./styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
@@ -17,7 +17,7 @@ import Swal from "sweetalert2";
 import { v4 as uuidv4 } from "uuid";
 import Confirm from "./Confirm/Confirm";
 
-const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
+const ThanhTien = ({ infoPhongVe, maLichChieu, validate }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const priceSeat = useSelector(
@@ -25,6 +25,12 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
   );
   const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
   const [open, setOpen] = React.useState(false);
+  const [disableConfirm, setDisableConfirm] = useState(validate);
+  useEffect(() => {
+    setDisableConfirm(validate);
+  }, [validate]);
+  console.log(disableConfirm);
+
   if (!infoPhongVe) {
     return null;
   }
@@ -38,13 +44,7 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
   };
 
   const handleCheck = () => {
-    let danhSachVe = [];
-    bookingSeat.forEach((danhSach) => {
-      let { maGhe, giaVe } = danhSach;
-      danhSachVe.push({ maGhe, giaVe });
-    });
-
-    if (danhSachVe.length > 0) {
+    if (bookingSeat.length > 0) {
       setOpen(true);
     } else {
       Swal.fire({
@@ -138,6 +138,7 @@ const ThanhTien = ({ infoPhongVe, maLichChieu }) => {
               onClick={handleCheck}
               variant="contained"
               style={{ backgroundColor: "plum", marginTop: "1rem" }}
+              disabled={!disableConfirm}
             >
               Xác nhận
             </Button>

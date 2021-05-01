@@ -14,20 +14,22 @@ import {
 import Seat from "./Seat";
 import SeatEmpty from "./SeatEmpty";
 import Summarize from "./Summarize";
+import { checkUtils } from "@material-ui/pickers/_shared/hooks/useUtils";
+import Swal from "sweetalert2";
 
 const PhongVe = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const infoPhongVe = useSelector((state) => state.PhongVeReducer.infoPhongVe);
+  const bookingSeat = useSelector((state) => state.PhongVeReducer?.bookingSeat);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(5);
   const [open, setOpen] = useState(false);
   let checkSeat = 1;
-  console.log(minutes);
+  let validate = true;
   if (!localStorage.getItem("USER")) {
     props.history.push("/");
   }
-
   useEffect(() => {
     dispatch({
       type: FETCH_LAY_DANH_SACH_PHONG_VE_REQUESTS_SAGA,
@@ -41,26 +43,77 @@ const PhongVe = (props) => {
     };
   }, []);
 
-  const countDownTime = () => {
-    if (seconds == 0) {
-      setSeconds(59);
-      setMinutes(minutes - 1);
-    } else {
-      setSeconds(seconds - 1);
-    }
+  const handleNoti = (icon, title) => {
+    Swal.fire({
+      icon: `${icon}`,
+      title: `${title}`,
+    });
   };
 
-  useEffect(() => {
-    const token = setTimeout(countDownTime, 1000);
-    if (seconds == 0 && minutes == 0) {
-      clearTimeout(token);
-      setOpen(true);
+  if (bookingSeat.length > 0) {
+    // trên 2 ghế thì mới kiểm tra coi có ghế ở giữa hông
+    if (bookingSeat.length > 1) {
+      let getBookingSeat = [...bookingSeat];
+      let middleStt = null;
+      getBookingSeat.sort((a, b) => parseInt(a.stt) - parseInt(b.stt));
+      getBookingSeat.map((seat1, index1) => {
+        getBookingSeat.map((seat2, index2) => {
+          if (index1 !== index2 && index1 < index2) {
+            if (parseInt(seat1.stt) + 1 === parseInt(seat2.stt) - 1) {
+              middleStt = parseInt(seat1.stt) + 1;
+              return;
+            }
+          }
+        });
+      });
+      //Kiểm tra xem ghế giữa đã có chọn chưa
+      if (middleStt) {
+        let index = getBookingSeat.findIndex((check) => {
+          return parseInt(check.stt) === middleStt;
+        });
+        if (index === -1) {
+          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa");
+          validate = false;
+        }
+      }
     }
+    bookingSeat.map((booking, index) => {
+      if ((parseInt(booking.stt) + 1) % 16 == 0) {
+        handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đuôi mỗi dãy");
+        validate = false;
+      } else {
+        let firstSeatRow = 1;
+        for (let i = 1; i <= 11; i++) {
+          if (parseInt(booking.stt) - 1 == firstSeatRow) {
+            handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
+            validate = false;
+          } else {
+            firstSeatRow += 16;
+          }
+        }
+      }
+    });
+  }
+  const countDownTime = () => {
+    // if (seconds == 0) {
+    //   setSeconds(59);
+    //   setMinutes(minutes - 1);
+    // } else {
+    //   setSeconds(seconds - 1);
+    // }
+  };
 
-    return () => {
-      clearTimeout(token);
-    };
-  });
+  // useEffect(() => {
+  //   const token = setTimeout(countDownTime, 1000);
+  //   if (seconds == 0 && minutes == 0) {
+  //     clearTimeout(token);
+  //     setOpen(true);
+  //   }
+
+  //   return () => {
+  //     clearTimeout(token);
+  //   };
+  // });
 
   if (!infoPhongVe) {
     return null;
@@ -109,6 +162,7 @@ const PhongVe = (props) => {
   };
 
   const renderSeat = () => {
+    // console.log(1);
     return infoPhongVe?.danhSachGhe.map((ghe, index) => {
       if ((index + 1) % 16 === 0) {
         checkSeat = index + 2;
@@ -119,23 +173,23 @@ const PhongVe = (props) => {
           </>
         );
       }
-      if (index === checkSeat) {
-        checkSeat += 12;
-        return (
-          <>
-            <Seat gheInfo={ghe} />
-            <SeatEmpty />
-          </>
-        );
-      } else if (index === checkSeat) {
-        checkSeat += 3;
-        return (
-          <>
-            <Seat gheInfo={ghe} />
-            <SeatEmpty />
-          </>
-        );
-      }
+      // if (index === checkSeat) {
+      //   checkSeat += 12;
+      //   return (
+      //     <>
+      //       <Seat gheInfo={ghe} />
+      //       <SeatEmpty />
+      //     </>
+      //   );
+      // } else if (index === checkSeat) {
+      //   checkSeat += 3;
+      //   return (
+      //     <>
+      //       <Seat gheInfo={ghe} />
+      //       <SeatEmpty />
+      //     </>
+      //   );
+      // }
       return (
         <>
           <Seat gheInfo={ghe} />
@@ -191,13 +245,15 @@ const PhongVe = (props) => {
               className={classes.overflow}
             >
               <img src={screen} className={classes.overflow} />
-              <Box className={classes.overflow}>{renderSeat()}</Box>
+              <Box className={classes.overflow}>
+                <Box className={classes.renderSeatWrapper}>{renderSeat()}</Box>
+              </Box>
             </Box>
           </Grid>
           <Box>
             <Summarize />
           </Box>
-          <ThanhTien infoPhongVe={infoPhongVe} />
+          <ThanhTien infoPhongVe={infoPhongVe} validate={validate} />
         </Grid>
       </div>
     </div>

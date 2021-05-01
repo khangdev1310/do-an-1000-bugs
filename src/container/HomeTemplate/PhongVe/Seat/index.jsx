@@ -9,7 +9,6 @@ const Seat = ({ gheInfo }) => {
   const { loaiGhe, daDat: booked } = gheInfo;
   const dispatch = useDispatch();
   const [selected, setSelected] = useState(false);
-
   const handleBookingSeat = () => {
     dispatch({
       type: BOOKING_SEAT,

@@ -86,6 +86,12 @@ export const useStyles = makeStyles((theme) => ({
     overflowX: "auto",
   },
 
+  renderSeatWrapper: {
+    width: "680px",
+    margin: "0 auto",
+    // overflowY: "hidden",
+    // overflowX: "auto",
+  },
   countDownWrapper: {
     backgroundColor: "#000",
     padding: "10px",
