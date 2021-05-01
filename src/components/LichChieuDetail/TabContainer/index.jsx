@@ -162,7 +162,6 @@ export default function TabContainer() {
     <>
       {isMobile ? (
         <div className={classes.forXs}>
-          {console.log("ure using mobile")}
           <TabMobile />
         </div>
       ) : (

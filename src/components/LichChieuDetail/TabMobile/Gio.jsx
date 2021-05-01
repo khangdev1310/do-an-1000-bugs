@@ -40,7 +40,6 @@ const Gio = ({ details, day }) => {
   const classes = useStyles();
   const history = useHistory();
 
-  console.log("----");
   const options = { year: "numeric", month: "2-digit", day: "2-digit" };
   const optionsHours = { hour: "2-digit", minute: "2-digit" };
   Date.prototype.addHours = function (h) {
@@ -56,7 +55,6 @@ const Gio = ({ details, day }) => {
       ) === day
     );
   });
-  console.log(checkEqualDay);
 
   const renderGioChieu = () => {
     return checkEqualDay.map((gios) => {

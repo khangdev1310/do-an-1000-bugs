@@ -14,7 +14,6 @@ import { v4 as uuidv4 } from "uuid";
 const History = ({ userInfo }) => {
   const classes = useStyles();
   let [limit, setLimit] = useState(5);
-  console.log(limit);
 
   if (!userInfo) {
     return null;

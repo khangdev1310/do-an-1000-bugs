@@ -32,7 +32,6 @@ const GreenRadio = withStyles({
 
 const Confirm = ({ infoPhongVe }) => {
   const history = useHistory();
-  console.log(history);
   const dispatch = useDispatch();
   const classes = useStyles();
   const [comboStatus, setComboStatus] = useState(false);
@@ -67,7 +66,6 @@ const Confirm = ({ infoPhongVe }) => {
       danhSachVe.push({ maGhe, giaVe });
     });
     datVe.danhSachVe = danhSachVe;
-    console.log(datVe);
     if (datVe.danhSachVe.length > 0) {
       dispatch({
         type: POST_THONG_TIN_DAT_VE_REQUESTS_SAGA,

@@ -163,9 +163,7 @@ const QuanLiMovie = () => {
       maNhom: "GP09",
       ngayKhoiChieu,
     };
-    console.log(infoMovieSend);
     for (let key in infoMovieSend) {
-      console.log(key, infoMovieSend[key]);
       frm.append(key, infoMovieSend[key]);
     }
 
@@ -186,7 +184,6 @@ const QuanLiMovie = () => {
   };
 
   const handleEditMovie = async (infoMovie) => {
-    console.log(infoMovie);
     let frm = new FormData();
     let danhGia = parseInt(infoMovie.danhGia);
     let maPhim = parseInt(infoMovie.maPhim);
@@ -205,9 +202,7 @@ const QuanLiMovie = () => {
       maNhom: "GP09",
       ngayKhoiChieu,
     };
-    console.log(infoMovieSend);
     for (let key in infoMovieSend) {
-      console.log(key, infoMovieSend[key]);
       frm.append(key, infoMovieSend[key]);
     }
 
@@ -260,7 +255,6 @@ const QuanLiMovie = () => {
           tableLayout: "auto",
         }}
         detailPanel={(rowData) => {
-          console.log(rowData);
           return (
             <iframe
               width="80%"

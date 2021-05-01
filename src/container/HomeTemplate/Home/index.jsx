@@ -28,7 +28,6 @@ const Home = () => {
   const classes = useStyles();
   const refApp = useRef(null);
   const movieList = useSelector((state) => state.MovieReducer.movieList);
-  console.log(movieList);
   let arrRandom = [];
   for (let i = 0; i < 6; i++) {
     arrRandom.push(movieList[i]);

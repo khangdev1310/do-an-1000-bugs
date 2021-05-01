@@ -50,7 +50,6 @@ const BookedTicket = ({ thongTin, stt }) => {
   };
 
   const rows = renderBookedTicket();
-  console.log(rows);
 
   return (
     <>

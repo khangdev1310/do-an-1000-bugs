@@ -134,10 +134,7 @@ export default function ChildTabs({ phims }) {
   return (
     <div className={classes.root}>
       {/* <Box style={{ minWidth: "600px" }}> */}
-      <Box style={{ width: "580px" }}>
-        {console.log(phims)}
-        {renderThongTinPhim(phims)}
-      </Box>
+      <Box style={{ width: "580px" }}>{renderThongTinPhim(phims)}</Box>
     </div>
   );
 }

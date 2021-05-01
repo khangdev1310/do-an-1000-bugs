@@ -75,7 +75,6 @@ export default (state = initialState, { type, payload }) => {
     case BUYING_COMBO: {
       const { combo, isAddMinus } = payload;
       const arrCombosData = [...state.combosData];
-      console.log(combo, isAddMinus);
       const index = arrCombosData.findIndex((comboData) => {
         return comboData.ten === combo.ten;
       });

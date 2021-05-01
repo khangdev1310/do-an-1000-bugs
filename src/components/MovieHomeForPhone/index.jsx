@@ -47,7 +47,6 @@ function a11yProps(index) {
 }
 
 const MovieHomeForPhone = ({ movieList }) => {
-  console.log(movieList);
   const classes = useStyles();
   const [limit, setLimit] = useState(5);
   const theme = useTheme();

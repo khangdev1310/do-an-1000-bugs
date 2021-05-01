@@ -12,7 +12,6 @@ export async function postThongTinDangNhapAdminApiActionApi(userInfo) {
       data: userInfo,
     });
     if (result.status === STATUS_CODE.SUCCESS) {
-      console.log(result.data);
       if (result.data.maLoaiNguoiDung === "QuanTri") {
         localStorage.setItem("ADMIN", JSON.stringify(result.data));
         Swal.fire({

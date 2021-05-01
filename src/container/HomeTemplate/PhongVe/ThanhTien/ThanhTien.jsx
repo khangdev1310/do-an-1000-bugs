@@ -29,7 +29,6 @@ const ThanhTien = ({ infoPhongVe, maLichChieu, validate }) => {
   useEffect(() => {
     setDisableConfirm(validate);
   }, [validate]);
-  console.log(disableConfirm);
 
   if (!infoPhongVe) {
     return null;

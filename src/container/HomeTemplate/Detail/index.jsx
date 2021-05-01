@@ -163,7 +163,6 @@ const Detail = (props) => {
   };
 
   const handlePostComment = () => {
-    console.log(comment);
     if (!localStorage.getItem("USER")) {
       Swal.fire({
         icon: "warning",

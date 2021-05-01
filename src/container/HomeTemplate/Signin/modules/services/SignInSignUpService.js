@@ -3,7 +3,6 @@ import { DOMAIN } from "../redux/constants";
 import { MA_NHOM } from "./../../../../../SystemServices";
 
 export function postThongTinDangNhapApiActionApi(userInfo) {
-  console.log(userInfo);
   return axios({
     url: `${DOMAIN}/QuanLyNguoiDung/DangNhap`,
     method: "POST",
@@ -12,7 +11,6 @@ export function postThongTinDangNhapApiActionApi(userInfo) {
 }
 
 export function postThongTinDangKiApiActionApi(userInfo) {
-  console.log(userInfo);
   return axios({
     url: `${DOMAIN}/QuanLyNguoiDung/DangKy`,
     method: "POST",
@@ -21,7 +19,6 @@ export function postThongTinDangKiApiActionApi(userInfo) {
 }
 
 export function fetchUserInfoApiActionApi(taiKhoan) {
-  console.log(taiKhoan);
   return axios({
     url: `${DOMAIN}/QuanLyNguoiDung/ThongTinTaiKhoan`,
     method: "POST",

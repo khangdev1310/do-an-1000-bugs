@@ -1,35 +1,16 @@
 import React, { useRef, useState } from "react";
 import { useStyles } from "./style";
 import Slider from "react-slick";
-import poster1 from "./../../assets/money-heist.jpg";
-import poster2 from "./../../assets/the100.jpg";
-import poster3 from "./../../assets/tenet.jpg";
-import poster4 from "./../../assets/inception.jpg";
 import { Box, Grid, Typography } from "@material-ui/core";
 import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
 import ArrowForwardIosIcon from "@material-ui/icons/ArrowForwardIos";
-import PlayCircleFilledIcon from "@material-ui/icons/PlayCircleFilled";
 import ErrorOutlineIcon from "@material-ui/icons/ErrorOutline";
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from "@material-ui/core/InputBase";
-import podcast from "./../../assets/podcast.svg";
 import ModalTrailer from "./ModalTrailer";
-import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-
 const Carousel = ({ movieList }) => {
   const classes = useStyles();
   const ref = useRef({});
-  const [openModal, setOpenModal] = useState(false);
-
-  const handleOpenModal = () => {
-    setOpenModal(true);
-  };
-
-  const handleCloseModal = () => {
-    setOpenModal(false);
-  };
 
   const next = () => {
     ref.current.slickNext();

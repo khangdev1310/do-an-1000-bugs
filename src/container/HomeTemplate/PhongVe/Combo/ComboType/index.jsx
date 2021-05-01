@@ -8,7 +8,6 @@ import { BUYING_COMBO } from "../../modules/redux/constants";
 const ComboType = ({ combo }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  console.log(combo);
 
   const handleDispatchQuantity = (isAddMinus) => {
     dispatch({

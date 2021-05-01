@@ -27,7 +27,6 @@ export default function TabMobile() {
   const heThongRapChieu = useSelector(
     (state) => state.MovieDetailReducer.movieDetail
   );
-  console.log(heThongRapChieu);
 
   const renderTenCumRap = () => {
     return heThongRaps.map((heThongRap, index) => {

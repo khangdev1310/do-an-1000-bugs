@@ -32,7 +32,6 @@ const SearchBarDesktop = () => {
     suatChieu: "",
     buttonBuyTicket: false,
   });
-  console.log(infoSearch);
   let [maLichChieu, setMaLichChieu] = useState({
     maLichChieu: null,
   });

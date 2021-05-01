@@ -1,5 +1,4 @@
 import { makeStyles } from "@material-ui/core";
-import background1 from "./../../../assets/background1.jpeg";
 import top from "./../../../assets/veXemPhim.png";
 import bottom from "./../../../assets/veXemPhimBottom.png";
 

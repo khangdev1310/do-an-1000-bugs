@@ -103,7 +103,6 @@ function* postThongTinDangNhapFacebookApiActionSaga({ payload }) {
       yield call(history.push, "/");
     }
   } catch (err) {
-    console.log(payload);
     const { email, name: hoTen, maLoaiNguoiDung } = payload;
     const maNhom = MA_NHOM;
     const soDt = "";
@@ -126,7 +125,6 @@ function* postThongTinDangNhapFacebookApiActionSaga({ payload }) {
         userInfo
       );
       if (status === STATUS_CODE.SUCCESS) {
-        console.log(data);
         const { taiKhoan, matKhau } = data;
         const userInfo = { taiKhoan, matKhau };
         yield put({

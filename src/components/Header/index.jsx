@@ -14,7 +14,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Popper from "@material-ui/core/Popper";
 import Fade from "@material-ui/core/Fade";
-import * as Scroll from "react-scroll";
 import { Link as LinkScroll, Events, scrollSpy } from "react-scroll";
 import AccountBoxIcon from "@material-ui/icons/AccountBox";
 

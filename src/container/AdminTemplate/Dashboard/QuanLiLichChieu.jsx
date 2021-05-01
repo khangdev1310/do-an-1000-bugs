@@ -38,7 +38,6 @@ const QuanLiLichChieu = () => {
     ngayChieuGioChieu: new Date(),
     giaVe: "75000",
   });
-  console.log(infoLichChieu);
 
   //Khi user vừa chọn trong ô textfield đầu tiên thì sẽ
   // disppatch thông tin phim đó lên để lấy data cho các ô khác
@@ -241,7 +240,6 @@ const QuanLiLichChieu = () => {
   //nên phải làm thêm 1 hàm để truy xuất khi có dữ liệu tên rạp thì trigger hàm
   // tìm mã rạp
   const findMaRap = (tenMaRap) => {
-    console.log(tenMaRap);
     if (tenRap) {
       let maRapContainer = tenRap.filter((rap) => {
         return rap.tenCumRap === infoLichChieu.tenCumRap;
@@ -249,7 +247,6 @@ const QuanLiLichChieu = () => {
       let maRapArr = maRapContainer[0].danhSachRap.filter((maRap) => {
         return maRap.tenRap === tenMaRap;
       });
-      console.log(maRapArr);
       setInfoLichChieu({
         ...infoLichChieu,
         tenMaRap,

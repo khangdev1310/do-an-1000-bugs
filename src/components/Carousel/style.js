@@ -1,9 +1,6 @@
 import { makeStyles } from "@material-ui/core";
-import { fade } from "@material-ui/core/styles";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import background from "./../../assets/background.jpg";
-import background1 from "./../../assets/background1.jpeg";
 
 export const useStyles = makeStyles((theme) => ({
   header: {

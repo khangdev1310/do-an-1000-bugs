@@ -1,25 +1,12 @@
-import {
-  Box,
-  Button,
-  Grid,
-  InputAdornment,
-  OutlinedInput,
-  TextField,
-  Typography,
-} from "@material-ui/core";
+import { Box, Button, Grid, TextField, Typography } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { useStyles } from "./styles";
-import { useDispatch, useSelector } from "react-redux";
-import BookedTicket from "../../../../../components/BookedTicket";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { DOMAIN, STATUS_CODE } from "../../../../../utils/common/constants";
 import { CLEAN_UP_USER_INFO } from "../../../Signin/modules/redux/constants";
-import IconButton from "material-ui/IconButton";
-import { Visibility, VisibilityOff } from "@material-ui/icons";
 
 const UserInfo = ({ userInfo }) => {
-  console.log(userInfo);
   const classes = useStyles();
   const { maLoaiNguoiDung, accessToken } = JSON.parse(
     localStorage.getItem("USER")
@@ -61,7 +48,6 @@ const UserInfo = ({ userInfo }) => {
   };
 
   const handleSubmit = async () => {
-    console.log(userField);
     try {
       const result = await axios({
         url: `${DOMAIN}/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
@@ -103,9 +89,6 @@ const UserInfo = ({ userInfo }) => {
               variant="outlined"
               defaultValue={userInfo && userInfo.taiKhoan}
               fullWidth
-              onChange={(e) => {
-                console.log(e.target.value);
-              }}
             />
           </Grid>
         </Grid>

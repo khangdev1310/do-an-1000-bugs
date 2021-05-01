@@ -57,13 +57,7 @@ const Gio = ({ gios }) => {
       );
       const endGioFormat = endTimeGeneral.toLocaleTimeString("en-GB", options);
       return (
-        <Box
-          key={uuidv4()}
-          className={classes.timeWrapper}
-          onClick={() => {
-            console.log(gio.maLichChieu);
-          }}
-        >
+        <Box key={uuidv4()} className={classes.timeWrapper}>
           <Link to={`checkout/${gio.maLichChieu}`} className={classes.link}>
             <Box className={classes.mainTime}>{gioFormat}</Box>
             <Box className={classes.subTime}>~ {endGioFormat}</Box>
