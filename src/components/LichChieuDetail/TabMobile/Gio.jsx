@@ -1,5 +1,6 @@
 import { Box, makeStyles } from "@material-ui/core";
 import React from "react";
+import Swal from "sweetalert2";
 import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -47,6 +48,24 @@ const Gio = ({ details, day }) => {
     return this;
   };
 
+  const handleDirect = (maLichChieu) => {
+    if (!localStorage.getItem("USER")) {
+      Swal.fire({
+        icon: "warning",
+        title: `Vui lòng đăng nhập!`,
+        showCancelButton: true,
+        confirmButtonText: `Đăng nhập`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push(`/signin`);
+        }
+        return;
+      });
+    } else {
+      history.push(`/checkout/${maLichChieu}`);
+    }
+  };
+
   const checkEqualDay = details.lichChieuPhim.filter((lichChieu) => {
     return (
       new Date(lichChieu.ngayChieuGioChieu).toLocaleDateString(
@@ -71,7 +90,9 @@ const Gio = ({ details, day }) => {
       return (
         <Box
           className={classes.timeWrapper}
-          onClick={() => history.push(`/checkout/${gios.maLichChieu}`)}
+          onClick={() => {
+            handleDirect(gios.maLichChieu);
+          }}
         >
           <Box className={classes.mainTime}>{gioFormat}</Box>
           <Box className={classes.subTime}>~ {endGioFormat}</Box>

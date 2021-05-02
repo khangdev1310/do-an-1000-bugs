@@ -2,6 +2,7 @@ import { Box, Link, makeStyles } from "@material-ui/core";
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles((theme) => ({
   timeWrapper: {
@@ -45,6 +46,24 @@ const Gio = ({ gioChieu }) => {
     return this;
   };
 
+  const handleDirect = (maLichChieu) => {
+    if (!localStorage.getItem("USER")) {
+      Swal.fire({
+        icon: "warning",
+        title: `Vui lòng đăng nhập!`,
+        showCancelButton: true,
+        confirmButtonText: `Đăng nhập`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push(`/signin`);
+        }
+        return;
+      });
+    } else {
+      history.push(`/checkout/${maLichChieu}`);
+    }
+  };
+
   const renderGio = () => {
     if (gioChieu.length > 0) {
       return gioChieu.map((gios) => {
@@ -62,7 +81,9 @@ const Gio = ({ gioChieu }) => {
           <Box
             key={uuidv4()}
             className={classes.timeWrapper}
-            onClick={() => history.push(`/checkout/${gios.maLichChieu}`)}
+            onClick={() => {
+              handleDirect(gios.maLichChieu);
+            }}
           >
             <Box className={classes.mainTime}>{gioFormat}</Box>
             <Box className={classes.subTime}>~ {endGioFormat}</Box>

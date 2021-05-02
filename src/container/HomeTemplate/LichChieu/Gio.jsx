@@ -4,6 +4,8 @@ import { addHours, getHours } from "date-fns";
 import { v4 as uuidv4 } from "uuid";
 import Typography from "material-ui/styles/typography";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   timeWrapper: {
@@ -39,12 +41,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Gio = ({ gios }) => {
+  const history = useHistory();
   const classes = useStyles();
   const options = { hour: "2-digit", minute: "2-digit" };
   // Thời gian hết phim thêm 2 tiếng
   Date.prototype.addHours = function (h) {
     this.setHours(this.getHours() + h);
     return this;
+  };
+
+  const handleDirect = (maLichChieu) => {
+    if (!localStorage.getItem("USER")) {
+      Swal.fire({
+        icon: "warning",
+        title: `Vui lòng đăng nhập!`,
+        showCancelButton: true,
+        confirmButtonText: `Đăng nhập`,
+      }).then((result) => {
+        if (result.isConfirmed) {
+          history.push(`/signin`);
+        }
+        return;
+      });
+    } else {
+      history.push(`/checkout/${maLichChieu}`);
+    }
   };
 
   const renderGio = () => {
@@ -57,11 +78,13 @@ const Gio = ({ gios }) => {
       );
       const endGioFormat = endTimeGeneral.toLocaleTimeString("en-GB", options);
       return (
-        <Box key={uuidv4()} className={classes.timeWrapper}>
-          <Link to={`checkout/${gio.maLichChieu}`} className={classes.link}>
-            <Box className={classes.mainTime}>{gioFormat}</Box>
-            <Box className={classes.subTime}>~ {endGioFormat}</Box>
-          </Link>
+        <Box
+          key={uuidv4()}
+          className={classes.timeWrapper}
+          onClick={() => handleDirect(gio.maLichChieu)}
+        >
+          <Box className={classes.mainTime}>{gioFormat}</Box>
+          <Box className={classes.subTime}>~ {endGioFormat}</Box>
         </Box>
       );
     });
