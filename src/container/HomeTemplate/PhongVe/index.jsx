@@ -55,38 +55,75 @@ const PhongVe = (props) => {
           if (index1 !== index2 && index1 < index2) {
             if (parseInt(seat1.stt) + 1 === parseInt(seat2.stt) - 1) {
               middleStt = parseInt(seat1.stt) + 1;
-              return;
+              //Kiểm tra xem ghế giữa đã có chọn chưa
+              if (middleStt) {
+                let index = getBookingSeat.findIndex((check) => {
+                  return parseInt(check.stt) === middleStt;
+                });
+                if (index === -1) {
+                  handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa");
+                  validate = false;
+                  return;
+                }
+              }
             }
           }
         });
       });
-      //Kiểm tra xem ghế giữa đã có chọn chưa
-      if (middleStt) {
-        let index = getBookingSeat.findIndex((check) => {
-          return parseInt(check.stt) === middleStt;
-        });
-        if (index === -1) {
-          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa");
-          validate = false;
-        }
-      }
     }
     bookingSeat.map((booking, index) => {
       if ((parseInt(booking.stt) + 1) % 16 == 0) {
-        handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đuôi mỗi dãy");
+        handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
         validate = false;
+        return;
       } else {
         let firstSeatRow = 1;
         for (let i = 1; i <= 11; i++) {
           if (parseInt(booking.stt) - 1 == firstSeatRow) {
             handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
             validate = false;
+            return;
           } else {
             firstSeatRow += 16;
           }
         }
       }
     });
+
+    let bookedSeat = [...infoPhongVe.danhSachGhe].filter((booked) => {
+      return booked.daDat;
+    });
+
+    let middleStt = null;
+
+    bookingSeat.map((booking) => {
+      bookedSeat.map((booked) => {
+        if (parseInt(booking.stt) + 1 === parseInt(booked.stt) - 1) {
+          middleStt = parseInt(booking.stt) + 1;
+          return;
+        } else if (parseInt(booking.stt) - 1 === parseInt(booked.stt) + 1) {
+          middleStt = parseInt(booking.stt) - 1;
+          return;
+        }
+      });
+    });
+    if (middleStt) {
+      console.log(middleStt);
+      let indexBooked = bookedSeat.findIndex((booked) => {
+        return parseInt(booked.stt) === middleStt;
+      });
+      console.log(indexBooked);
+      if (indexBooked === -1) {
+        let indexBooking = bookingSeat.findIndex((booking) => {
+          return parseInt(booking.stt) === middleStt;
+        });
+        if (indexBooking === -1) {
+          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa 1");
+          validate = false;
+          // return;
+        }
+      }
+    }
   }
 
   const renderSeat = () => {
