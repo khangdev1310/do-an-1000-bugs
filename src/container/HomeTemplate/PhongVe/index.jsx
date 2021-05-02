@@ -73,16 +73,31 @@ const PhongVe = (props) => {
     }
     bookingSeat.map((booking, index) => {
       if ((parseInt(booking.stt) + 1) % 16 == 0) {
-        handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
-        validate = false;
-        return;
+        let check = parseInt(booking.stt) + 1;
+        let index = bookingSeat.findIndex((booking, index) => {
+          return parseInt(booking.stt) === check;
+        });
+        if (index === -1) {
+          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
+          validate = false;
+          return;
+        }
       } else {
         let firstSeatRow = 1;
         for (let i = 1; i <= 11; i++) {
           if (parseInt(booking.stt) - 1 == firstSeatRow) {
-            handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy");
-            validate = false;
-            return;
+            let check = parseInt(booking.stt) - 1;
+            let index = bookingSeat.findIndex((booking, index) => {
+              return parseInt(booking.stt) === check;
+            });
+            if (index === -1) {
+              handleNoti(
+                "warning",
+                "Bạn không thể bỏ trống 1 ghế ở đầu mỗi dãy"
+              );
+              validate = false;
+              return;
+            }
           } else {
             firstSeatRow += 16;
           }
@@ -107,6 +122,7 @@ const PhongVe = (props) => {
         }
       });
     });
+    console.log(middleStt);
     if (middleStt) {
       console.log(middleStt);
       let indexBooked = bookedSeat.findIndex((booked) => {
@@ -118,7 +134,7 @@ const PhongVe = (props) => {
           return parseInt(booking.stt) === middleStt;
         });
         if (indexBooking === -1) {
-          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa 1");
+          handleNoti("warning", "Bạn không thể bỏ trống 1 ghế ở giữa");
           validate = false;
           // return;
         }
